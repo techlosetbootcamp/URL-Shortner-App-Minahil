@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-
+const colors = require('./src/constants/colors.ts');
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,6 +8,30 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors:{
+        ...colors,
+      },
+      fontFamily:{
+        Inter: ['Inter']
+      },
+      boxShadow: {
+        'custom': '0px 4px 10px rgba(0, 0, 0, 0.1)',
+      },
+      animation: {
+        text: 'text 100s ease infinite',
+      },
+      keyframes: {
+        text: {
+          '0%, 100%': {
+            'background-size': '200% 200%',
+            'background-position': 'left center',
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center',
+          },
+        },
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
