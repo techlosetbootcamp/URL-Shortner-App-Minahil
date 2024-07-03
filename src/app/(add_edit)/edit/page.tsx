@@ -7,8 +7,8 @@ import { FaBell } from "react-icons/fa";
 function Edit() {
   return (
     <>
-      <header>
-        <div className="flex items-center justify-between mx-[52px] mt-[44px]">
+      <header className="mt-[44px]">
+        <div className="flex items-center justify-between mx-[52px]">
           <Logo />
           <div className="flex gap-[20px]">
             <div className="flex items-center justify-center w-[191px] h-[60px] rounded-[48px] bg-input_bg_clr border border-input_border_clr py-[21px] pr-[25] pl-[25px]">
@@ -76,7 +76,7 @@ function Edit() {
           </button>
         </div>
 
-        <Button text="Shorten Now!" />
+        <Button text="Shorten Now!" width="268px"/>
       </form>
     </>
   );

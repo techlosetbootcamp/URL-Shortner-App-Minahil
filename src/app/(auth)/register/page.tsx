@@ -7,7 +7,7 @@ function Register()
 {
     return(
         <>
-        <header>
+        <header className="mt-[40px]">
           <Logo/>
         </header>
         <div className="flex flex-col items-center justify-center mb-[136px] mt-[126px]">
@@ -30,7 +30,7 @@ function Register()
                 <InputField type="password" placeholder="Confirm Password"/>
                 
             </div>
-            <div><Button text="Register"/></div>
+            <div><Button text="Register" width="268px"/></div>
             
                 
                 

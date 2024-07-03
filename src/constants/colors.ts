@@ -12,6 +12,9 @@ const colors = {
     input_bg_clr: "#181E29",
     input_txt_clr: "#C9CED6",
     gradient_clr_3: "#A353AA",
+    copy_button_clr: "#1C283F",
+    active_link_clr: "#1EB036",
+    nav_clr: "#D9D9D9",
   };
   export default colors;
   

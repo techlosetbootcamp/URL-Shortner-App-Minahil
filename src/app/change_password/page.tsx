@@ -3,27 +3,26 @@ import InputField from "@/(components)/input/InputField";
 import Logo from "@/(components)/logo/Logo";
 import Link from "next/link";
 
-function LogIn()
+function ChangePassword()
 {
     return(
         <>
-        <header className="mt-[40px]">
+        <header>
           <Logo/>
         </header>
         <div className="flex flex-col items-center justify-center mb-[262px] mt-[216px]">
             <div className="mb-[46px] flex flex-col items-center justify-center">
-            <p className="font-extrabold text-[60px] leading-[80.01px] animate-text bg-gradient-to-r from-[#144EE3] via-[#EB568E] to-[#A353AA] bg-clip-text text-transparent">Shorten Your Loooong Links &#58;&#41;</p>
-            <div className="w-[634px]">
-            <p className="text-text_secondary text-center text-[16px] leading-[23.5px]">Linkly is an efficient and easy-to-use URL shortening service that streamlines your online experience.</p>
-            </div>
+            <p className="font-extrabold text-[60px] leading-[80.01px] animate-text bg-gradient-to-r from-[#144EE3] via-[#EB568E] to-[#A353AA] bg-clip-text text-transparent">Change Password</p>
+           
             </div>
             <form className="flex flex-col gap-[32px] items-center justify-center" action="">
                 <div className="flex flex-col gap-[32px] w-[659px]">
-                <InputField type="email" placeholder="Email"/>
-                <InputField type="password" placeholder="Password"/>
+                <InputField type="password" placeholder="Old Password"/>
+                <InputField type="password" placeholder="New Password"/>
+                <InputField type="password" placeholder="Confirm Password"/>
                 </div>
                 
-                <Button text="Login" width="268px"/>
+                <Button text="Change Password"/>
                 </form>        
         </div>
         <footer className="mb-[30px]">
@@ -33,4 +32,4 @@ function LogIn()
     );
 
 }
-export default LogIn;
+export default ChangePassword;
