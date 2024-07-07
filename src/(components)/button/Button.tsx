@@ -1,4 +1,4 @@
-import { buttonType } from "@/constants/types/allTypes";
+import { buttonType } from "@/constants/types/buttonType";
 
 function Button({text,width,onClick}:buttonType){
     return(

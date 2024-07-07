@@ -4,7 +4,7 @@ import { CiLogin } from "react-icons/ci";
 import Link from "next/link";
 import { TfiLink } from "react-icons/tfi";
 import ToggleSwitch from "@/(components)/toggleSwitch/ToggleSwitch";
-import LinkTable from "@/(components)/linkData/linkDataTable";
+import LinkTable from "@/(components)/linkData/LinkData";
 
 export default function Home() {
   return (

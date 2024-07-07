@@ -1,6 +1,7 @@
 import Button from "@/(components)/button/Button";
-import InputField from "@/(components)/input/InputField";
+import InputField from "@/(components)/input/Input";
 import Logo from "@/(components)/logo/Logo";
+import RegisterForm from "@/(components)/registerForm/registerForm";
 import Link from "next/link";
 
 function Register()
@@ -19,22 +20,7 @@ function Register()
             <p className="text-text_secondary text-center text-[16px] leading-[23.5px]">Linkly is an efficient and easy-to-use URL shortening service that streamlines your online experience.</p>
             </div>
             </div>
-            <form className="flex flex-col gap-[32px] items-center justify-center" action="">
-            <div className="flex flex-col gap-[32px] w-[659px]">
-                <InputField type="email" placeholder="Email"/>
-                {/* <input className="shadow-custom border-4 bg-input_bg_clr border-input_border_clr rounded-[48px] py-[21px] pr-[25.19px] pl-[25px]" type="email" placeholder="tgt" /> */}
-                {/* <input className="shadow-custom border-4 bg-input_bg_clr border-brand_primary_blue opacity-10 rounded-[48px] py-[21px] pr-[25.19px] pl-[25px]" type="email" placeholder="jh" /> */}
-                {/* <button style={{ width: "268px"}} type="submit" className="bg-brand_primary_blue text-text_secondary rounded-[48px] py-[21px] pr-[25.19px] pl-[25px]" >jjknk</button> */}
-                <InputField type="text" placeholder="Name"/>
-                <InputField type="password" placeholder="Password"/>
-                <InputField type="password" placeholder="Confirm Password"/>
-                
-            </div>
-            <div><Button text="Register" width="268px"/></div>
-            
-                
-                
-                </form>        
+          <RegisterForm/>     
         </div>
         <footer className="mb-[30px]">
         <div className="flex items-center justify-center text-text_secondary"> <Link className="text-brand_primary_blue underline" href={"/login"}>Sign In</Link> &nbsp; if already registered</div>

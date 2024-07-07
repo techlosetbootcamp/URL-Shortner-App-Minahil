@@ -7,7 +7,7 @@ import { TfiLink } from "react-icons/tfi";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
 import ToggleSwitch from "@/(components)/toggleSwitch/ToggleSwitch";
-import LinkTable from "@/(components)/linkData/linkDataTable";
+import LinkTable from "@/(components)/linkData/LinkData";
 
 function Dashboard() {
   return (
