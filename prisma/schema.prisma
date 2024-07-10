@@ -13,34 +13,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User{
-  id String @db.ObjectId @default(auto()) @map("_id") @id
-  name String
-  email String  @unique
-  hashedPassword String
+model User {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  email    String @unique
+  password String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
+
   Urls Url[]
 }
 
-model Url{
-  id String @db.ObjectId @default(auto()) @map("_id") @id
+model Url {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
   originalUrl String
-  shortUrl String  @unique
-  urlCode String  @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  user User @relation(fields: [user_id],references: [id])
-  user_id String
+  shortUrl    String        @unique
+  urlCode     String        @unique
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  user        User          @relation(fields: [user_id], references: [id])
+  user_id     String
   UrlAnalytic UrlAnalytic[]
-
 }
 
-model UrlAnalytic{
-  id String @db.ObjectId @default(auto()) @map("_id") @id
-  url Url @relation(fields: [url_id],references: [id])
-  url_id String
+model UrlAnalytic {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  url     Url    @relation(fields: [url_id], references: [id])
+  url_id  String
   clicked Int
 }

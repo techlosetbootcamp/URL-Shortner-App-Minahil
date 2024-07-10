@@ -8,8 +8,12 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
 import ToggleSwitch from "@/(components)/toggleSwitch/ToggleSwitch";
 import LinkTable from "@/(components)/linkData/LinkData";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/options";
+import DropdownButton from "@/(components)/dropdownButton/dropdownButton";
 
-function Dashboard() {
+const Dashboard= async ()=> {
+  const session = await getServerSession(authOptions);
   return (
     <>
       <header>
@@ -45,9 +49,10 @@ function Dashboard() {
           <div className="flex gap-[20px]">
             <div className="flex items-center justify-center w-[191px] h-[60px] rounded-[48px] bg-input_bg_clr border border-input_border_clr py-[21px] pr-[25] pl-[25px]">
               <div className="text-white flex gap-[10px] items-center">
+                {/* <DropdownButton username={session?.user.name}/> */}
                 <div>
                   <p className="text-[10px]">Welcome</p>
-                  <p className="text-[16px] font-semibold">Mohammed</p>
+                  <p className="text-[16px] font-semibold">{session?.user.name}</p>
                 </div>
                 <div>
                   <IoIosArrowDown className="text-text_secondary h-[28px] w-[20px]" />
