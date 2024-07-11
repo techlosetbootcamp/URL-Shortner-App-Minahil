@@ -18,8 +18,8 @@ const useRegisterForm = ()=> {
       const response = await AxiosInstance.post("/signup", {
         name, email, password
       });
-
-      if (response.status === 200) {
+      if (response.data) {
+        
         toast.success("Successfully registered");
         router.push("/login");
       }

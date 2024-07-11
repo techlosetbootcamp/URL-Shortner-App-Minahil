@@ -48,16 +48,20 @@ const Dashboard= async ()=> {
 
           <div className="flex gap-[20px]">
             <div className="flex items-center justify-center w-[191px] h-[60px] rounded-[48px] bg-input_bg_clr border border-input_border_clr py-[21px] pr-[25] pl-[25px]">
-              <div className="text-white flex gap-[10px] items-center">
-                {/* <DropdownButton username={session?.user.name}/> */}
-                <div>
-                  <p className="text-[10px]">Welcome</p>
-                  <p className="text-[16px] font-semibold">{session?.user.name}</p>
-                </div>
-                <div>
-                  <IoIosArrowDown className="text-text_secondary h-[28px] w-[20px]" />
-                </div>
-              </div>
+              
+                <DropdownButton username={session?.user.name}/>
+                {/* <button style={{
+              
+              filter: "drop-shadow(10px 9px 10px rgba(220, 38, 38, 0.38))",
+            }}
+            className="w-[10px] rounded-lg items-center justify-center text-sm bg-red-600"
+            role="menuitem"
+        
+          >
+            Profile
+          </button> */}
+                
+              
             </div>
 
             <div

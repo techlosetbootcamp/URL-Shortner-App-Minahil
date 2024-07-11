@@ -15,18 +15,20 @@ const useLoginForm = () => {
   const login = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-
+    console.log(email,password);
     const signInData = await signIn("credentials", {
       email: email,
       password: password,
     });
+    console.log(signInData);
 
     if (signInData?.error) {
-      console.log(signInData.error);
+      toast.error("Error logging in");
     } else {
       try {
         toast.success("Logged in successfully!");
         window.location.href = "/dashboard";
+        router.refresh();
         router.push("/dashboard");
       } catch (error) {
         toast.error(`${error}`);

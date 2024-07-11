@@ -14,7 +14,7 @@ export const getUser = createAsyncThunk(
   "user/getUser",
   async (userId: string, { rejectWithValue }) => {
     try {
-      const response = await AxiosInstance.get("/userProfile", {
+      const response = await AxiosInstance.get("/user", {
         params: { userId },
       });
       if (response?.data) {

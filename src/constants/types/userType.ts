@@ -1,7 +1,7 @@
 export type userType={
     name: string,
     email: string,
-    password:string
+    password?:string
 };
 
 export type userState={

@@ -1,25 +1,18 @@
-import Button from "@/(components)/button/Button";
-import Link from "next/link";
+import ProfileDetails from "@/(components)/profileDetails/profileDetails";
+import { authOptions } from "@/app/api/auth/[...nextauth]/options";
+import { getServerSession } from "next-auth";
 
-function Profile(){
-    return(
-        <div>
-            <header><Button text="Logout" width="200px"/></header>
-        <div className="flex flex-col items-center justify-center text-text_secondary">
-            <div className="flex items-center justify-between">
-            <div>Name: </div>
-            <div>Minahil</div>
-            </div>
-            <div className="flex items-center justify-between">
-            <div>Username: </div>
-            <div>minahilismail</div>
-            </div>
-            <Link href="/profile/edit">
-            <Button text="Edit" width="200px"/>
-            </Link>
-            
-        </div>
-        </div>
-    );
-}
+
+const Profile=async()=> {
+    const session = await getServerSession(authOptions);
+  return (
+    <div>
+        {/* <div style={{filter:"drop-shadow(10px 9px 10px rgba(20, 78, 227, 0.38))"}} className="rounded-full w-20 h-20 flex items-center justify-center text-3xl font-bold bg-brand_primary_blue p-20 text-gray-700">
+            <span>{}</span>
+          </div> */}
+      
+      <ProfileDetails name={session?.user.name} email={session?.user.email}/>
+    </div>
+  );
+};
 export default Profile;
