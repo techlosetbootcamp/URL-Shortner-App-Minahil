@@ -4,17 +4,16 @@ import { getToken } from "next-auth/jwt";
 
 export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
-  const isPublicPath = path === "/login" || path === "/register" || path === "/" ;
-  const isPath = path === "/dashboard" || path === "/forgot_password" || path === "/change_password" || path === "/profile" || path === "/profile/edit";
+  const isPublicPath = path === "/login" || path === "/register" || path === "/" ||  path === "/password/forgot" || path === "/password/reset" ;
+  const isPath = path === "/dashboard" || path === "/password/change" || path === "/profile" || path === "/profile/edit";
 
   const token = await getToken({
     req: request,
     secret: process.env.NEXTAUTH_SECRET,
   });
-
   
 
-  if (isPublicPath && token) {
+  if ((isPublicPath) && token) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
   if (isPath && !token) {
@@ -31,8 +30,9 @@ export const config = {
     "/profile",
     "/login",
     "/register",
-    "/forgot_password",
-    "/change_password",
+    "/password/change",
+    "/password/forgot",
+    "/password/reset",
     "/profile",
     "/profile/edit",
   ],

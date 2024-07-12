@@ -20,6 +20,8 @@ function LogIn() {
               Linkly is an efficient and easy-to-use URL shortening service that
               streamlines your online experience.
             </p>
+                {/* <div style={{filter: "drop-shadow(10px 9px 10px rgba(20, 78, 227, 0.38))"}} className="text-text_secondary">Forgot Password? <Link href={'/password/forgot'} className="font-bold hover:underline hover:decoration-brand_primary_blue text-brand_primary_blue">Reset here</Link></div> */}
+
           </div>
         </div>
         <LoginForm/>

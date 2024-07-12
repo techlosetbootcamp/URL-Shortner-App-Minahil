@@ -48,7 +48,29 @@ const Dashboard= async ()=> {
 
           <div className="flex gap-[20px]">
             <div className="flex items-center justify-center w-[191px] h-[60px] rounded-[48px] bg-input_bg_clr border border-input_border_clr py-[21px] pr-[25] pl-[25px]">
-              
+            {/* <button
+              style={{
+                filter: "drop-shadow(10px 9px 10px rgba(20, 78, 227, 0.38))",
+
+                marginBottom: "4px",
+              }}
+              className="flex items-center justify-center rounded-lg w-[100px] text-sm border-b-2 bg-brand_primary_blue"
+              role="menuitem"
+             
+            >
+              Profile
+            </button>
+
+            <button
+              style={{
+                filter: "drop-shadow(10px 9px 10px rgba(220, 38, 38, 0.38))",
+              }}
+              className="items-center justify-center w-[100px] rounded-lg flex text-sm bg-red-600"
+              role="menuitem"
+             
+            >
+              Logout
+            </button> */}
                 <DropdownButton username={session?.user.name}/>
                 {/* <button style={{
               

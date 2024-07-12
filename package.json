@@ -1,4 +1,9 @@
 {
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
+  },
   "name": "url_shortner",
   "version": "0.1.0",
   "private": true,
@@ -14,9 +19,11 @@
     "@reduxjs/toolkit": "^2.2.6",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "mongodb": "^6.8.0",
     "next": "14.2.4",
     "next-auth": "^4.24.7",
+    "nodemailer": "^6.9.14",
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
@@ -25,7 +32,9 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20.14.10",
+    "@types/nodemailer": "^6.4.15",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18",
     "eslint": "^8",

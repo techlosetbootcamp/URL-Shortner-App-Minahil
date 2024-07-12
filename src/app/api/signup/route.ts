@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import prisma from "@/config/prismadb";
-import toast from "react-hot-toast";
+
 
 export const POST = async (req: NextRequest) => {
   try {
@@ -23,7 +23,7 @@ export const POST = async (req: NextRequest) => {
         { status: 409 }
       );
     }
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 5);
     const user = await prisma.user.create({
       data: {
         name,
