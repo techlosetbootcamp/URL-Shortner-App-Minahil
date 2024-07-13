@@ -1,6 +1,8 @@
 "use client"
+import { useAppDispatch } from "@/hooks";
+import useFetchUser from "@/hooks/useFetchUser";
+import { changePassword } from "@/redux/slices/passwordSlice";
 import { AxiosInstance } from "@/utils/axiosInstance";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -8,29 +10,18 @@ import toast from "react-hot-toast";
 const useChange=()=>{
 
     const [loading, setLoading] = useState(false);
-    const [newpassword, setNewPassword] = useState("");
+    const [password, setNewPassword] = useState("");
     const [oldpassword, setOldPassword] = useState("");
     const [error, setError] = useState("");
     const router = useRouter();
-
-    const change = async (e: React.FormEvent<HTMLFormElement>) => {
+    const { user, isLoading, isError }=useFetchUser();
+    const email=user?.email;
+    const dispatch=useAppDispatch();
+    const change = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await AxiosInstance.post("/password/change", {
-              newpassword
-            });
-
-            if (response.status===400) {
-              setError("Something Went wrong, try again");
-              toast.error("Something Went wrong, try again");
-            }
-
-            if (response.status===200) {
-              toast.success("Password Changed Successfully!");
-              router.refresh();
-              router.push("/login");
-            }
+            dispatch(changePassword({password,email}));
           } catch (err: any) {
             toast.error("Error try again!");
           } finally {
@@ -39,6 +30,6 @@ const useChange=()=>{
         
       };
 
-    return {loading, error,newpassword,setNewPassword,oldpassword,setOldPassword,change};
+    return {loading, error,password,setNewPassword,oldpassword,setOldPassword,change};
 };
 export default useChange;

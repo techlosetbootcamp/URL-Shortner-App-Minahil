@@ -1,3 +1,4 @@
+
 export type SignupState = {
     error: null | string;
     signupStatus: "idle" | "loading" | "failed" | "succeeded";
@@ -13,6 +14,18 @@ export type SignupState = {
     email: string;
     name: string;
     password: string;
+  };
+
+  export type PasswordState = {
+    isLoading: boolean;
+    isError: string | null;
+    passwordStatus: "idle" | "loading" | "succeeded" | "failed";
+  };
+
+  export type passwordProps = {
+    password?:string,
+    email?:string,
+    token?:string,
   };
 
   

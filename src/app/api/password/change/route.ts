@@ -4,13 +4,13 @@ import bcrypt from "bcryptjs";
 export const PATCH = async (req: NextRequest) => {
   try {
     const body = await req.json();
-    const { newpassword,email } = body;
+    const { password,email } = body;
     
-    if (!newpassword) {
-      return NextResponse.json({ message: "Please enter password}" }, { status: 400 });
+    if (!password) {
+      return NextResponse.json({ message: "Please enter password" }, { status: 400 });
     }
    
-    const hashedPassword=await bcrypt.hash(newpassword,5);
+    const hashedPassword=await bcrypt.hash(password,5);
   try{
     const updatedUser = await prisma.user.update({
       where: { email },

@@ -1,13 +1,14 @@
 "use client"
 import ProfileDetails from "@/(components)/profileDetails/profileDetails";
 import { useAppSelector } from "@/hooks";
+import useFetchUser from "@/hooks/useFetchUser";
 
 const Profile = () => {
-  const userProfile = useAppSelector((state) => state.user);
+  const { user, isLoading, isError }=useFetchUser();
 
   return (
     <div>
-      <ProfileDetails name={userProfile.user.name} email={userProfile.user.email}/>
+      <ProfileDetails name={user?.name} email={user?.email}/>
     </div>
   );
 };

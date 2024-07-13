@@ -9,12 +9,10 @@ import { FaBell } from "react-icons/fa";
 import ToggleSwitch from "@/(components)/toggleSwitch/ToggleSwitch";
 import LinkTable from "@/(components)/linkData/LinkData";
 import DropdownButton from "@/(components)/dropdownButton/dropdownButton";
-import { useAppSelector } from "@/hooks";
+import useFetchUser from "@/hooks/useFetchUser";
 
 const Dashboard=()=> {
-  const user=useAppSelector((state)=>state.user.user);
-  console.log(user.name);
-  //const session = await getServerSession(authOptions);
+  const { user, isLoading, isError }=useFetchUser();
   return (
     <>
       <header>

@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/options";
 
 
-export const GET = async (request: NextRequest) => {
+export const GET = async () => {
   const session = await getServerSession(authOptions);
     try {
       const email=session?.user.email;

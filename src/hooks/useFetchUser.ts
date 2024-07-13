@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 
-export const useUser = () => {
+export const useFetchUser = () => {
   const dispatch = useAppDispatch();
   const { user, isLoading, isError } = useAppSelector((state) => state.user);
   const { data: session } = useSession();
@@ -12,7 +12,7 @@ export const useUser = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        await dispatch(getUser(session?.user?.id as string));
+        await dispatch(getUser());;
       } catch (error) {
         toast.error("Failed to fetch user");
       }
@@ -22,3 +22,4 @@ export const useUser = () => {
 
   return { user, isLoading, isError };
 };
+export default useFetchUser;

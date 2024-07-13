@@ -5,10 +5,10 @@ import Logo from "@/(components)/logo/Logo";
 import Link from "next/link";
 import useChange from "./useChange";
 
-const ChangePassword=async()=>
+const ChangePassword=()=>
 {
   
-  const {loading, error,newpassword,setNewPassword,oldpassword,setOldPassword,change}=useChange()
+  const {loading, error,password,setNewPassword,oldpassword,setOldPassword,change}=useChange()
     return(
         <>
         <header>
@@ -21,8 +21,8 @@ const ChangePassword=async()=>
             </div>
             <form onSubmit={change} className="flex flex-col gap-[32px] items-center justify-center" action="">
                 <div className="flex flex-col gap-[32px] w-[659px]">
-                <InputField type="password" placeholder="Old Password" value={newpassword} onChange={(e)=>setNewPassword(e.target.value)} disabled={loading}/>
-                <InputField type="password" placeholder="New Password" value={oldpassword} onChange={(e)=>setOldPassword(e.target.value)} disabled={loading}/>
+                <InputField type="password" placeholder="Old Password" value={oldpassword} onChange={(e)=>setOldPassword(e.target.value)} disabled={loading}/>
+                <InputField type="password" placeholder="New Password" value={password} onChange={(e)=>setNewPassword(e.target.value)} disabled={loading}/>
                 <InputField type="password" placeholder="Confirm Password"/>
                 </div>
                 
