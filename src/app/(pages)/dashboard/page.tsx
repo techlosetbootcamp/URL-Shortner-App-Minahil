@@ -1,19 +1,20 @@
+"use client"
 import { FaRegClock } from "react-icons/fa6";
 import { IoStatsChartOutline } from "react-icons/io5";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CiFilter } from "react-icons/ci";
 import Logo from "@/(components)/logo/Logo";
 import { TfiLink } from "react-icons/tfi";
-import { IoIosArrowDown } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
 import ToggleSwitch from "@/(components)/toggleSwitch/ToggleSwitch";
 import LinkTable from "@/(components)/linkData/LinkData";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import DropdownButton from "@/(components)/dropdownButton/dropdownButton";
+import { useAppSelector } from "@/hooks";
 
-const Dashboard= async ()=> {
-  const session = await getServerSession(authOptions);
+const Dashboard=()=> {
+  const user=useAppSelector((state)=>state.user.user);
+  console.log(user.name);
+  //const session = await getServerSession(authOptions);
   return (
     <>
       <header>
@@ -71,7 +72,7 @@ const Dashboard= async ()=> {
             >
               Logout
             </button> */}
-                <DropdownButton username={session?.user.name}/>
+                <DropdownButton username={user?.name}/>
                 {/* <button style={{
               
               filter: "drop-shadow(10px 9px 10px rgba(220, 38, 38, 0.38))",

@@ -1,20 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/config/prismadb";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]/options";
 
 
 export const GET = async (request: NextRequest) => {
+  const session = await getServerSession(authOptions);
     try {
-      const { searchParams } = new URL(request.url);
-      const userId = searchParams.get("userId");
-      if (!userId) {
+      const email=session?.user.email;
+      console.log(email);
+      if (!email) {
         return NextResponse.json(
-          { message: "Please provide all the fields" },
+          { message: email },
           { status: 400 }
         );
       }
       
       const user = await prisma.user.findUnique({
-        where: { id: userId },
+        where: { email: email },
       });
   
       if (!user) {

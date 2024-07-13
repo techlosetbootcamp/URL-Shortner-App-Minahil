@@ -1,10 +1,14 @@
+"use client"
 import Button from "@/(components)/button/Button";
 import InputField from "@/(components)/input/Input";
 import Logo from "@/(components)/logo/Logo";
 import Link from "next/link";
+import useChange from "./useChange";
 
-function ChangePassword()
+const ChangePassword=async()=>
 {
+  
+  const {loading, error,newpassword,setNewPassword,oldpassword,setOldPassword,change}=useChange()
     return(
         <>
         <header>
@@ -15,14 +19,14 @@ function ChangePassword()
             <p className="font-extrabold text-[60px] leading-[80.01px] animate-text bg-gradient-to-r from-[#144EE3] via-[#EB568E] to-[#A353AA] bg-clip-text text-transparent">Change Password</p>
            
             </div>
-            <form className="flex flex-col gap-[32px] items-center justify-center" action="">
+            <form onSubmit={change} className="flex flex-col gap-[32px] items-center justify-center" action="">
                 <div className="flex flex-col gap-[32px] w-[659px]">
-                <InputField type="password" placeholder="Old Password"/>
-                <InputField type="password" placeholder="New Password"/>
+                <InputField type="password" placeholder="Old Password" value={newpassword} onChange={(e)=>setNewPassword(e.target.value)} disabled={loading}/>
+                <InputField type="password" placeholder="New Password" value={oldpassword} onChange={(e)=>setOldPassword(e.target.value)} disabled={loading}/>
                 <InputField type="password" placeholder="Confirm Password"/>
                 </div>
                 
-                <Button text="Change Password"/>
+                <Button text="Change Password" disabled={loading}/>
                 </form>        
         </div>
         <footer className="mb-[30px]">

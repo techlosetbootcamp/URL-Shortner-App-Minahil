@@ -1,10 +1,14 @@
 "use client";
-import { AxiosInstance } from "@/utils/axiosInstance";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { signupUser } from "@/redux/slices/signupSlice";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const useRegisterForm = ()=> {
+  const dispatch = useAppDispatch();
+  const signupState = useAppSelector((state) => state.signup);
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -15,20 +19,21 @@ const useRegisterForm = ()=> {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await AxiosInstance.post("/signup", {
-        name, email, password
-      });
-      if (response.data) {
-        
-        toast.success("Successfully registered");
-        router.push("/login");
-      }
+      dispatch(signupUser({email,name,password}));
+      
+       
     } catch (err: any) {
       toast.error(err?.response?.data?.message || "Registration failed");
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (signupState.signupStatus === "succeeded") {
+      router.push("/login");
+    }
+  }, [signupState.signupStatus, signupState.error, router]);
 
   return {
     name,

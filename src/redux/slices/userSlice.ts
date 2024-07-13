@@ -5,21 +5,19 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState: userState = {
   isLoading: false,
   isError: false,
-  user:
-  {name: "",
-  email: "",
-  password: "",}
+  user: { name: "", email: "", password: "" },
 };
 export const getUser = createAsyncThunk(
   "user/getUser",
-  async (userId: string, { rejectWithValue }) => {
+  async (_:void, { rejectWithValue }) => {
     try {
-      const response = await AxiosInstance.get("/user", {
-        params: { userId },
-      });
+      const response = await AxiosInstance.get("/user");
+      console.log("data not here");
       if (response?.data) {
+        console.log("data here");
+        console.log(response.data.user);
         const user = {
-          name:response.data.user.name,
+          name: response.data.user.name,
           email: response.data.user.email,
           password: response.data.user.password,
         };
@@ -46,6 +44,7 @@ export const userSlice = createSlice({
       .addCase(getUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload;
+        console.log(state.user);
       })
       .addCase(getUser.rejected, (state) => {
         state.isLoading = false;

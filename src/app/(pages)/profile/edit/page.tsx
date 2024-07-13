@@ -7,13 +7,13 @@ const EditProfile=async()=>{
     const session = await getServerSession(authOptions);
     return(
         <div>
-            <header><Button text="Logout" width="200px"/></header>
-        <form className="flex flex-col items-center justify-center text-text_secondary">
-            <div className="flex items-center justify-between">
+            
+        <form className="flex mt-20 gap-7 flex-col items-center justify-center text-text_secondary">
+            <div className="flex gap-2 items-center justify-between">
             <div>Name: </div>
             <InputField type="text" value={session?.user.name}/>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex gap-2 items-center justify-between">
             <div>Email: </div>
             <InputField type="text" value={session?.user.email}/>
             </div>

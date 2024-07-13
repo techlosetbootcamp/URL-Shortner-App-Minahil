@@ -26,7 +26,7 @@ const ResetPassword=({params}:{
                 <InputField type="password" placeholder="Confirm Password"/>
                 </div>
                 
-                <Button text="Set Password"/>
+                <Button text="Set Password" disabled={loading}/>
                 </form>        
         </div>
         
