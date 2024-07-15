@@ -20,8 +20,7 @@ const useReset=(token:string)=>{
 
     const verifyToken = async()=>{
         try {
-            
-            
+  
             const response = await AxiosInstance.post("/password/verifytoken", {
               token:token,
              

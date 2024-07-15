@@ -2,7 +2,6 @@
 
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { clearLoginDetails, loginWithEmail } from "@/redux/slices/loginSlice";
-import { getUser } from "@/redux/slices/userSlice";
 
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -40,7 +39,6 @@ const useLoginForm = () => {
     useEffect(() => {
       if (loginState.loginStatus === "succeeded") {
         toast.success("Logged in successfully");
-        dispatch(getUser());
         router.push("/dashboard");
       } else if (loginState.loginStatus === "failed") {
         toast.error("Invalid Credentials");
@@ -52,14 +50,7 @@ const useLoginForm = () => {
         dispatch(clearLoginDetails());
       };
     }, [dispatch]);
-
-    // useEffect(() => {
-    //   return () => {
-    //     dispatch(getUser());
-    //   };
-    // }, []);
-
-    
+ 
   
 
   return { email, setEmail, password, setPassword, loading, login };

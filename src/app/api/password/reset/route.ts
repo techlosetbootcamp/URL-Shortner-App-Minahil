@@ -32,9 +32,6 @@ export const POST = async (req: NextRequest) => {
   }catch(error:any){
     return new NextResponse(error,{status:500});
   }
-    
-    
-    return new NextResponse(JSON.stringify(existingUser), {status:200});
   } catch (error) {
     return NextResponse.json(
       { message: "Internal Server Error" },

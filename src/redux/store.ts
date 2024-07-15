@@ -9,7 +9,8 @@ export const store = configureStore({
     user: userSlice,
     signup:signupSlice,
     login:loginSlice,
-    password:passwordSlice
+    password:passwordSlice,
+    //verifytoken:verifyTokenSlice,
   },
 });
 

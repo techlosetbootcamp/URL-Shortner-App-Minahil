@@ -8,7 +8,6 @@ export const GET = async () => {
   const session = await getServerSession(authOptions);
     try {
       const email=session?.user.email;
-      console.log(email);
       if (!email) {
         return NextResponse.json(
           { message: email },

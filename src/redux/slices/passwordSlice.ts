@@ -13,10 +13,8 @@ export const changePassword = createAsyncThunk(
     "changePassword/ChangePassword",
     async ({password,email}: passwordProps, { rejectWithValue }) => {
       try {
-        console.log(password);
-        console.log(email);
         const response = await AxiosInstance.patch("/password/change", {password,email});
-        toast.success("Password Changed Successfully!");
+        
         return response.data;
       } catch (error: any) {
         toast.error(error.response.data.message);

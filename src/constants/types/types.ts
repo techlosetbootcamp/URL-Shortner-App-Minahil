@@ -1,3 +1,4 @@
+import { userType } from "./userType";
 
 export type SignupState = {
     error: null | string;
@@ -26,6 +27,13 @@ export type SignupState = {
     password?:string,
     email?:string,
     token?:string,
+  };
+
+  export type VerifyTokenState = {
+    isLoading: boolean;
+    isError: string | null;
+    token?:string,
+    user: userType;
   };
 
   

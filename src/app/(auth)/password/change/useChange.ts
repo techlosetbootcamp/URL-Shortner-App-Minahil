@@ -3,6 +3,7 @@ import { useAppDispatch } from "@/hooks";
 import useFetchUser from "@/hooks/useFetchUser";
 import { changePassword } from "@/redux/slices/passwordSlice";
 import { AxiosInstance } from "@/utils/axiosInstance";
+import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -21,7 +22,12 @@ const useChange=()=>{
         e.preventDefault();
         setLoading(true);
         try {
-            dispatch(changePassword({password,email}));
+            dispatch(changePassword({password,email}));    
+            toast.success("Password Changed Successfully!"); 
+            signOut({
+              redirect: true,
+              callbackUrl: `${window.location.origin}/login`,
+            });       
           } catch (err: any) {
             toast.error("Error try again!");
           } finally {

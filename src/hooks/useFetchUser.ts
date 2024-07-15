@@ -2,12 +2,10 @@ import { useAppSelector, useAppDispatch } from "./index";
 import { getUser } from "@/redux/slices/userSlice";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
-import { useSession } from "next-auth/react";
 
 export const useFetchUser = () => {
   const dispatch = useAppDispatch();
   const { user, isLoading, isError } = useAppSelector((state) => state.user);
-  const { data: session } = useSession();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -18,7 +16,7 @@ export const useFetchUser = () => {
       }
     };
     fetchUser();
-  }, [dispatch, session?.user?.id]);
+  }, [dispatch]);
 
   return { user, isLoading, isError };
 };
