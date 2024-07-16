@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isWebUri } from "valid-url";
 import prisma from "@/config/prismadb";
-import { NextApiRequest, NextApiResponse } from "next";
-import generateShortUrl from "@/constants/generateShortUrl/generateShortUrl";
+import generateShortUrl from "@/constants/generateShortUrl";
+
 export const POST = async (req: NextRequest, res: NextResponse) => {
   try {
     const body = await req.json();
@@ -15,19 +15,16 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
       );
     }
 
-    const host = req.headers.get('host');
+    const host = req.headers.get("host");
     console.log(host);
     const { shortCode, shortUrl } = generateShortUrl(host!);
     console.log(shortCode);
     console.log(shortUrl);
 
     if (!isWebUri(url!)) {
-        return NextResponse.json(
-            { message: "Invalid Url" },
-            { status: 400 }
-          );
+      return NextResponse.json({ message: "Invalid Url" }, { status: 400 });
     }
-console.log("Going to trans");
+    console.log("Going to trans");
     const result = await prisma.$transaction(async (tx) => {
       const originalUrl = await tx.url.findFirst({
         where: {
@@ -35,12 +32,12 @@ console.log("Going to trans");
         },
       });
       console.log("out from trans");
-      if (originalUrl){
+      if (originalUrl) {
         console.log(originalUrl);
         console.log("sameee");
         return originalUrl;
-      } 
-     
+      }
+
       console.log("Going to trans of create");
       const newUrl = await tx.url.create({
         data: {
@@ -65,9 +62,9 @@ console.log("Going to trans");
       return newUrl;
     });
     return NextResponse.json(
-        { message: "shorUrl generated",result},
-        { status: 200 },
-      );
+      { message: "shorUrl generated", result },
+      { status: 200 }
+    );
   } catch (error) {
     console.log(error);
     return NextResponse.json(

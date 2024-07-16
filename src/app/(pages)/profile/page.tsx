@@ -1,9 +1,8 @@
 import ProfileDetails from "@/(components)/profileDetails/profileDetails";
 const Profile = () => {
-   return (
+  return (
     <div>
-      <ProfileDetails/>
-      
+      <ProfileDetails />
     </div>
   );
 };

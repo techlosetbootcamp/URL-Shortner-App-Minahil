@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/config/prismadb";
 import crypto from "crypto";
-import sendResetPasswordEmail from "@/constants/sendEmail/sendEmail";
+import sendResetPasswordEmail from "@/constants/sendEmail";
 export const POST = async (req: NextRequest) => {
   try {
     console.log("Hi there")
