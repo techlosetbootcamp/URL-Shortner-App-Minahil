@@ -6,6 +6,7 @@ export type userType={
     newEmail?: string,
 };
 
+
 export type editUserProps={
     id:string,
     name: string,

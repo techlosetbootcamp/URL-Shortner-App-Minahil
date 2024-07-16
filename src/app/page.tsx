@@ -5,6 +5,7 @@ import Link from "next/link";
 import { TfiLink } from "react-icons/tfi";
 import ToggleSwitch from "@/(components)/toggleSwitch/ToggleSwitch";
 import LinkTable from "@/(components)/linkData/LinkData";
+import UrlShortenForm from "@/(components)/urlShortenForm/urlShortenForm";
 
 export default function Home() {
   return (
@@ -44,7 +45,7 @@ export default function Home() {
        <main className="">
       <div className="flex flex-col mx-[153px]">
         <div className="flex flex-col items-center justify-center mt-[137px] mb-[40px]">
-          <div className="flex flex-col gap-[20px] items-center">
+          <div className="flex flex-col gap-[20px] items-center mb-[41px]">
             <p className="font-extrabold text-[60px] leading-[80.01px] animate-text bg-gradient-to-r from-[#144EE3] via-[#EB568E] to-[#A353AA] bg-clip-text text-transparent">
               Shorten Your Loooong Links &#58;&#41;
             </p>
@@ -57,31 +58,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center">
-            <div className="relative flex flex-col gap-[32px] w-[659px] mt-[41px]">
-              <i className="absolute left-[25px] top-[24px] text-text_secondary">
-                <TfiLink className="w-[25px] h-[28px]" />
-              </i>
-              <input
-                style={{
-                  borderColor:
-                    "linear-gradient(89.92deg, #144EE3 -0.02%, #EB568E 18.86%, #A353AA 64.49%, #144EE3 100.67%)",
-                }}
-                className="shadow-custom border-4 bg-input_bg_clr border-input_border_clr rounded-[48px] py-[24px] pr-[25.19px] pl-[70px] text-text_secondary"
-                type="text"
-                placeholder="Enter the link here"
-              />
-
-              <button
-                style={{
-                  width: "183px",
-                  filter: "drop-shadow(10px 9px 5px rgba(20, 78, 227, 0.38)",
-                }}
-                type="submit"
-                className="absolute right-2 top-[5.5px] font-semibold bg-brand_primary_blue border border-brand_primary_blue text-white rounded-[48px] py-[21px] pr-[25.05px] pl-[25px]"
-              >
-                Shorten Now!
-              </button>
-            </div>
+            <UrlShortenForm/>
 
             <div className="mt-[32px] flex flex-col items-center gap-[16px]">
               <div className="flex items-center gap-[15px] text-text_secondary">
