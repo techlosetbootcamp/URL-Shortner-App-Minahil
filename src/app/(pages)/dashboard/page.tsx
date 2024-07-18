@@ -21,7 +21,12 @@ const Dashboard=()=> {
           <Logo />
 
           <UrlShortenForm/>
-
+          {/* <div className="flex items-center gap-[10px]">
+          <div className="text-active_link_clr">Active</div>
+          <div className="h-[35px] w-[35px] text-white rounded-[31px] p-[10px] bg-active_link_clr opacity-5">
+            <TfiLink/>
+          </div>
+        </div> */}
           <div className="flex gap-[20px]">
             <div className="flex items-center justify-center w-[191px] h-[60px] rounded-[48px] bg-input_bg_clr border border-input_border_clr py-[21px] pr-[25] pl-[25px]">
             {/* <button

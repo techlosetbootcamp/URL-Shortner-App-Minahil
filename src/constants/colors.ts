@@ -14,6 +14,7 @@ const colors = {
     gradient_clr_3: "#A353AA",
     copy_button_clr: "#1C283F",
     active_link_clr: "#1EB036",
+    inactive_link_clr: "#B0901E",
     nav_clr: "#D9D9D9",
   };
   export default colors;

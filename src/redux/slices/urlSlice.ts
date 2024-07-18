@@ -1,4 +1,4 @@
-import { urlProp, urlState } from "@/constants/types/types";
+import { urlProp, urlState, urlType } from "@/constants/types/types";
 import { AxiosInstance } from "@/utils/axiosInstance";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
@@ -29,6 +29,7 @@ export const getUrlDetails = createAsyncThunk(
           shortUrl: response.data.result.shortUrl,
           qrCode: response.data.result.qrCode,
           urlCode: response.data.result.urlCode,
+          active: response.data.result.active,
         };
         toast.success("Url shortened Successfully");
         return url;
@@ -41,29 +42,18 @@ export const getUrlDetails = createAsyncThunk(
   }
 );
 
-// export const editUser = createAsyncThunk(
-//   "user/editUser",
-//   async ({ name,email,newEmail }: userType, { rejectWithValue }) => {
-//     try {
-//       const response = await AxiosInstance.patch("/user/edit", { name,email,newEmail});
-//       if(response.status==200){
-//         toast.success("Profile Updated");
-//       }
-      
-//       if(response.status==400){
-//         console.log("Hello");
-//         toast.error("This email is already registered");
-//       }
-//       if(response.status==401){
-//         toast.error("Please fill all feilds");
-//       }
-//       return response.data;
-//       }
-//      catch (error: any) {
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
+export const toggleUrlStatus = createAsyncThunk(
+  "url/toggleUrlStatus",
+  async ({ urlCode }: urlType, { rejectWithValue }) => {
+    try {
+      const response = await AxiosInstance.patch("/url/status",{urlCode}); 
+      return response.data.updatedUrl;
+      }
+     catch (error: any) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 export const urlSlice = createSlice({
   name: "url",
@@ -76,27 +66,32 @@ export const urlSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getUrlDetails.fulfilled, (state, action) => {
+        const updatedUrl = action.payload;
+        state.isError=false;
         state.isLoading = false;
         state.url = action.payload;
+        console.log("state.url");
         console.log(state.url);
       })
       .addCase(getUrlDetails.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
       })
-    //   .addCase(editUser.pending, (state) => {
-    //     state.isError = false;
-    //     state.isLoading = true;
-    //   })
-    //   .addCase(editUser.fulfilled, (state, action) => {
-    //     state.isLoading = false;
-    //     state.user = action.payload;
-    //     console.log(state.user);
-    //   })
-    //   .addCase(editUser.rejected, (state) => {
-    //     state.isLoading = false;
-    //     state.isError = true;
-    //   });
+      .addCase(toggleUrlStatus.pending, (state) => {
+        state.isError = false;
+        state.isLoading = true;
+      })
+      .addCase(toggleUrlStatus.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError=false;
+        console.log("action.payload.active");
+        console.log(action.payload.active);
+        state.url = { ...state.url, active: action.payload.active };
+      })
+      .addCase(toggleUrlStatus.rejected, (state) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
   },
 });
 

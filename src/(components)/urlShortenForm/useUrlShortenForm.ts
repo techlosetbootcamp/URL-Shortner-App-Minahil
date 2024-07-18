@@ -1,41 +1,48 @@
 "use client"
-import { useAppDispatch } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { getUrlAnalytic } from "@/redux/slices/urlAnalyticSlice";
 import { getUrlDetails } from "@/redux/slices/urlSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { isWebUri } from "valid-url";
 
-const useUrlShortenForm=()=>{
-    const [url, setUrl] = useState("");
+const useUrlShortenForm = () => {
+  const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
-  const dispatch=useAppDispatch();
+  const dispatch = useAppDispatch();
+  const link = useAppSelector((state) => state.url);
+  const code = link?.url?.urlCode;
 
+  useEffect(() => {
+    if (code) {
+      dispatch(getUrlAnalytic({ code }));
+    }
+  }, [code, dispatch]);
 
   const shorten = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-      try {
-        if(!url){
-          toast.error("Please first enter the link!");
-          setLoading(false);
-        return false;
-        }
-        if (!isWebUri(url!)) {
-          toast.error("Invalid Url");
-          setLoading(false);
-          return false;
-        }
-        console.log("inside shortenn");
-        console.log(url);
-        dispatch(getUrlDetails({url}));
+    try {
+      if (!url) {
+        toast.error("Please first enter the link!");
         setLoading(false);
-        setUrl("");
-      } catch (error) {
-        toast.error(`${error}`);
+        return false;
       }
-      
+      if (!isWebUri(url)) {
+        toast.error("Invalid Url");
+        setLoading(false);
+        return false;
+      }
+      dispatch(getUrlDetails({ url }));
+      setLoading(false);
+      setUrl("");
+    } catch (error) {
+      toast.error(`${error}`);
+      setLoading(false);
     }
-    
-    return {url, setUrl,loading,shorten};
+  };
+
+  return { url, setUrl, loading, shorten };
 };
+
 export default useUrlShortenForm;

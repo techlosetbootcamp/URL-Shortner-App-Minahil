@@ -4,6 +4,7 @@ import signupSlice from "./slices/signupSlice";
 import loginSlice from "./slices/loginSlice";
 import passwordSlice from "./slices/passwordSlice";
 import urlSlice from "./slices/urlSlice";
+import urlAnalyticSlice from "./slices/urlAnalyticSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     signup:signupSlice,
     login:loginSlice,
     password:passwordSlice,
-    url:urlSlice
+    url:urlSlice,
+    urlAnalytic:urlAnalyticSlice
     //verifytoken:verifyTokenSlice,
   },
 });

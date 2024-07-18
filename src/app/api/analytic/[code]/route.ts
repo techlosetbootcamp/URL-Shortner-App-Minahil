@@ -37,12 +37,7 @@ export const GET = async (
     }
 
     return NextResponse.json({
-      clicked: analytic.clicked,
-      url: {
-        originalUrl: urlEntry.originalUrl,
-        shortUrl: urlEntry.shortUrl,
-        code: urlEntry.urlCode,
-      },
+      analytic,
       status: 200,
       message: "Analytics Fetched",
     });

@@ -13,6 +13,7 @@ export const GET = async (req: NextRequest, { params }: { params: { code: string
         }
       });
 
+     
       if(!url) return null;
 
       await tx.urlAnalytic.update({
@@ -27,6 +28,9 @@ export const GET = async (req: NextRequest, { params }: { params: { code: string
       });
       return url;
     });
+    if(!result?.active){
+      return new NextResponse("URL Deactivated", { status: 404 });
+    }
 
     if(!result){
       return NextResponse.json({ message: "Invalid short URL" }, { status: 404 });

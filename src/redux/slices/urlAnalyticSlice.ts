@@ -11,7 +11,7 @@ const initialState: urlAnalyticState = {
   },
 };
 
-export const getUrlDetails = createAsyncThunk(
+export const getUrlAnalytic = createAsyncThunk(
   "urlAnalytic/getUrlAnalytic",
   async ({ code }: urlAnalyticProp, { rejectWithValue }) => {
     try {
@@ -20,11 +20,14 @@ export const getUrlDetails = createAsyncThunk(
       console.log(response.data);
       if (response?.data) {
         const urlAnalytic = {
-          id:response.data.result.id,
-          url: response.data.result.url,
-          url_id: response.data.result.url_id,
-          clicked: response.data.result.clicked,
+          id:response.data.analytic.id,
+          url: response.data.analytic.url,
+          url_id: response.data.analytic.url_id,
+          clicked: response.data.analytic.clicked,
+          updatedAt: response.data.analytic.updatedAt
         };
+        console.log("urlAnalytic");
+        console.log(urlAnalytic);
         return urlAnalytic;
       } else {
         throw new Error("Url Analytics data not found");
@@ -41,16 +44,16 @@ export const urlAnalyticSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getUrlDetails.pending, (state) => {
+      .addCase(getUrlAnalytic.pending, (state) => {
         state.isError = false;
         state.isLoading = true;
       })
-      .addCase(getUrlDetails.fulfilled, (state, action) => {
+      .addCase(getUrlAnalytic.fulfilled, (state, action) => {
         state.isLoading = false;
         state.urlAnalytic = action.payload;
         console.log(state.urlAnalytic);
       })
-      .addCase(getUrlDetails.rejected, (state) => {
+      .addCase(getUrlAnalytic.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
       })

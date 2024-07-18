@@ -40,7 +40,7 @@ export type urlProp = {
   url: string;
 };
 export type urlAnalyticProp = {
-  code: string;
+  code: string | undefined;
 };
 
 export type urlType = {
@@ -49,12 +49,14 @@ export type urlType = {
   qrCode?:string;
   shortUrl?: string;
   urlCode?: string;
+  active?:boolean;
 };
 export type urlAnalyticType = {
   id?: string;
   url?: urlType;
   url_id?: string;
   clicked?: number;
+  updatedAt?: string
 };
 
 export type urlState = {

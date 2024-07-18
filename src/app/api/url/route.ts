@@ -37,6 +37,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
           shortUrl,
           qrCode:qrCode,
           urlCode: shortCode,
+          active: true
         },
       });
       console.log("newUrl");
