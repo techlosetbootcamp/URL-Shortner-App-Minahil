@@ -5,7 +5,7 @@ import { getToken } from "next-auth/jwt";
 export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const isPublicPath = path === "/login" || path === "/register" || path === "/" ||  path === "/password/forgot" || path === "/password/reset" ;
-  const isPath = path === "/dashboard" || path === "/password/change" || path === "/profile" || path === "/profile/edit";
+  const isPath = path === "/dashboard" || path === "/password/change" || path === "/profile" || path === "/profile/edit" || path === "/url/add";
 
   const token = await getToken({
     req: request,
@@ -35,5 +35,6 @@ export const config = {
     "/password/reset",
     "/profile",
     "/profile/edit",
+    "/url/add"
   ],
 };

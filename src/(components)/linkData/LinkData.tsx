@@ -9,7 +9,7 @@ import useLinkData from "./useLinkData";
 import { useAppSelector } from "@/hooks";
 
 const LinkTable = () => {
-  const urlss = useAppSelector((state) => state.url.urls?.length);
+  //const urlss = useAppSelector((state) => state.url.urls?.length);
   const { urls, handleCopy, handleToggleStatus,formatDate,handleEdit,handleDelete } = useLinkData();
   if (!urls) return <div className="text-white">Loading</div>;
   console.log(urls[1]);
@@ -18,7 +18,7 @@ const LinkTable = () => {
   return (
     <div className="flex flex-col gap-[3px]">
       <div className="text-text_secondary py-[21px] pr-[25.19px] pl-[25px] bg-input_bg_clr flex items-center justify-between">
-        <div>Short Link {urlss}</div>
+        <div>Short Link</div>
         <div>Original Link</div>
         <div>QR Code</div>
         <div>Clicks</div>
