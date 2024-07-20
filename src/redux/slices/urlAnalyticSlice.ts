@@ -7,7 +7,7 @@ const initialState: urlAnalyticState = {
   isLoading: false,
   isError: false,
   urlAnalytic: {
-    clicked:0
+    analytic:{clicked:0}
   },
 };
 
@@ -50,7 +50,7 @@ export const urlAnalyticSlice = createSlice({
       })
       .addCase(getUrlAnalytic.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.urlAnalytic = action.payload;
+        state.urlAnalytic.analytic = action.payload;
         console.log(state.urlAnalytic);
       })
       .addCase(getUrlAnalytic.rejected, (state) => {

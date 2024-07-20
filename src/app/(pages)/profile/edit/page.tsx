@@ -28,7 +28,7 @@ const EditProfile=()=>{
           />
         </div>
 
-        <Button onClick={handleSaveChanges} text="Save Changes" width="200px" />
+        <Button onClick={()=>handleSaveChanges} text="Save Changes" width="200px" />
         <Link href={'/password/change'}>
           <Button text="Change Password" width="200px" />
         </Link>

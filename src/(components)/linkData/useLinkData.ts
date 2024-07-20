@@ -1,11 +1,17 @@
 "use client"
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { toggleUrlStatus } from "@/redux/slices/urlSlice";
+import { getUrlAnalytic } from "@/redux/slices/urlAnalyticSlice";
+import { deleteUrl, getUrls, toggleUrlStatus } from "@/redux/slices/urlSlice";
+import {useRouter} from "next/navigation";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-// Function to format the date
 const formatDate = (dateString: string) => {
+  if (!dateString) return "Invalid Date";
+
   const date = new Date(dateString);
+  if (isNaN(date.getTime())) return "Invalid Date";
+
   const options: Intl.DateTimeFormatOptions = { 
     month: 'short', 
     day: '2-digit', 
@@ -15,27 +21,46 @@ const formatDate = (dateString: string) => {
 };
 
 const useLinkData = () => {
-  const link = useAppSelector((state) => state.url);
-  const linkAnalytic = useAppSelector((state) => state.urlAnalytic);
-  const date = linkAnalytic?.urlAnalytic?.updatedAt ? formatDate(linkAnalytic.urlAnalytic.updatedAt) : null;
-  const clicks = linkAnalytic?.urlAnalytic?.clicked;
-  const dispatch=useAppDispatch();
-  const handleCopy = () => {
-    if (link?.url?.shortUrl) {
-      navigator.clipboard.writeText(link.url.shortUrl);
+  const router=useRouter();
+  const [loading,setLoading]=useState(false);
+  const urls = useAppSelector((state) => state.url.urls);
+  const dispatch = useAppDispatch();
+ console.log("useLink");
+ console.log(urls);
+  useEffect(() => {
+    dispatch(getUrls());
+  }, [dispatch]);
+
+
+  const handleEdit = (urlCode:string) => {
+    router.push(`/url/${urlCode}`);
+  };
+
+  const handleDelete = (urlCode:string) => {
+    try {
+      setLoading(true);
+      dispatch(deleteUrl({ urlCode }));
+      setLoading(false);
+      toast.success("URL deleted successfully");
+      dispatch(getUrls());
+    } catch (error) {
+      toast.error("Failed to delete URL");
+    }
+  };
+
+  const handleCopy = (shortUrl:string) => {
+    if (shortUrl) {
+      navigator.clipboard.writeText(shortUrl);
       toast.success("Link Copied");
     }
   };
 
-  const handleToggleStatus = () => {
-    
-    if (link?.url?.urlCode) {
-      dispatch(toggleUrlStatus({ urlCode: link.url.urlCode }))
+  const handleToggleStatus = (urlCode:string, active:boolean) => {
+    if (urlCode) {
+      dispatch(toggleUrlStatus({ urlCode }))
         .unwrap()
         .then(() => {
-          console.log("link.url.active");
-          console.log(link.url.active);
-          toast.success(`URL ${link.url.active ? 'deactivated' : 'activated'} successfully`);
+          toast.success(`URL ${active ? 'deactivated' : 'activated'} successfully`);
         })
         .catch(() => {
           toast.error('Failed to toggle URL status');
@@ -43,7 +68,7 @@ const useLinkData = () => {
     }
   };
 
-  return { link, handleCopy, clicks, date,handleToggleStatus };
+  return { urls, handleCopy, handleToggleStatus,formatDate,handleEdit,handleDelete };
 };
 
 export default useLinkData;

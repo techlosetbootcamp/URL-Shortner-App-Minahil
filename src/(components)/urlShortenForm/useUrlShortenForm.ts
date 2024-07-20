@@ -1,7 +1,7 @@
 "use client"
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { getUrlAnalytic } from "@/redux/slices/urlAnalyticSlice";
-import { getUrlDetails } from "@/redux/slices/urlSlice";
+import { getUrls, shortenUrl } from "@/redux/slices/urlSlice";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { isWebUri } from "valid-url";
@@ -15,7 +15,7 @@ const useUrlShortenForm = () => {
 
   useEffect(() => {
     if (code) {
-      dispatch(getUrlAnalytic({ code }));
+      dispatch(getUrls());;
     }
   }, [code, dispatch]);
 
@@ -33,7 +33,9 @@ const useUrlShortenForm = () => {
         setLoading(false);
         return false;
       }
-      dispatch(getUrlDetails({ url }));
+      dispatch(shortenUrl({ url }));
+      
+    
       setLoading(false);
       setUrl("");
     } catch (error) {

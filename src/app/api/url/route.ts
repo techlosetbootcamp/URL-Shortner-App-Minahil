@@ -2,8 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/config/prismadb";
 import generateShortUrl from "@/constants/generateShortUrl";
 import useGenerateQRCode from "@/hooks/useGenerateQRCode";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]/options";
+import { urlType } from "@/constants/types/types";
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
+  const session = await getServerSession(authOptions);
   try {
     const body = await req.json();
     const { url } = body;
@@ -24,7 +28,10 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     const result = await prisma.$transaction(async (tx) => {
       const originalUrl = await tx.url.findFirst({
         where: {
-          originalUrl: url,
+          AND: [
+            { originalUrl: url },
+            { user_email: session?.user ? session.user.email : null },
+          ],
         },
       });
       if (originalUrl) {
@@ -33,11 +40,17 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
 
       const newUrl = await tx.url.create({
         data: {
-          originalUrl: url!,
+          originalUrl: url,
           shortUrl,
-          qrCode:qrCode,
-          urlCode: shortCode,
-          active: true
+          qrCode: qrCode,
+          urlCode: shortCode!,
+          user: session?.user
+            ? {
+                connect: {
+                  email: session.user.email,
+                },
+              }
+            : undefined,
         },
       });
       console.log("newUrl");
@@ -54,8 +67,9 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
       });
       return newUrl;
     });
+
     return NextResponse.json(
-      { message: "shorUrl generated", result },
+      { message: "shortUrl generated", result },
       { status: 200 }
     );
   } catch (error) {
@@ -65,3 +79,31 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     );
   }
 };
+
+export const GET = async (req: NextRequest, res: NextResponse) => {
+  const session = await getServerSession(authOptions);
+  console.log(session?.user.id);
+  try {
+    let urls: urlType[] = [];
+    if (session?.user) {
+      urls = await prisma.url.findMany({
+        where: { user_email: session.user.email },
+      });
+      console.log("urls fetched login", urls.length);
+    } else {
+      const allUrls = await prisma.url.findMany({});
+      urls = allUrls.filter((url) => !url.user_email);
+      console.log("urls fetched logout", urls.length);
+    }
+    return NextResponse.json(
+      { message: "urls fetched", result: urls },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
+};
+

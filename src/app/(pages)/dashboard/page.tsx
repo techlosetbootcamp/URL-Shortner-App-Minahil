@@ -11,6 +11,8 @@ import LinkTable from "@/(components)/linkData/LinkData";
 import DropdownButton from "@/(components)/dropdownButton/dropdownButton";
 import useFetchUser from "@/hooks/useFetchUser";
 import UrlShortenForm from "@/(components)/urlShortenForm/urlShortenForm";
+import { GrEdit } from "react-icons/gr";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const Dashboard=()=> {
   const { user, isLoading, isError }=useFetchUser();
@@ -27,6 +29,13 @@ const Dashboard=()=> {
             <TfiLink/>
           </div>
         </div> */}
+{/* <div className="flex items-center gap-[10px] p-[10px]">
+          <div className="text-inactive_link_clr">Active</div>
+          <div className={`h-[35px] w-[35px] rounded-[31px] px-[8px] py-[3.5px] bg-inactive_link_clr} opacity-15 flex items-center justify-center`}>
+            <TfiLink className="text-white" />
+          </div>
+        </div> */}
+        
           <div className="flex gap-[20px]">
             <div className="flex items-center justify-center w-[191px] h-[60px] rounded-[48px] bg-input_bg_clr border border-input_border_clr py-[21px] pr-[25] pl-[25px]">
             {/* <button

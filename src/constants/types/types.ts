@@ -44,25 +44,34 @@ export type urlAnalyticProp = {
 };
 
 export type urlType = {
+  user_email?: any;
+  analytics?: urlAnalyticType;
   id?: string;
   originalUrl?: string;
   qrCode?:string;
   shortUrl?: string;
   urlCode?: string;
   active?:boolean;
+  user?:userType
+};
+
+export type urlEditType={
+  urlCode:string;
+  newUrlCode?:string;
 };
 export type urlAnalyticType = {
-  id?: string;
+  analytic:{id?: string;
   url?: urlType;
   url_id?: string;
   clicked?: number;
-  updatedAt?: string
+  updatedAt?: string}
 };
 
 export type urlState = {
   isLoading: boolean;
   isError: boolean;
   url: urlType;
+  urls?:urlType[];
 };
 export type urlAnalyticState = {
   isLoading: boolean;
