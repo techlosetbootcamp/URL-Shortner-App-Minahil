@@ -43,6 +43,39 @@ export const shortenUrl = createAsyncThunk(
   }
 );
 
+export const shortenUrlWithCustomSlug = createAsyncThunk(
+  "url/shortenUrlWithCustomSlug",
+  async ({ url,customSlug }: urlProp, { rejectWithValue }) => {
+    try {
+      const response = await AxiosInstance.post("/url/custom", { url,customSlug });
+
+      if (response.status === 400) {
+        toast.error("Invalid URL");
+        throw new Error("Invalid URL");
+      }
+      
+      if (response?.data) {
+        const urlData = {
+          id: response.data.result.id,
+          originalUrl: response.data.result.originalUrl,
+          shortUrl: response.data.result.shortUrl,
+          qrCode: response.data.result.qrCode,
+          urlCode: response.data.result.urlCode,
+          active: response.data.result.active,
+          user: response.data.user
+          
+        };
+        toast.success("Url shortened successfully");
+        return urlData;
+      } else {
+        throw new Error("Url data not found");
+      }
+    } catch (error: any) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const editUrl = createAsyncThunk(
   "url/editUrl",
   async ({ urlCode,newUrlCode }: urlEditType, { rejectWithValue }) => {
@@ -116,6 +149,7 @@ export const getUrls = createAsyncThunk(
     }
   }
 );
+
 
 export const toggleUrlStatus = createAsyncThunk(
   "url/toggleUrlStatus",

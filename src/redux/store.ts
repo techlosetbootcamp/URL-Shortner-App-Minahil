@@ -5,6 +5,7 @@ import loginSlice from "./slices/loginSlice";
 import passwordSlice from "./slices/passwordSlice";
 import urlSlice from "./slices/urlSlice";
 import urlAnalyticSlice from "./slices/urlAnalyticSlice";
+import autoSlugSlice from "./slices/autoSlugSlice";
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +14,8 @@ export const store = configureStore({
     login:loginSlice,
     password:passwordSlice,
     url:urlSlice,
-    urlAnalytic:urlAnalyticSlice
+    urlAnalytic:urlAnalyticSlice,
+    autoSlug:autoSlugSlice
     //verifytoken:verifyTokenSlice,
   },
 });

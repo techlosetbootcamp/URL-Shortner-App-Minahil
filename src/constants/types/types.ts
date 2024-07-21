@@ -38,6 +38,7 @@ export type VerifyTokenState = {
 
 export type urlProp = {
   url: string;
+  customSlug?:string
 };
 export type urlAnalyticProp = {
   code: string | undefined;
@@ -73,8 +74,15 @@ export type urlState = {
   url: urlType;
   urls?:urlType[];
 };
+
 export type urlAnalyticState = {
   isLoading: boolean;
   isError: boolean;
   urlAnalytic: urlAnalyticType;
+};
+
+export type slugState = {
+  isLoading: boolean;
+  isError: boolean;
+  slug: string;
 };
