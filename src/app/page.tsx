@@ -2,10 +2,10 @@ import Button from "@/(components)/button/Button";
 import Logo from "@/(components)/logo/Logo";
 import { CiLogin } from "react-icons/ci";
 import Link from "next/link";
-import { TfiLink } from "react-icons/tfi";
 import ToggleSwitch from "@/(components)/toggleSwitch/ToggleSwitch";
 import LinkTable from "@/(components)/linkData/LinkData";
 import UrlShortenForm from "@/(components)/urlShortenForm/urlShortenForm";
+import FreeAccess from "@/(components)/freeAccess/FreeAccess";
 
 export default function Home() {
   return (
@@ -80,10 +80,7 @@ export default function Home() {
      
     </div> */}
               </div>
-              <div className="text-text_secondary">
-                You can create <b className="text-brand_primary_pink">05</b>{" "}
-                more links. Register Now to enjoy Unlimited usage
-              </div>
+              <FreeAccess/>
             </div>
           </div>
         </div>

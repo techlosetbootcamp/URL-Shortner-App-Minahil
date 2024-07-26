@@ -1,4 +1,5 @@
 "use client"
+import { FREE_URL_LIMIT } from "@/constants/constants";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { getUrlAnalytic } from "@/redux/slices/urlAnalyticSlice";
 import { getUrls, shortenUrl } from "@/redux/slices/urlSlice";
@@ -13,9 +14,16 @@ const useUrlShortenForm = () => {
   const link = useAppSelector((state) => state.url);
   const code = link?.url?.urlCode;
 
+  // Initialize the shortened URLs count from local storage
+  const getShortenedUrlsCount = () => {
+    return parseInt(localStorage.getItem("shortenedUrlsCount") || "0", FREE_URL_LIMIT);
+  };
+
+  const [shortenedUrlsCount, setShortenedUrlsCount] = useState(getShortenedUrlsCount);
+
   useEffect(() => {
     if (code) {
-      dispatch(getUrls());;
+      dispatch(getUrls());
     }
   }, [code, dispatch]);
 
@@ -33,18 +41,33 @@ const useUrlShortenForm = () => {
         setLoading(false);
         return false;
       }
-      dispatch(shortenUrl({ url }));
+
+      if (shortenedUrlsCount >= FREE_URL_LIMIT) {
+        toast.error("You have reached the free URL limit. Please log in to continue shortening URLs.");
+        setLoading(false);
+        return false;
+      }
+
+      dispatch(shortenUrl({ url })).then(() => {
+        // Increment the count and update local storage after successfully shortening the URL
+        const newCount = shortenedUrlsCount + 1;
+        setShortenedUrlsCount(newCount);
+        localStorage.setItem("shortenedUrlsCount", newCount.toString());
+        setUrl("");
+        setLoading(false);
+      });
       
-    
-      setLoading(false);
-      setUrl("");
     } catch (error) {
       toast.error(`${error}`);
       setLoading(false);
     }
   };
 
-  return { url, setUrl, loading, shorten };
+  // useEffect(() => {
+  //   setShortenedUrlsCount(shortenedUrlsCount)
+  // }, [shorten]);
+
+  return { url, setUrl, loading, shorten,shortenedUrlsCount };
 };
 
 export default useUrlShortenForm;
