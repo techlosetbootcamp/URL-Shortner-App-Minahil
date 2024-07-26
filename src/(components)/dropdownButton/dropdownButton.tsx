@@ -1,20 +1,19 @@
 "use client";
+import useFetchUser from "@/hooks/useFetchUser";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
-type DROPDOWN_PROPS = {
-  username: string | undefined;
-};
-
-const DropdownButton = ({ username }: DROPDOWN_PROPS) => {
+const DropdownButton = () => {
+  const { user, isLoading, isError }=useFetchUser();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+  if(isLoading) return <div>Loading....</div>
 
   return (
     <div className="relative inline-block text-left">
@@ -29,8 +28,8 @@ const DropdownButton = ({ username }: DROPDOWN_PROPS) => {
         >
           <div className="text-white flex gap-[10px] items-center">
             <div className="flex flex-col text-left">
-              <div className="text-[10px]">Welcome</div>
-              <div className="text-[16px] font-semibold">{username}</div>
+              <div className="flex text-[10px]">Welcome</div>
+              <div className="flex text-[16px] font-semibold">{user?.name}</div>
             </div>
             <div>
               <IoIosArrowDown className="text-text_secondary h-[28px] w-[20px]" />

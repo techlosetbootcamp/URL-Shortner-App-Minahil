@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-const useForgot=()=>{
+const useForgotPassForm=()=>{
     const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -34,4 +34,4 @@ const useForgot=()=>{
 
   return { email, setEmail, loading, forgot };
 };
-export default useForgot;
+export default useForgotPassForm;

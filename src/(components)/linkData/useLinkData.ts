@@ -23,10 +23,10 @@ const formatDate = (dateString: string) => {
 const useLinkData = () => {
   const router=useRouter();
   const [loading,setLoading]=useState(false);
-  const urls = useAppSelector((state) => state.url.urls);
+  const url = useAppSelector((state) => state.url);
   const dispatch = useAppDispatch();
  console.log("useLink");
- console.log(urls);
+ console.log(url.urls);
   useEffect(() => {
     dispatch(getUrls());
   }, [dispatch]);
@@ -40,9 +40,10 @@ const useLinkData = () => {
     try {
       setLoading(true);
       dispatch(deleteUrl({ urlCode }));
+      dispatch(getUrls());
       setLoading(false);
       toast.success("URL deleted successfully");
-      dispatch(getUrls());
+      
     } catch (error) {
       toast.error("Failed to delete URL");
     }
@@ -68,7 +69,7 @@ const useLinkData = () => {
     }
   };
 
-  return { urls, handleCopy, handleToggleStatus,formatDate,handleEdit,handleDelete };
+  return { url, handleCopy, handleToggleStatus,formatDate,handleEdit,handleDelete,loading };
 };
 
 export default useLinkData;

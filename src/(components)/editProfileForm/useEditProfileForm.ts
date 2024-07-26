@@ -8,16 +8,17 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-const useEdit=()=>{
+const useEditProfileForm=()=>{
     const dispatch= useAppDispatch();
     const { user, isLoading, isError } = useFetchUser();
     const email=user?.email;
+    console.log(email);
     const [name, setName] = useState(user?.name || ""); 
     const [newEmail, setEmail] = useState(user?.email || ""); 
     
 const router=useRouter();
-    const handleSaveChanges = (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
+    const handleSaveChanges = () => {
+      //e.preventDefault();
       
         
         dispatch(editUser({name,email,newEmail}));
@@ -32,4 +33,4 @@ const router=useRouter();
     };
     return { user, isLoading, isError,name, setName,newEmail, setEmail,handleSaveChanges };
 };
-export default useEdit;
+export default useEditProfileForm;

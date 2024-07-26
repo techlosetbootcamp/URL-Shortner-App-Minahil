@@ -1,21 +1,21 @@
-"use client"
 import { FaRegClock } from "react-icons/fa6";
 import { IoStatsChartOutline } from "react-icons/io5";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CiFilter } from "react-icons/ci";
 import Logo from "@/(components)/logo/Logo";
-import { TfiLink } from "react-icons/tfi";
 import { FaBell } from "react-icons/fa";
 import ToggleSwitch from "@/(components)/toggleSwitch/ToggleSwitch";
 import LinkTable from "@/(components)/linkData/LinkData";
 import DropdownButton from "@/(components)/dropdownButton/dropdownButton";
-import useFetchUser from "@/hooks/useFetchUser";
 import UrlShortenForm from "@/(components)/urlShortenForm/urlShortenForm";
-import { GrEdit } from "react-icons/gr";
-import { AiOutlineDelete } from "react-icons/ai";
+
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Dashboard | URL Shortner App"
+};
 
 const Dashboard=()=> {
-  const { user, isLoading, isError }=useFetchUser();
+  
   return (
     <>
       <header>
@@ -62,7 +62,7 @@ const Dashboard=()=> {
             >
               Logout
             </button> */}
-                <DropdownButton username={user?.name}/>
+                <DropdownButton />
                 {/* <button style={{
               
               filter: "drop-shadow(10px 9px 10px rgba(220, 38, 38, 0.38))",
@@ -81,7 +81,7 @@ const Dashboard=()=> {
               style={{
                 filter: "drop-shadow(10px 9px 10px rgba(20, 78, 227, 0.38))",
               }}
-              className="relative w-[58px] h-[58px] rounded-[48px] bg-brand_primary_blue flex items-center justify-center"
+              className="cursor-pointer relative w-[58px] h-[58px] rounded-[48px] bg-brand_primary_blue flex items-center justify-center"
             >
               <div className="text-white">
                 <sup className="absolute top-4 left-9">2</sup>

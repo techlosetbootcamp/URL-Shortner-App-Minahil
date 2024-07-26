@@ -2,7 +2,12 @@ import Button from "@/(components)/button/Button";
 import InputField from "@/(components)/input/Input";
 import LoginForm from "@/(components)/loginForm/loginForm";
 import Logo from "@/(components)/logo/Logo";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Login | URL Shortner App"
+};
 
 function LogIn() {
   return (

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-const useUrlCode=(urlCode:string)=>{
+const useEditUrlForm=(urlCode:string)=>{
   const router = useRouter();
     const [editablePart, setEditablePart] = useState(urlCode);
     const newUrlCode=editablePart;
@@ -35,4 +35,4 @@ const useUrlCode=(urlCode:string)=>{
 
     return {editablePart,setEditablePart,handleEdit,loading};
 };
-export default useUrlCode;
+export default useEditUrlForm;

@@ -1,14 +1,15 @@
-"use client"
-import Button from "@/(components)/button/Button";
-import InputField from "@/(components)/input/Input";
+import ChangePassForm from "@/(components)/changePassForm/ChangePassForm";
 import Logo from "@/(components)/logo/Logo";
+import { Metadata } from "next";
 import Link from "next/link";
-import useChange from "./useChange";
+
+export const metadata: Metadata = {
+  title: "Change Password | URL Shortner App"
+};
+
 
 const ChangePassword=()=>
 {
-  
-  const {loading, error,password,setNewPassword,oldpassword,setOldPassword,change}=useChange()
     return(
         <>
         <header>
@@ -19,15 +20,7 @@ const ChangePassword=()=>
             <p className="font-extrabold text-[60px] leading-[80.01px] animate-text bg-gradient-to-r from-[#144EE3] via-[#EB568E] to-[#A353AA] bg-clip-text text-transparent">Change Password</p>
            
             </div>
-            <form onSubmit={change} className="flex flex-col gap-[32px] items-center justify-center" action="">
-                <div className="flex flex-col gap-[32px] w-[659px]">
-                <InputField type="password" placeholder="Old Password" value={oldpassword} onChange={(e)=>setOldPassword(e.target.value)} disabled={loading}/>
-                <InputField type="password" placeholder="New Password" value={password} onChange={(e)=>setNewPassword(e.target.value)} disabled={loading}/>
-                <InputField type="password" placeholder="Confirm Password"/>
-                </div>
-                
-                <Button text="Change Password" disabled={loading}/>
-                </form>        
+            <ChangePassForm/> 
         </div>
         <footer className="mb-[30px]">
         <div className="flex items-center justify-center text-text_secondary"> <Link className="text-brand_primary_blue underline" href={"/register"}>Register</Link> &nbsp; if not already registered</div>

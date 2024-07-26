@@ -1,6 +1,12 @@
 import Logo from "@/(components)/logo/Logo";
 import RegisterForm from "@/(components)/registerForm/registerForm";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Register | URL Shortner App"
+};
+
 
 function Register()
 {

@@ -17,6 +17,7 @@ export const PATCH = async (req: NextRequest) => {
       const existingUser = await prisma.user.findFirst({
         where: { email: newEmail }
       });
+      console.log("existingUser");
       console.log(existingUser);
   
       if (existingUser) {

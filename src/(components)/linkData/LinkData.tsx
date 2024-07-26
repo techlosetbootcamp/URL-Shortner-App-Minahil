@@ -10,12 +10,13 @@ import { useAppSelector } from "@/hooks";
 
 const LinkTable = () => {
   //const urlss = useAppSelector((state) => state.url.urls?.length);
-  const { urls, handleCopy, handleToggleStatus,formatDate,handleEdit,handleDelete } = useLinkData();
-  if (!urls) return <div className="text-white">Loading</div>;
-  console.log(urls[1]);
+  const { url, handleCopy, handleToggleStatus,formatDate,handleEdit,handleDelete,loading } = useLinkData();
+  if (url.isLoading) return <div className="text-white">Loading</div>;
+  console.log(url?.urls![1]);
   
   
   return (
+    <>
     <div className="flex flex-col gap-[3px]">
       <div className="text-text_secondary py-[21px] pr-[25.19px] pl-[25px] bg-input_bg_clr flex items-center justify-between">
         <div>Short Link</div>
@@ -24,9 +25,9 @@ const LinkTable = () => {
         <div>Clicks</div>
         <div>Status</div>
         <div>Date</div>
-        {(urls[0]?.user_email)?<div>Action</div>:""}
+        {(url?.urls![0]?.user_email)?<div>Action</div>:""}
       </div>
-      {urls.map((link) => (
+      {url?.urls!.map((link) => (
         <div key={link.urlCode} className="text-text_secondary py-[21px] pr-[25.19px] pl-[25px] bg-rgba(24, 30, 41, 0.22) flex items-center justify-between">
           <div className="flex items-center gap-[10px]">
             <div className="font-bold">{link.shortUrl}</div>
@@ -53,11 +54,12 @@ const LinkTable = () => {
             </div>
           </div>
           <div>{formatDate(link?.analytics?.analytic.updatedAt!)}</div>
-          <div>{(link?.user_email)? <div className="text-white flex items-center gap-[10px]"> <button style={{filter: "drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.10))"}} className="flex items-center justify-center p-[13px] px-[13.09px] border border-input_border_clr bg-input_bg_clr rounded-[48px]" onClick={()=>handleEdit(link?.urlCode!)}><GrEdit/></button><button onClick={()=>handleDelete(link?.urlCode!)} className="flex items-center justify-center p-[13px] px-[13.09px] border border-input_border_clr bg-input_bg_clr rounded-[48px]"><AiOutlineDelete/></button> </div>:""}</div>
+          <div>{(link?.user_email)? <div className="text-white flex items-center gap-[10px]"> <button style={{filter: "drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.10))"}} className="flex items-center justify-center p-[13px] px-[13.09px] border border-input_border_clr bg-input_bg_clr rounded-[48px]" onClick={()=>handleEdit(link?.urlCode!)}><GrEdit/></button><button onClick={()=>handleDelete(link?.urlCode!)} disabled={loading} className="flex items-center justify-center p-[13px] px-[13.09px] border border-input_border_clr bg-input_bg_clr rounded-[48px]"><AiOutlineDelete/></button> </div>:""}</div>
           
         </div>
       ))}
     </div>
+    </>
   );
 };
 
