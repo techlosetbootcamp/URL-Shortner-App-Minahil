@@ -1,6 +1,5 @@
 import QrCode from "qrcode";
-
-const useGenerateQRCode = async (url: string): Promise<string> => {
+export const GenerateQRCode = async (url: string): Promise<string> => {
   if (url) {
     return await QrCode.toDataURL(url, {
       width: 500,
@@ -8,5 +7,3 @@ const useGenerateQRCode = async (url: string): Promise<string> => {
   }
   return "";
 };
-
-export default useGenerateQRCode;

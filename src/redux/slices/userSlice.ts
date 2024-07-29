@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 const initialState: userState = {
   isLoading: false,
   isError: false,
-  user: {id: "", name: "", email: "", password: "" },
+  user: { id: "", name: "", email: "", password: "" },
 };
 
 export const getUser = createAsyncThunk(
@@ -14,11 +14,10 @@ export const getUser = createAsyncThunk(
   async (_: void, { rejectWithValue }) => {
     try {
       const response = await AxiosInstance.get("/user");
-      console.log("hellohibyby");
-      console.log(response.data.user);
+
       if (response?.data) {
         const user = {
-          id:response.data.user.id,
+          id: response.data.user.id,
           name: response.data.user.name,
           email: response.data.user.email,
           password: response.data.user.password,
@@ -35,23 +34,25 @@ export const getUser = createAsyncThunk(
 
 export const editUser = createAsyncThunk(
   "user/editUser",
-  async ({ name,email,newEmail }: userType, { rejectWithValue }) => {
+  async ({ name, email, newEmail }: userType, { rejectWithValue }) => {
     try {
-      const response = await AxiosInstance.patch("/user/edit", { name,email,newEmail});
-      if(response.status==200){
+      const response = await AxiosInstance.patch("/user/edit", {
+        name,
+        email,
+        newEmail,
+      });
+      if (response.status == 200) {
         toast.success("Profile Updated");
       }
-      
-      if(response.status==400){
-        console.log("Hello");
+
+      if (response.status == 400) {
         toast.error("This email is already registered");
       }
-      if(response.status==401){
+      if (response.status == 401) {
         toast.error("Please fill all feilds");
       }
       return response.data;
-      }
-     catch (error: any) {
+    } catch (error: any) {
       return rejectWithValue(error.response.data);
     }
   }
@@ -70,7 +71,6 @@ export const userSlice = createSlice({
       .addCase(getUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload;
-        console.log(state.user);
       })
       .addCase(getUser.rejected, (state) => {
         state.isLoading = false;
@@ -83,7 +83,6 @@ export const userSlice = createSlice({
       .addCase(editUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload;
-        console.log(state.user);
       })
       .addCase(editUser.rejected, (state) => {
         state.isLoading = false;

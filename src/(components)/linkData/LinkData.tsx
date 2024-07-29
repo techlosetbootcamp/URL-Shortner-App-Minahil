@@ -1,5 +1,5 @@
 "use client";
-import { GrEdit } from "react-icons/gr";
+import { GrAdd, GrEdit } from "react-icons/gr";
 import { AiOutlineDelete } from "react-icons/ai";
 import imgFile from "/public/assets/images/linkly.svg";
 import { FaCopy } from "react-icons/fa6";
@@ -8,6 +8,7 @@ import Image from "next/image";
 import useLinkData from "./useLinkData";
 import { CiFilter } from "react-icons/ci";
 import Filter from "../filter/Filter";
+import Link from "next/link";
 
 const LinkTable = () => {
   const {
@@ -31,10 +32,21 @@ const LinkTable = () => {
           <div className="text-text_secondary font-bold text-[20px]">
             History <span>({filteredLinks?.length})</span>
           </div>
+          <div className="flex items-center">
+            <Link href='/url/add'>
+            <button className="flex items-center justify-center gap-[10px] text-white bg-brand_grey rounded-full border border-input_border_clr py-[21px] pr-[25.19px] pl-[25px]">
+          Custom Slug
+            <GrAdd/>
+            </button></Link>
+         
+
           <div className="bg-brand_grey border border-input_border_clr h-[44px] text-input_txt_clr font-bold text-[15px] rounded-[48px] flex items-center justify-center py-[21px] w-[113.19px] pr-[25.19px] pl-[25px] gap-[10px]">
             <CiFilter />
+           
             <button className=""><Filter onFilterChange={handleFilterChange} /></button>
           </div>
+          </div>
+          
         </div>
       ) : (
         ""
@@ -57,7 +69,7 @@ const LinkTable = () => {
           >
             <div className="flex items-center gap-[10px]">
               <div className="font-bold">{link.shortUrl}</div>
-              <div className="h-[35px] p-[10px] flex items-center justify-center w-[35px] rounded-[31px] bg-copy_button_clr opacity-[69%]">
+              <div className="h-[35px] py-[21px] pr-[25.19px] pl-[25px] flex items-center justify-center w-[35px] rounded-[31px] bg-copy_button_clr opacity-[69%]">
                 <FaCopy
                   onClick={() => handleCopy(link?.shortUrl!)}
                   className="cursor-pointer"

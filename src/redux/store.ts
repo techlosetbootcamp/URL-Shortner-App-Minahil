@@ -10,13 +10,12 @@ import autoSlugSlice from "./slices/autoSlugSlice";
 export const store = configureStore({
   reducer: {
     user: userSlice,
-    signup:signupSlice,
-    login:loginSlice,
-    password:passwordSlice,
-    url:urlSlice,
-    urlAnalytic:urlAnalyticSlice,
-    autoSlug:autoSlugSlice
-    //verifytoken:verifyTokenSlice,
+    signup: signupSlice,
+    login: loginSlice,
+    password: passwordSlice,
+    url: urlSlice,
+    urlAnalytic: urlAnalyticSlice,
+    autoSlug: autoSlugSlice,
   },
 });
 

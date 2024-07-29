@@ -30,8 +30,19 @@ const Dashboard=()=> {
         <div className="flex items-center justify-between mx-[52px] mt-[44px]">
           <Logo />
           {/* <div>{(link?.user_email)? <div className="text-white flex items-center gap-[10px]"> <button style={{filter: "drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.10))"}} className="flex items-center justify-center p-[13px] px-[13.09px] border border-input_border_clr bg-input_bg_clr rounded-[48px]" onClick={()=>handleEdit(link?.urlCode!)}><GrEdit/></button><button onClick={()=>handleDelete(link?.urlCode!)} className="flex items-center justify-center p-[13px] px-[13.09px] border border-input_border_clr bg-input_bg_clr rounded-[48px]"><AiOutlineDelete/></button> </div>:""}</div> */}
-
-          <UrlShortenForm/>
+       {/* <div className="flex items-center justify-between mb-[28px]">
+          <div className="text-text_secondary font-bold text-[20px]">
+            History <span>({filteredLinks?.length})</span>
+          </div>
+          <div className="bg-brand_grey border border-input_border_clr h-[44px] text-input_txt_clr font-bold text-[15px] rounded-[48px] flex items-center justify-center py-[21px] w-[113.19px] pr-[25.19px] pl-[25px] gap-[10px]">
+            <CiFilter />
+            <button className=""><Filter onFilterChange={handleFilterChange} /></button>
+          </div>
+        </div> */}
+        {/* py-[21px] pr-[25.19px] pl-[25px] */}
+        
+          <div className=" mt-[50px]"><UrlShortenForm/></div>
+          
           {/* <div className="flex items-center gap-[10px]">
           <div className="text-active_link_clr">Active</div>
           <div className="h-[35px] w-[35px] text-white rounded-[31px] p-[10px] bg-active_link_clr opacity-5">
@@ -143,9 +154,9 @@ const Dashboard=()=> {
 
       
               <div className="mx-[153px] "><LinkTable/></div>
-      <div style={{background: 'linear-gradient(180deg, rgba(11, 16, 27, 0) 15.74%, rgba(11, 16, 27, 0.57) 50.38%)'}} className="absolute xxl:w-[1421px] xxl:h-[148px] xxl:left-[153px] xxl:top-[1026px] filter blur-[21px] backdrop-blur-[5px] ">
+      {/* <div style={{background: 'linear-gradient(180deg, rgba(11, 16, 27, 0) 15.74%, rgba(11, 16, 27, 0.57) 50.38%)'}} className="absolute xxl:w-[1421px] xxl:h-[148px] xxl:left-[153px] xxl:top-[1026px] filter blur-[21px] backdrop-blur-[5px] ">
       <div className="absolute text-white">hello</div>
-      </div>
+      </div> */}
 
       
     </>

@@ -51,7 +51,7 @@ const loginSlice = createSlice({
       .addCase(loginWithEmail.rejected, (state, action) => {
         state.loginStatus = "failed";
         state.error = action.payload as string;
-      })
+      });
   },
 });
 

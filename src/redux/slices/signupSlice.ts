@@ -16,8 +16,7 @@ export const signupUser = createAsyncThunk(
     try {
       const response = await AxiosInstance.post("/signup", data);
       toast.success("Successfully registered");
-      console.log("responseData");
-      console.log(response.data);
+
       return response.data;
     } catch (error: AxiosResponse | any) {
       toast.error(error.response.data.message);
@@ -46,7 +45,6 @@ export const signupSlice = createSlice({
         state.error = null;
         state.signupStatus = "succeeded";
         state.userDetails = action.payload;
-        console.log(action.payload);
       })
       .addCase(signupUser.rejected, (state, action) => {
         state.signupStatus = "failed";

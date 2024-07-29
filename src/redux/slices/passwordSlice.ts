@@ -10,24 +10,30 @@ const initialState: PasswordState = {
 };
 
 export const changePassword = createAsyncThunk(
-    "changePassword/ChangePassword",
-    async ({password,email}: passwordProps, { rejectWithValue }) => {
-      try {
-        const response = await AxiosInstance.patch("/password/change", {password,email});
-        
-        return response.data;
-      } catch (error: any) {
-        toast.error(error.response.data.message);
-        return rejectWithValue(error.response.data);
-      }
+  "changePassword/ChangePassword",
+  async ({ password, email }: passwordProps, { rejectWithValue }) => {
+    try {
+      const response = await AxiosInstance.patch("/password/change", {
+        password,
+        email,
+      });
+
+      return response.data;
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+      return rejectWithValue(error.response.data);
     }
-  );
+  }
+);
 
 export const resetPassword = createAsyncThunk(
   "resetPassword/ResetPassword",
-  async ({password,email}: passwordProps, { rejectWithValue }) => {
+  async ({ password, email }: passwordProps, { rejectWithValue }) => {
     try {
-      const response = await AxiosInstance.post("/password/reset", {password,email});
+      const response = await AxiosInstance.post("/password/reset", {
+        password,
+        email,
+      });
       toast.success("Password has been reset Successfully!");
       return response.data;
     } catch (error: any) {
@@ -75,6 +81,5 @@ export const passwordSlice = createSlice({
       });
   },
 });
-
 
 export default passwordSlice.reducer;

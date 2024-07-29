@@ -68,7 +68,7 @@ const useUrlShortenForm = () => {
         return false;
       }
 
-      if (shortenedUrlsCount >= FREE_URL_LIMIT) {
+      if (!session.data?.user && shortenedUrlsCount >= FREE_URL_LIMIT) {
         toast.error("You have reached the free URL limit. Please log in to continue shortening URLs.");
         setLoading(false);
         return false;

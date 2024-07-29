@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/config/prismadb";
 import generateShortUrl from "@/constants/generateShortUrl";
-import useGenerateQRCode from "@/hooks/useGenerateQRCode";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/options";
 import { urlType } from "@/constants/types/types";
+import { GenerateQRCode } from "@/constants/generateQrCode";
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   const session = await getServerSession(authOptions);
@@ -21,9 +21,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     const host = req.headers.get("host");
 
     const { shortCode, shortUrl } = generateShortUrl(host!);
-    const qrCode = await useGenerateQRCode(shortUrl);
-    console.log("qrCode");
-    console.log(qrCode);
+    const qrCode = await GenerateQRCode(shortUrl);
 
     const result = await prisma.$transaction(async (tx) => {
       const originalUrl = await tx.url.findFirst({
@@ -53,8 +51,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
             : undefined,
         },
       });
-      console.log("newUrl");
-      console.log(newUrl);
+
       await tx.urlAnalytic.create({
         data: {
           clicked: 0,
@@ -82,18 +79,15 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
 
 export const GET = async (req: NextRequest, res: NextResponse) => {
   const session = await getServerSession(authOptions);
-  console.log(session?.user.id);
   try {
     let urls: urlType[] = [];
     if (session?.user) {
       urls = await prisma.url.findMany({
         where: { user_email: session.user.email },
       });
-      console.log("urls fetched login", urls.length);
     } else {
       const allUrls = await prisma.url.findMany({});
       urls = allUrls.filter((url) => !url.user_email);
-      console.log("urls fetched logout", urls.length);
     }
     return NextResponse.json(
       { message: "urls fetched", result: urls },
@@ -106,4 +100,3 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
     );
   }
 };
-

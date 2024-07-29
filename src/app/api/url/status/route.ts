@@ -11,9 +11,6 @@ export const PATCH = async (req: NextRequest) => {
         where: { urlCode },
       });
 
-      console.log("currentUrl?.active");
-      console.log(currentUrl?.active);
-
       if (!currentUrl) {
         return new NextResponse("URL not found", { status: 404 });
       }
@@ -25,11 +22,11 @@ export const PATCH = async (req: NextRequest) => {
         },
       });
 
-      console.log("updatedUrl.active");
-      console.log(updatedUrl.active);
-      return NextResponse.json({message:"URL's status updated", updatedUrl}, { status: 200 });
+      return NextResponse.json(
+        { message: "URL's status updated", updatedUrl },
+        { status: 200 }
+      );
     } catch (error: any) {
-      console.error(error);
       return new NextResponse("Failed to update URL status", { status: 500 });
     }
   } catch (error) {

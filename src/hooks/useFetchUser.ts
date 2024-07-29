@@ -10,7 +10,7 @@ export const useFetchUser = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        await dispatch(getUser());;
+        await dispatch(getUser());
       } catch (error) {
         toast.error("Failed to fetch user");
       }

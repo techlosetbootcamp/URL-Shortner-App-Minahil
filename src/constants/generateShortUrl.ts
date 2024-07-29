@@ -1,8 +1,6 @@
 import { customAlphabet } from "nanoid";
 
 const generateShortUrl = (host: string, newUrlCode?: string) => {
-  console.log("inside generator");
-  console.log(host);
   if (newUrlCode) {
     return {
       shortUrl: `http://${host}/api/${newUrlCode}`,

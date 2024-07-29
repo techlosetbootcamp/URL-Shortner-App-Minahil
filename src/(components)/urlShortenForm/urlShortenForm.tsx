@@ -40,7 +40,7 @@ const UrlShortenForm = () => {
         </button>
       </form>
 
-      <div className="flex items-center justify-center gap-[15px] text-text_secondary mb-[38px] mt-[19px]">
+      <div className="flex items-center justify-center gap-[15px] text-text_secondary mb-[38px] mt-[32px]">
         <ToggleSwitch onChange={setAutoPaste} />
         <div>Auto paste from clipboard</div>
       </div>

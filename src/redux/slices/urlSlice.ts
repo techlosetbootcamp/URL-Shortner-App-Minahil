@@ -1,4 +1,9 @@
-import { urlProp, urlState, urlType, urlEditType } from "@/constants/types/types";
+import {
+  urlProp,
+  urlState,
+  urlType,
+  urlEditType,
+} from "@/constants/types/types";
 import { AxiosInstance } from "@/utils/axiosInstance";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
@@ -20,7 +25,7 @@ export const shortenUrl = createAsyncThunk(
         toast.error("Invalid URL");
         throw new Error("Invalid URL");
       }
-      
+
       if (response?.data) {
         const urlData = {
           id: response.data.result.id,
@@ -29,8 +34,7 @@ export const shortenUrl = createAsyncThunk(
           qrCode: response.data.result.qrCode,
           urlCode: response.data.result.urlCode,
           active: response.data.result.active,
-          user: response.data.user
-          
+          user: response.data.user,
         };
         toast.success("Url shortened successfully");
         return urlData;
@@ -45,15 +49,18 @@ export const shortenUrl = createAsyncThunk(
 
 export const shortenUrlWithCustomSlug = createAsyncThunk(
   "url/shortenUrlWithCustomSlug",
-  async ({ url,customSlug }: urlProp, { rejectWithValue }) => {
+  async ({ url, customSlug }: urlProp, { rejectWithValue }) => {
     try {
-      const response = await AxiosInstance.post("/url/custom", { url,customSlug });
+      const response = await AxiosInstance.post("/url/custom", {
+        url,
+        customSlug,
+      });
 
       if (response.status === 400) {
         toast.error("Invalid URL");
         throw new Error("Invalid URL");
       }
-      
+
       if (response?.data) {
         const urlData = {
           id: response.data.result.id,
@@ -62,8 +69,7 @@ export const shortenUrlWithCustomSlug = createAsyncThunk(
           qrCode: response.data.result.qrCode,
           urlCode: response.data.result.urlCode,
           active: response.data.result.active,
-          user: response.data.user
-          
+          user: response.data.user,
         };
         toast.success("Url shortened successfully");
         return urlData;
@@ -78,15 +84,13 @@ export const shortenUrlWithCustomSlug = createAsyncThunk(
 
 export const editUrl = createAsyncThunk(
   "url/editUrl",
-  async ({ urlCode,newUrlCode }: urlEditType, { rejectWithValue }) => {
+  async ({ urlCode, newUrlCode }: urlEditType, { rejectWithValue }) => {
     try {
-    console.log("Hello inside editUrl Thunk")
-      
-      const response = await AxiosInstance.patch(`/url/${urlCode}`, { newUrlCode});
-      console.log(response);      
+      const response = await AxiosInstance.patch(`/url/${urlCode}`, {
+        newUrlCode,
+      });
       return response.data;
-      }
-     catch (error: any) {
+    } catch (error: any) {
       return rejectWithValue(error.response.data);
     }
   }
@@ -95,11 +99,10 @@ export const editUrl = createAsyncThunk(
 export const deleteUrl = createAsyncThunk(
   "url/deleteUrl",
   async ({ urlCode }: urlEditType, { rejectWithValue }) => {
-    try {      
-      const response = await AxiosInstance.delete(`/url/${urlCode}`); 
+    try {
+      const response = await AxiosInstance.delete(`/url/${urlCode}`);
       return response.data;
-      }
-     catch (error: any) {
+    } catch (error: any) {
       return rejectWithValue(error.response.data);
     }
   }
@@ -110,7 +113,6 @@ export const getUrls = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await AxiosInstance.get("/url");
-      console.log(response);
       if (response.status === 400) {
         toast.error("Error fetching URLs");
         throw new Error("Error fetching URLs");
@@ -124,23 +126,19 @@ export const getUrls = createAsyncThunk(
           qrCode: url.qrCode,
           urlCode: url.urlCode,
           active: url.active,
-          user_email:url.user_email?url.user_email:null,
+          user_email: url.user_email ? url.user_email : null,
         }));
-        console.log("urls.length in slice");
-        console.log(urls.length);
-        console.log(urls);
-        console.log(response);
 
-    const urlsWithAnalytics :urlType[] = await Promise.all(
-      urls.map(async (url: urlType) => {
-        const code=url?.urlCode;
-        console.log(code);
-        const analyticResponse = await AxiosInstance.get(`/analytic/${code}`);
-        return { ...url, analytics: analyticResponse.data };
-      })
-    );
-    console.log(urlsWithAnalytics);
-    return urlsWithAnalytics;
+        const urlsWithAnalytics: urlType[] = await Promise.all(
+          urls.map(async (url: urlType) => {
+            const code = url?.urlCode;
+            const analyticResponse = await AxiosInstance.get(
+              `/analytic/${code}`
+            );
+            return { ...url, analytics: analyticResponse.data };
+          })
+        );
+        return urlsWithAnalytics;
       } else {
         throw new Error("URLs data not found");
       }
@@ -150,21 +148,17 @@ export const getUrls = createAsyncThunk(
   }
 );
 
-
 export const toggleUrlStatus = createAsyncThunk(
   "url/toggleUrlStatus",
   async ({ urlCode }: urlType, { rejectWithValue }) => {
     try {
       const response = await AxiosInstance.patch("/url/status", { urlCode });
-      console.log(response.data);
-      const updatedUrl= response.data.updatedUrl;
-      const code=urlCode;
+      const updatedUrl = response.data.updatedUrl;
+      const code = urlCode;
       const analyticResponse = await AxiosInstance.get(`/analytic/${code}`);
       updatedUrl.analytics = analyticResponse.data;
 
-      console.log(updatedUrl);
       return updatedUrl;
-      
     } catch (error: any) {
       return rejectWithValue(error.response.data);
     }
@@ -210,17 +204,24 @@ export const urlSlice = createSlice({
       .addCase(toggleUrlStatus.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
-        const updatedUrl:urlType = action.payload;
-        console.log(action.payload);
-        
+        const updatedUrl: urlType = action.payload;
+
         state.urls = state.urls?.map((url) =>
           url.urlCode === updatedUrl?.urlCode
-            ? { ...url, ...updatedUrl, analytics: updatedUrl?.analytics ?? url.analytics }
+            ? {
+                ...url,
+                ...updatedUrl,
+                analytics: updatedUrl?.analytics ?? url.analytics,
+              }
             : url
         );
-        
+
         if (state.url.urlCode === updatedUrl.urlCode) {
-          state.url = { ...state.url, ...updatedUrl, analytics: updatedUrl.analytics ?? state.url.analytics };
+          state.url = {
+            ...state.url,
+            ...updatedUrl,
+            analytics: updatedUrl.analytics ?? state.url.analytics,
+          };
         }
       })
       .addCase(toggleUrlStatus.rejected, (state) => {
