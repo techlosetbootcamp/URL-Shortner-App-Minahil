@@ -1,10 +1,13 @@
 "use client"
 import { useState } from "react";
 
-const ToggleSwitch = () => {
+const ToggleSwitch = ({onChange}:any) => {
   const [enabled, setEnabled] = useState(false);
 
-  const toggleSwitch = () => setEnabled(!enabled);
+  const toggleSwitch = () =>{ 
+    setEnabled(!enabled);
+    onChange(!enabled);
+  }
 
   return (
     <div className="flex items-center">

@@ -11,7 +11,15 @@ import UrlShortenForm from "@/(components)/urlShortenForm/urlShortenForm";
 
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Dashboard | URL Shortner App"
+  title: "Dashboard | URL Shortner App",
+  description: "Manage and shorten your URLs with ease using our app.",
+  // openGraph: {
+  //   title: "Dashboard | URL Shortener App",
+  //   description: "Manage and shorten your URLs with ease using our app.",
+  //   images: "https://th.bing.com/th/id/R.a945d89eb85ba3a23d4cd7eceadf7b10?rik=H%2f49oOqKJYf9%2bg&riu=http%3a%2f%2fcdn.kidscreen.com%2fwp%2fwp-content%2fuploads%2f2016%2f08%2fMasha.jpg%3f25a214&ehk=lu2%2bgeaIxm%2fOk9AmJ7bkyD8qrjHpcn5fYfyQ0Z19N2A%3d&risl=&pid=ImgRaw&r=0", // URL to the OpenGraph image
+  //   url: "http://localhost:3000/dashboard",
+  //   type: "website",
+  // },
 };
 
 const Dashboard=()=> {
@@ -90,11 +98,6 @@ const Dashboard=()=> {
             </div>
           </div>
         </div>
-
-        <div className="flex items-center justify-center gap-[15px] text-text_secondary mb-[38px] mt-[19px]">
-          <ToggleSwitch />
-          <div>Auto paste from clipboard</div>
-        </div>
       </header>
       {/* <form onSubmit={shorten} className="relative flex flex-col gap-[32px] w-[659px] lg:w-[659px] 2xl:w-[1100px]">
             <i className="absolute left-[25px] top-[24px] text-text_secondary">
@@ -126,15 +129,24 @@ const Dashboard=()=> {
         <div className="flex gap-[10px] items-center"><IoStatsChartOutline/>Statistics</div>
         <div className="flex gap-[10px] items-center"><IoSettingsOutline/>Settings</div>
       </div>
+      {/* <div className=" hover:flex hidden items-center justify-between mb-[28px]">
+          <div className="text-text_secondary font-bold text-[20px]">
+            History <span>({filteredLinks?.length})</span>
+          </div>
+          <div className="bg-brand_grey border border-input_border_clr h-[44px] text-input_txt_clr font-bold text-[15px] rounded-[48px] flex items-center justify-center py-[21px] w-[113.19px] pr-[25.19px] pl-[25px] gap-[10px]">
+            <CiFilter />
+            <div>Filter</div>
+            <Filter onFilterChange={handleFilterChange} />
+          </div>
+        </div> */}
+        
 
-      <div className="flex items-center justify-between mx-[163px] mb-[28px]">
-        <div className="text-text_secondary font-bold text-[20px]">History <span>(143)</span></div>
-        <div className="bg-brand_grey border border-input_border_clr h-[44px] text-input_txt_clr font-bold text-[15px] rounded-[48px] flex items-center justify-center py-[21px] w-[113.19px] pr-[25.19px] pl-[25px] gap-[10px]">
-          <CiFilter/>
-          <div>Filter</div>
-        </div>
+      
+              <div className="mx-[153px] "><LinkTable/></div>
+      <div style={{background: 'linear-gradient(180deg, rgba(11, 16, 27, 0) 15.74%, rgba(11, 16, 27, 0.57) 50.38%)'}} className="absolute xxl:w-[1421px] xxl:h-[148px] xxl:left-[153px] xxl:top-[1026px] filter blur-[21px] backdrop-blur-[5px] ">
+      <div className="absolute text-white">hello</div>
       </div>
-              <div className="mx-[153px]"><LinkTable/></div>
+
       
     </>
   );

@@ -1,4 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes rotate-cube {
+  from {
+    transform: rotateZ(45deg);
+  }
+  to {
+    transform: rotateZ(30.72deg);
+  }
+}
+
+.rotating-cube-1 {
+  position: absolute;
+  top: 0%;
+  left: 67.55%;
+  right: 15.28%;
+  bottom: 65.22%;
+  width: 261.21px;
+  z-index: -10;
+  height: 261.21px;
+  border-radius: 59.217px;
+  background: #0e131e;
+  box-shadow: 0px -24px 39px #040406, 0px 10.7667px 26.9168px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(43.0669px);
+  transform-style: preserve-3d;
+  transform: translate(-45deg);
+  animation: rotate-cube 10s infinite linear;
+}
+.rotating-cube-2 {
+  position: absolute;
+  top: 59.17%;
+  left: 64.13%;
+  right: 13.8%;
+  bottom: 17.41%;
+  width: 335.74px;
+  z-index: -10;
+  height: 335.74px;
+  border-radius: 59.217px;
+  background: #0e131e;
+  box-shadow: 0px 25px 39px #040406, 0px 10.7667px 26.9168px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(43.0669px);
+  transform-style: preserve-3d;
+  transform: translate(-45deg);
+  animation: rotate-cube 10s infinite linear;
+}
+.rotating-cube-3 {
+  position: absolute;
+  top: 70.05%;
+  left: 10%;
+  right: 77.94%;
+  bottom: 6.53%;
+  width: 335.74px;
+  z-index: -10;
+  height: 335.74px;
+  border-radius: 59.217px;
+  background: #0e131e;
+  box-shadow: 0px -24px 39px #040406, 0px 10.7667px 26.9168px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(43.0669px);
+  transform-style: preserve-3d;
+  transform: translate(-45deg);
+  animation: rotate-cube 10s infinite linear;
+}
+
+/* .rotating-cube {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+} */
+
+.cube-1 {
+  transform: rotateZ(45deg) translateZ(100px);
+}
+
+.cube-2 {
+  transform: rotateZ(45deg) translateZ(100px);
+}
+
+.cube-3 {
+  transform: rotateZ(45deg) translateZ(100px);
+}

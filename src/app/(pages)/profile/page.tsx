@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const Profile = () => {
   return (
-    <div>
+    <div className="">
        <header className="mt-[44px]">
         <div className="flex items-center justify-between mx-[52px]">
           <Logo />

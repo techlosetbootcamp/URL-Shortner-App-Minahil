@@ -6,7 +6,19 @@ import ToggleSwitch from "@/(components)/toggleSwitch/ToggleSwitch";
 import LinkTable from "@/(components)/linkData/LinkData";
 import UrlShortenForm from "@/(components)/urlShortenForm/urlShortenForm";
 import FreeAccess from "@/(components)/freeAccess/FreeAccess";
+import { Metadata } from "next";
+import oglImg from "/src/assets/images/Linkly.png";
 
+export const metadata: Metadata = {
+  description: "Manage and shorten your URLs with ease using our app.",
+  // openGraph: {
+  //   title: "URL Shortener App",
+  //   description: "Manage and shorten your URLs with ease using our app.",
+  //   images:`${oglImg}`,
+  //   url: "http://localhost:3000/",
+  //   type: "website",
+  // },
+};
 export default function Home() {
   return (
    <>
@@ -61,9 +73,9 @@ export default function Home() {
             <UrlShortenForm/>
 
             <div className="mt-[32px] flex flex-col items-center gap-[16px]">
-              <div className="flex items-center gap-[15px] text-text_secondary">
-                <ToggleSwitch />
-                <div>Auto paste from clipboard</div>
+             
+               
+              
                 {/* <div className="flex items-center">
       <div
         onClick={toggleSwitch}
@@ -79,7 +91,7 @@ export default function Home() {
       </div>
      
     </div> */}
-              </div>
+
               <FreeAccess/>
             </div>
           </div>
