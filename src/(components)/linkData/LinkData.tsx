@@ -9,6 +9,7 @@ import useLinkData from "./useLinkData";
 import { CiFilter } from "react-icons/ci";
 import Filter from "../filter/Filter";
 import Link from "next/link";
+import Loader from "../loader/Loader";
 
 const LinkTable = () => {
   const {
@@ -24,7 +25,7 @@ const LinkTable = () => {
     linkImages,
   } = useLinkData();
 
-  if (url.isLoading) return <div className="text-white">Loading...</div>;
+  if (url.isLoading) return <Loader/>;
 
   return (
     <>
@@ -33,14 +34,14 @@ const LinkTable = () => {
           <div className="text-text_secondary font-bold text-[20px]">
             History <span>({filteredLinks?.length})</span>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center gap-[10px]">
             <Link href="/url/add">
-              <button className="flex items-center justify-center gap-[10px] text-white bg-brand_grey rounded-full border border-input_border_clr py-[21px] pr-[25.19px] pl-[25px]">
+              <button className="flex items-center justify-center gap-[10px] text-input_txt_clr font-bold text-[15px] bg-brand_grey rounded-full border border-input_border_clr py-[9px] pr-[25.19px] pl-[25px]">
                 Custom Slug
                 <GrAdd />
               </button>
             </Link>
-            <div className="bg-brand_grey border border-input_border_clr h-[44px] text-input_txt_clr font-bold text-[15px] rounded-[48px] flex items-center justify-center py-[21px] w-[113.19px] pr-[25.19px] pl-[25px] gap-[10px]">
+            <div className="cursor-pointer bg-brand_grey border border-input_border_clr h-[44px] text-input_txt_clr font-bold text-[15px] rounded-[48px] flex items-center justify-center py-[21px] w-[113.19px] pr-[25.19px] pl-[25px] gap-[10px]">
               <CiFilter />
               <Filter onFilterChange={handleFilterChange} />
             </div>

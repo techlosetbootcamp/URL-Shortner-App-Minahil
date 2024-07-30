@@ -13,6 +13,7 @@ const useEditProfileForm=()=>{
     const { user, isLoading, isError } = useFetchUser();
     const email=user?.email;
     const prevName=user?.name;
+    const [loading, setLoading] = useState(false); 
     const [name, setName] = useState(user?.name || ""); 
     const [newEmail, setEmail] = useState(user?.email || ""); 
     
@@ -26,6 +27,7 @@ const router=useRouter();
     }
     else
         {
+          setLoading(true);
           e.preventDefault();
           dispatch(editUser({name,email,newEmail}));
         if(newEmail!=email){
@@ -34,10 +36,14 @@ const router=useRouter();
             callbackUrl: `${window.location.origin}/login`,
           });    
           toast.success("Sign in again"); 
-        } 
+          setLoading(false);
+        }
         else{
-          router.push('/profile');
+          setLoading(false);
+          router.push('/dashboard');
+
         } 
+        
 }
     };
     return { user, isLoading, isError,name, setName,newEmail, setEmail,handleSaveChanges };

@@ -3,10 +3,11 @@ import useEditProfileForm from "@/(components)/editProfileForm/useEditProfileFor
 import InputField from "../input/Input";
 import Button from "../button/Button";
 import Link from "next/link";
+import Loader from "../loader/Loader";
 
 const EditProfileForm=()=>{
     const { user,isLoading,name, setName,newEmail, setEmail,handleSaveChanges}=useEditProfileForm();
-    if(isLoading) return <div className="text-white">Loading....</div>
+    if(isLoading) return <Loader/>
     return(
         <form onSubmit={handleSaveChanges} className="flex mt-20 gap-7 flex-col items-center justify-center text-text_secondary w-full ">
         <div className="flex gap-2 items-center justify-between">

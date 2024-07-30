@@ -78,7 +78,10 @@ const Dashboard=()=> {
             <TfiLink className="text-white" />
           </div>
         </div> */}
-        
+        {/* <button className="flex items-center justify-center gap-[10px] text-input_txt_clr font-bold text-[15px] bg-brand_grey rounded-full border border-input_border_clr py-[9px] pr-[25.19px] pl-[25px]">
+                Custom Slug
+                <GrAdd />
+              </button> */}
           <div className="flex gap-[20px]">
             <div className="flex items-center justify-center w-[191px] h-[60px] rounded-[48px] bg-input_bg_clr border border-input_border_clr py-[21px] pr-[25] pl-[25px]">
             {/* <button

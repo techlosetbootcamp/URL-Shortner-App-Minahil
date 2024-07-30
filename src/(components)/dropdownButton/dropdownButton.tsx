@@ -13,7 +13,7 @@ const DropdownButton = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  if(isLoading) return <div>Loading....</div>
+  if(isLoading) return <div className="text-white" >Loading....</div>
 
   return (
     <div className="relative inline-block text-left">
