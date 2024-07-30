@@ -5,10 +5,10 @@ import Button from "../button/Button";
 import Link from "next/link";
 
 const EditProfileForm=()=>{
-    const { isLoading,name, setName,newEmail, setEmail,handleSaveChanges}=useEditProfileForm();
+    const { user,isLoading,name, setName,newEmail, setEmail,handleSaveChanges}=useEditProfileForm();
     if(isLoading) return <div className="text-white">Loading....</div>
     return(
-        <form className="flex mt-20 gap-7 flex-col items-center justify-center text-text_secondary">
+        <form onSubmit={handleSaveChanges} className="flex mt-20 gap-7 flex-col items-center justify-center text-text_secondary w-full ">
         <div className="flex gap-2 items-center justify-between">
           <div>Name: </div>
           <InputField
@@ -26,10 +26,8 @@ const EditProfileForm=()=>{
           />
         </div>
 
-        <Button onClick={()=>handleSaveChanges()} text="Save Changes" width="200px" />
-        <Link href={'/password/change'}>
-          <Button text="Change Password" width="200px" />
-        </Link>
+        <Button type="submit" text="Save Changes" width="200px" />
+        
       </form>
     );
 };

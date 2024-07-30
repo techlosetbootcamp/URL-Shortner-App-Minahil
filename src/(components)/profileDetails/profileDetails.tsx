@@ -3,14 +3,10 @@ import Link from "next/link";
 import Button from "../button/Button";
 import useProfileDetails from "./useProfileDetails";
 
-type ProfileDetailProps = {
-  name: string | undefined;
-  email: string | undefined;
-};
 
 const ProfileDetails = () => {
   const { getInitials, user, isLoading, isError } = useProfileDetails();
-
+if(isLoading) return <div className="text-white">Loading...</div>
   return (
     <div className="px-6 py-4 mt-20 flex flex-col gap-7 items-center justify-center">
       <div className="flex items-center justify-center">

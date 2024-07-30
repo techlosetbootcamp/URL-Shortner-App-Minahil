@@ -40,7 +40,30 @@ const Dashboard=()=> {
           </div>
         </div> */}
         {/* py-[21px] pr-[25.19px] pl-[25px] */}
-        
+        {/* {url?.urls![0]?.user_email ? (
+        <div className="flex items-center justify-between mb-[28px]">
+          <div className="text-text_secondary font-bold text-[20px]">
+            History <span>({filteredLinks?.length})</span>
+          </div>
+          <div className="flex items-center">
+            <Link href='/url/add'>
+            <button className="flex items-center justify-center gap-[10px] text-white bg-brand_grey rounded-full border border-input_border_clr py-[21px] pr-[25.19px] pl-[25px]">
+          Custom Slug
+            <GrAdd/>
+            </button></Link>
+         
+
+          <div className="bg-brand_grey border border-input_border_clr h-[44px] text-input_txt_clr font-bold text-[15px] rounded-[48px] flex items-center justify-center py-[21px] w-[113.19px] pr-[25.19px] pl-[25px] gap-[10px]">
+            <CiFilter />
+           
+            <button className=""><Filter onFilterChange={handleFilterChange} /></button>
+          </div>
+          </div>
+          
+        </div>
+      ) : (
+        ""
+      )} */}
           <div className=" mt-[50px]"><UrlShortenForm/></div>
           
           {/* <div className="flex items-center gap-[10px]">
@@ -152,13 +175,123 @@ const Dashboard=()=> {
         </div> */}
         
 
-      
+      {/* <div style={{
+                  backgroundColor: "#rgba(24, 30, 41, .22)",
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.10)",
+                  marginTop: "3px", // Gap between rows
+                }} className="text-white backdrop-blur-[28px]">hello</div> */}
               <div className="mx-[153px] "><LinkTable/></div>
       {/* <div style={{background: 'linear-gradient(180deg, rgba(11, 16, 27, 0) 15.74%, rgba(11, 16, 27, 0.57) 50.38%)'}} className="absolute xxl:w-[1421px] xxl:h-[148px] xxl:left-[153px] xxl:top-[1026px] filter blur-[21px] backdrop-blur-[5px] ">
       <div className="absolute text-white">hello</div>
       </div> */}
 
-      
+{/* <div className="overflow-x-auto">
+        <table className="min-w-full bg-input_bg_clr rounded-md">
+          <thead className="w-full">
+            <tr className="text-text_secondary py-[21px] pr-[25.19px] pl-[25px] bg-input_bg_clr">
+              <th className="p-3 text-left">Short Link</th>
+              <th className="p-3 text-left">Original Link</th>
+              <th className="p-3 text-left">QR Code</th>
+              <th className="p-3 text-left">Clicks</th>
+              <th className="p-3 text-left">Status</th>
+              <th className="p-3 text-left">Date</th>
+              {url?.urls![0]?.user_email && <th className="p-3 text-left">Action</th>}
+            </tr>
+          </thead>
+          <tbody>
+            {filteredLinks?.map((link) => (
+              <tr
+                key={link.urlCode}
+                className="text-text_secondary py-[21px] pr-[25.19px] pl-[25px] bg-rgba(24, 30, 41, 0.22) flex items-center bg-rgba(24, 30, 41, 0.22) justify-between"
+                style={{
+                  backgroundColor: "#181E29",
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.10)",
+                  marginBottom: "3px", // Gap between rows
+                }}
+              >
+                <td className="p-3">
+                  <div className="flex items-center gap-[10px]">
+                    <div className="font-bold">{link.shortUrl}</div>
+                    <div className="h-[35px] py-[21px] pr-[25.19px] pl-[25px] flex items-center justify-center w-[35px] rounded-[31px] bg-copy_button_clr opacity-[69%]">
+                      <FaCopy
+                        onClick={() => handleCopy(link?.shortUrl!)}
+                        className="cursor-pointer"
+                      />
+                    </div>
+                  </div>
+                </td>
+                <td className="p-3">
+                  <div className="flex items-center gap-[10px]">
+                    <div className="h-[32px] w-[32px] flex items-center justify-center rounded-[31px] bg-copy_button_clr opacity-[69%]">
+                      <Image
+                        unoptimized={true}
+                        src={linkImages[link?.urlCode!] || imgFile}
+                        alt=""
+                        width={32}
+                        height={32}
+                      />
+                    </div>
+                    <div className="font-bold max-w-[300px] text-ellipsis truncate">{link?.originalUrl}</div>
+                  </div>
+                </td>
+                <td className="p-3">
+                  {link.qrCode && (
+                    <a href={link.qrCode} download>
+                      <Image src={link.qrCode} alt="" width={32} height={32} />
+                    </a>
+                  )}
+                </td>
+                <td className="p-3">{link.analytics?.analytic.clicked}</td>
+                <td
+                  onClick={() => handleToggleStatus(link?.urlCode!, link?.active!)}
+                  className="p-3 cursor-pointer"
+                >
+                  <div
+                    className={`${
+                      link.active
+                        ? "text-active_link_clr"
+                        : "text-inactive_link_clr"
+                    } font-thin`}
+                  >
+                    {link.active ? "Active" : "Inactive"}
+                  </div>
+                  <div
+                    className={`h-[35px] w-[35px] rounded-[31px] px-[8px] py-[3.5px] ${
+                      link?.active ? "bg-active_link_clr" : "bg-inactive_link_clr"
+                    } opacity-15 flex items-center justify-center`}
+                  >
+                    <TfiLink className="text-white" />
+                  </div>
+                </td>
+                <td className="p-3">{formatDate(link?.analytics?.analytic.updatedAt!)}</td>
+                <td className="p-3">
+                  {link?.user_email && (
+                    <div className="flex items-center gap-[10px]">
+                      <button
+                        style={{
+                          filter: "drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.10))",
+                        }}
+                        className="flex items-center justify-center p-[13px] px-[13.09px] border border-input_border_clr bg-input_bg_clr rounded-[48px]"
+                        onClick={() => handleEdit(link?.urlCode!)}
+                      >
+                        <GrEdit />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(link?.urlCode!)}
+                        disabled={loading}
+                        className="flex items-center justify-center p-[13px] px-[13.09px] border border-input_border_clr bg-input_bg_clr rounded-[48px]"
+                      >
+                        <AiOutlineDelete />
+                      </button>
+                    </div>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div> */}
+
     </>
   );
 }

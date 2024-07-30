@@ -5,31 +5,40 @@ import useFetchUser from "@/hooks/useFetchUser";
 import { editUser } from "@/redux/slices/userSlice";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const useEditProfileForm=()=>{
     const dispatch= useAppDispatch();
     const { user, isLoading, isError } = useFetchUser();
     const email=user?.email;
-    console.log(email);
+    const prevName=user?.name;
     const [name, setName] = useState(user?.name || ""); 
     const [newEmail, setEmail] = useState(user?.email || ""); 
     
 const router=useRouter();
-    const handleSaveChanges = () => {
-      //e.preventDefault();
-      
-        
-        dispatch(editUser({name,email,newEmail}));
+    const handleSaveChanges = (e: React.FormEvent<HTMLFormElement>) => {
+      if (name === prevName && newEmail === email) {
+        e.preventDefault();
+        console.log("helllo");
+        toast.success("Nothing to save/update");
+        return;
+    }
+    else
+        {
+          e.preventDefault();
+          dispatch(editUser({name,email,newEmail}));
         if(newEmail!=email){
           signOut({
             redirect: true,
             callbackUrl: `${window.location.origin}/login`,
           });    
           toast.success("Sign in again"); 
-        }  
-
+        } 
+        else{
+          router.push('/profile');
+        } 
+}
     };
     return { user, isLoading, isError,name, setName,newEmail, setEmail,handleSaveChanges };
 };

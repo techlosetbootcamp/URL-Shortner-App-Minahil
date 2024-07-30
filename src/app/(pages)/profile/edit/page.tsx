@@ -1,5 +1,7 @@
+import Button from "@/(components)/button/Button";
 import EditProfileForm from "@/(components)/editProfileForm/EditProfileForm";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Edit Profile | URL Shortner App"
@@ -10,7 +12,7 @@ export const metadata: Metadata = {
 const EditProfile=()=>{
     
     return(
-        <div>
+        <div className="flex flex-col items-center justify-center gap-9">
           {/* <form className="flex mt-20 gap-7 flex-col items-center justify-center text-text_secondary">
         <div className="flex gap-2 items-center justify-between">
           <div>Name: </div>
@@ -35,6 +37,10 @@ const EditProfile=()=>{
         </Link>
       </form> */}
       <EditProfileForm/>
+
+      <Link className="" href={'/password/change'}>
+          <Button text="Change Password" width="200px" />
+        </Link>
     </div>
     );
 }

@@ -96,6 +96,11 @@ export default function Home() {
      
     </div> */}
 
+{/* <div className="text-text_secondary">
+                You can create <b className="text-brand_primary_pink">{FREE_URL_LIMIT - shortenedUrlsCount}</b>{" "}
+                more links. Register Now to enjoy Unlimited usage
+              </div> */}
+
               <FreeAccess/>
             </div>
           </div>
