@@ -7,7 +7,6 @@ import LinkTable from "@/(components)/linkData/LinkData";
 import UrlShortenForm from "@/(components)/urlShortenForm/urlShortenForm";
 import FreeAccess from "@/(components)/freeAccess/FreeAccess";
 import { Metadata } from "next";
-import oglImg from "/src/assets/images/Linkly.png";
 
 export const metadata: Metadata = {
   description: "Manage and shorten your URLs with ease using our app.",
