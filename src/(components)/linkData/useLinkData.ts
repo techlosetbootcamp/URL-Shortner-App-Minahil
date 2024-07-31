@@ -29,30 +29,30 @@ const useLinkData = () => {
 
   const [filterCriteria, setFilterCriteria] = useState<string>("");
 
-  const [linkImages, setLinkImages] = useState<{ [key: string]: string }>({});
+  // const [linkImages, setLinkImages] = useState<{ [key: string]: string }>({});
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      const images: { [key: string]: string } = {};
+  // useEffect(() => {
+  //   const fetchImages = async () => {
+  //     const images: { [key: string]: string } = {};
 
-      for (const link of url?.urls!) {
-        if (link.urlCode) {
-          try {
-            const response = await AxiosInstance.get(`/ogImage`, {
-              params: { url: link.originalUrl }
-            });
-            images[link.urlCode] = response.data.image;
-          } catch (error) {
+  //     for (const link of url?.urls!) {
+  //       if (link.urlCode) {
+  //         try {
+  //           const response = await AxiosInstance.get(`/ogImage`, {
+  //             params: { url: link.originalUrl }
+  //           });
+  //           images[link.urlCode] = response.data.image;
+  //         } catch (error) {
             
-          }
-        }
-      }
+  //         }
+  //       }
+  //     }
 
-      setLinkImages(images);
-    };
+  //     setLinkImages(images);
+  //   };
 
-    fetchImages();
-  }, [url?.urls]);
+  //   fetchImages();
+  // }, [url?.urls]);
 
   useEffect(() => {
     dispatch(getUrls());
@@ -107,7 +107,7 @@ const useLinkData = () => {
     }
   };
 
-  return { url, handleCopy, handleToggleStatus, formatDate, handleEdit, handleDelete, loading, handleFilterChange, filteredLinks,linkImages };
+  return { url, handleCopy, handleToggleStatus, formatDate, handleEdit, handleDelete, loading, handleFilterChange, filteredLinks };
 };
 
 export default useLinkData;

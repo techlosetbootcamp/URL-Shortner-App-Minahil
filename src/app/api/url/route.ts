@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/options";
 import { urlType } from "@/constants/types/types";
 import { GenerateQRCode } from "@/constants/generateQrCode";
+import { load } from "cheerio";
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   const session = await getServerSession(authOptions);
@@ -19,9 +20,53 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     }
 
     const host = req.headers.get("host");
-
     const { shortCode, shortUrl } = generateShortUrl(host!);
     const qrCode = await GenerateQRCode(shortUrl);
+
+    let htmlContent;
+    try {
+      htmlContent = await fetch(url).then((res) => res.text());
+    } catch (fetchError) {
+      console.error("Error fetching URL:", fetchError);
+      return NextResponse.json(
+        { message: "Error fetching URL content" },
+        { status: 500 }
+      );
+    }
+
+    const $ = load(htmlContent);
+    console.log($);
+    const favicon =
+      $('link[rel="icon"]').attr("href") ||
+      $('link[rel="shortcut icon"]').attr("href") ||
+      $('link[rel="apple-touch-icon"]').attr("href") ||
+      $('link[rel="apple-touch-icon-precomposed"]').attr("href");
+
+    const ogImage = $('meta[property="og:image"]').attr("content");
+    const twitterImage = $('meta[name="twitter:image"]').attr("content");
+    const appTileImage = $('meta[name="msapplication-TileImage"]').attr(
+      "content"
+    );
+
+    console.log("ogImage:", ogImage);
+    console.log("twitterImage:", twitterImage);
+    console.log("appTileImage:", appTileImage);
+    console.log("favicon:", favicon);
+    let faviconUrl = "";
+    if (favicon) {
+      try {
+        const baseUrl = new URL(url);
+        faviconUrl = new URL(favicon, baseUrl.origin).href;
+      } catch (urlError) {
+        console.error("Error resolving favicon URL:", urlError);
+      }
+    }
+
+    console.log("Resolved faviconUrl:", faviconUrl);
+
+    const image = faviconUrl || ogImage || twitterImage || appTileImage || "";
+
+    console.log("Final image selected:", image);
 
     const result = await prisma.$transaction(async (tx) => {
       const originalUrl = await tx.url.findFirst({
@@ -39,6 +84,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
       const newUrl = await tx.url.create({
         data: {
           originalUrl: url,
+          iconImg: image,
           shortUrl,
           qrCode: qrCode,
           urlCode: shortCode!,
@@ -70,6 +116,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
       { status: 200 }
     );
   } catch (error) {
+    console.error("Error in POST handler:", error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }
@@ -94,6 +141,7 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
       { status: 200 }
     );
   } catch (error) {
+    console.error("Error in GET handler:", error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }

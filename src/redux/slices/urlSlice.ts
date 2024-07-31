@@ -30,6 +30,7 @@ export const shortenUrl = createAsyncThunk(
         const urlData = {
           id: response.data.result.id,
           originalUrl: response.data.result.originalUrl,
+          iconImg: response.data.result.iconImg,
           shortUrl: response.data.result.shortUrl,
           qrCode: response.data.result.qrCode,
           urlCode: response.data.result.urlCode,
@@ -65,6 +66,7 @@ export const shortenUrlWithCustomSlug = createAsyncThunk(
         const urlData = {
           id: response.data.result.id,
           originalUrl: response.data.result.originalUrl,
+          iconImg: response.data.result.iconImg,
           shortUrl: response.data.result.shortUrl,
           qrCode: response.data.result.qrCode,
           urlCode: response.data.result.urlCode,
@@ -122,6 +124,7 @@ export const getUrls = createAsyncThunk(
         const urls = response.data.result.map((url: any) => ({
           id: url.id,
           originalUrl: url.originalUrl,
+          iconImg: url.iconImg,
           shortUrl: url.shortUrl,
           qrCode: url.qrCode,
           urlCode: url.urlCode,

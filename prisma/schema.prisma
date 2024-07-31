@@ -30,6 +30,7 @@ model User {
 model Url {
   id          String        @id @default(auto()) @map("_id") @db.ObjectId
   originalUrl String
+  iconImg     String
   shortUrl    String        @unique
   active      Boolean       @default(true)
   qrCode      String

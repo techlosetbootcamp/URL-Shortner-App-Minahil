@@ -32,7 +32,7 @@ const EditUrlForm=({urlCode}:urlType)=>{
           </div>
         </div>
    
-        <Button type="submit" text="Edit Url" width="268px"/>
+        <Button type="submit" text="Edit Url" paddingLeft="90px" paddingRight="90px"/>
       </form>
     );
 };

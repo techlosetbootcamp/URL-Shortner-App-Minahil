@@ -49,6 +49,7 @@ export type urlType = {
   analytics?: urlAnalyticType;
   id?: string;
   originalUrl?: string;
+  iconImg?: string;
   qrCode?:string;
   shortUrl?: string;
   urlCode?: string;

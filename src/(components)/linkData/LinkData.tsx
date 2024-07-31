@@ -21,8 +21,7 @@ const LinkTable = () => {
     handleDelete,
     loading,
     handleFilterChange,
-    filteredLinks,
-    linkImages,
+    filteredLinks
   } = useLinkData();
 
   if (url.isLoading) return <Loader/>;
@@ -90,7 +89,7 @@ const LinkTable = () => {
                     <div className="h-[32px] w-[32px] flex items-center justify-center rounded-[4px]">
                       <Image
                         unoptimized={true}
-                        src={linkImages[link?.urlCode!] || imgFile}
+                        src={link.iconImg || imgFile}
                         alt=""
                         width={32}
                         height={32}
