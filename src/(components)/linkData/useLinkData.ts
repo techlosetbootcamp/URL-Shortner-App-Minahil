@@ -43,7 +43,7 @@ const useLinkData = () => {
             });
             images[link.urlCode] = response.data.image;
           } catch (error) {
-            console.error('Failed to fetch image for link:', link.originalUrl, error);
+            
           }
         }
       }

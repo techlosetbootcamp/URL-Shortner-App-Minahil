@@ -4,6 +4,8 @@ import { MouseEventHandler } from "react";
     type?: string;
     text:string;
     width?:string;
+    paddingRight?:string;
+    paddingLeft?:string;
     disabled?: boolean;
     onClick?:MouseEventHandler<HTMLButtonElement> | undefined;
   };

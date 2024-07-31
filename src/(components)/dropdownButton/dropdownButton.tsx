@@ -29,7 +29,7 @@ const DropdownButton = () => {
           <div className="text-white flex gap-[10px] items-center">
             <div className="flex flex-col text-left">
               <div className="flex text-[10px]">Welcome</div>
-              <div className="flex text-[16px] font-semibold">{user?.name}</div>
+              <div className="flex text-[16px] font-semibold text-nowrap">{user?.name}</div>
             </div>
             <div>
               <IoIosArrowDown className="text-text_secondary h-[28px] w-[20px]" />
@@ -47,7 +47,7 @@ const DropdownButton = () => {
         >
           <div
             style={{ borderRadius: "10px", padding: "10px" }}
-            className="py-10 flex justify-center flex-col gap-10 items-center text-left  text-white"
+            className="py-10 flex justify-center flex-col gap-[7px] items-center text-left text-white"
             role="none"
           >
             <button

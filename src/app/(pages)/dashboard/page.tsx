@@ -10,6 +10,7 @@ import DropdownButton from "@/(components)/dropdownButton/dropdownButton";
 import UrlShortenForm from "@/(components)/urlShortenForm/urlShortenForm";
 
 import { Metadata } from "next";
+import Filter from "@/(components)/filter/Filter";
 export const metadata: Metadata = {
   title: "Dashboard | URL Shortner App",
   description: "Manage and shorten your URLs with ease using our app.",
@@ -27,8 +28,9 @@ const Dashboard=()=> {
   return (
     <>
       <header>
-        <div className="flex items-center justify-between mx-[52px] mt-[44px]">
-          <Logo />
+        <div className="flex items-start justify-between mx-[52px] mt-[44px] mb-[38px]">
+          <div className="mt-[10px]"><Logo /></div>
+          
           {/* <div>{(link?.user_email)? <div className="text-white flex items-center gap-[10px]"> <button style={{filter: "drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.10))"}} className="flex items-center justify-center p-[13px] px-[13.09px] border border-input_border_clr bg-input_bg_clr rounded-[48px]" onClick={()=>handleEdit(link?.urlCode!)}><GrEdit/></button><button onClick={()=>handleDelete(link?.urlCode!)} className="flex items-center justify-center p-[13px] px-[13.09px] border border-input_border_clr bg-input_bg_clr rounded-[48px]"><AiOutlineDelete/></button> </div>:""}</div> */}
        {/* <div className="flex items-center justify-between mb-[28px]">
           <div className="text-text_secondary font-bold text-[20px]">
@@ -64,7 +66,7 @@ const Dashboard=()=> {
       ) : (
         ""
       )} */}
-          <div className=" mt-[50px]"><UrlShortenForm/></div>
+          <div className=""><UrlShortenForm/></div>
           
           {/* <div className="flex items-center gap-[10px]">
           <div className="text-active_link_clr">Active</div>
@@ -82,8 +84,10 @@ const Dashboard=()=> {
                 Custom Slug
                 <GrAdd />
               </button> */}
-          <div className="flex gap-[20px]">
-            <div className="flex items-center justify-center w-[191px] h-[60px] rounded-[48px] bg-input_bg_clr border border-input_border_clr py-[21px] pr-[25] pl-[25px]">
+          <div className="flex mt-[7px] gap-[20px]">
+          <div className="flex items-center rounded-[48px] bg-input_bg_clr border border-input_border_clr py-[12.5px] px-[34.31px]">
+              <DropdownButton/>
+            </div>
             {/* <button
               style={{
                 filter: "drop-shadow(10px 9px 10px rgba(20, 78, 227, 0.38))",
@@ -107,7 +111,6 @@ const Dashboard=()=> {
             >
               Logout
             </button> */}
-                <DropdownButton />
                 {/* <button style={{
               
               filter: "drop-shadow(10px 9px 10px rgba(220, 38, 38, 0.38))",
@@ -120,15 +123,14 @@ const Dashboard=()=> {
           </button> */}
                 
               
-            </div>
-
-            <div
+            
+                <div
               style={{
                 filter: "drop-shadow(10px 9px 10px rgba(20, 78, 227, 0.38))",
               }}
-              className="cursor-pointer relative w-[58px] h-[58px] rounded-[48px] bg-brand_primary_blue flex items-center justify-center"
+              className="cursor-pointer relative w-[58px] h-[58px] rounded-[48px] bg-brand_primary_blue py-[21px] px-[21.98px] flex items-center justify-center"
             >
-              <div className="text-white">
+              <div className="text-white flex items-center justify-center">
                 <sup className="absolute top-4 left-9">2</sup>
                 <FaBell />
               </div>
@@ -161,7 +163,7 @@ const Dashboard=()=> {
               Shorten Now!
             </button>
           </form> */}
-      <div className="flex mb-[41.5px] items-center justify-center font-bold gap-[64px] text-nav_clr bg-input_bg_clr h-[70px]">
+      <div className="flex mb-[26px] items-center justify-center font-bold gap-[64px] text-nav_clr bg-input_bg_clr h-[70px] w-full">
         <div className="flex gap-[10px] items-center"><FaRegClock/>History</div>
         <div className="flex gap-[10px] items-center"><IoStatsChartOutline/>Statistics</div>
         <div className="flex gap-[10px] items-center"><IoSettingsOutline/>Settings</div>
@@ -183,7 +185,11 @@ const Dashboard=()=> {
                   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.10)",
                   marginTop: "3px", // Gap between rows
                 }} className="text-white backdrop-blur-[28px]">hello</div> */}
-              <div className="mx-[153px] "><LinkTable/></div>
+              {/* <div className="cursor-pointer bg-brand_grey border border-input_border_clr h-[44px] text-input_txt_clr font-bold text-[15px] rounded-[48px] flex items-center justify-center py-[21px] w-[113.19px] pr-[25.19px] pl-[25px] gap-[10px]">
+              <CiFilter />
+              <Filter onFilterChange={()=>{}} />
+            </div> */}
+              <div className="ml-[153px] mr-[154px] "><LinkTable/></div>
       {/* <div style={{background: 'linear-gradient(180deg, rgba(11, 16, 27, 0) 15.74%, rgba(11, 16, 27, 0.57) 50.38%)'}} className="absolute xxl:w-[1421px] xxl:h-[148px] xxl:left-[153px] xxl:top-[1026px] filter blur-[21px] backdrop-blur-[5px] ">
       <div className="absolute text-white">hello</div>
       </div> */}

@@ -30,7 +30,7 @@ const LinkTable = () => {
   return (
     <>
       {url?.urls![0]?.user_email && (
-        <div className="flex items-center justify-between mb-[28px]">
+        <div className="flex items-center justify-between mb-[28px] ml-[10px]">
           <div className="text-text_secondary font-bold text-[20px]">
             History <span>({filteredLinks?.length})</span>
           </div>
@@ -53,13 +53,13 @@ const LinkTable = () => {
         <table className="min-w-full rounded-md" style={{ borderCollapse: 'separate', borderSpacing: '0 3px' }}>
           <thead className="w-full">
             <tr className="text-text_secondary py-[21px] pr-[25.19px] pl-[25px] bg-input_bg_clr">
-              <th className="p-3 text-left">Short Link</th>
-              <th className="p-3 text-left">Original Link</th>
-              <th className="p-3 text-left">QR Code</th>
-              <th className="p-3 text-left">Clicks</th>
-              <th className="p-3 text-left">Status</th>
-              <th className="p-3 text-left">Date</th>
-              {url?.urls![0]?.user_email && <th className="p-3 text-left">Action</th>}
+              <th className="py-[21px] pl-[25px] text-left">Short Link</th>
+              <th className="py-[21px] text-left">Original Link</th>
+              <th className="py-[21px] text-left">QR Code</th>
+              <th className="py-[21px] text-left">Clicks</th>
+              <th className="py-[21px] text-left">Status</th>
+              <th className="py-[21px] pr-[25.19px] text-left">Date</th>
+              {url?.urls![0]?.user_email && <th className="pr-[25.19px] text-left">Action</th>}
             </tr>
           </thead>
           <tbody>
@@ -74,7 +74,7 @@ const LinkTable = () => {
                   marginTop: "3px",
                 }}
               >
-                <td className="p-3">
+                <td className="pl-[25px] py-[21px]">
                   <div className="flex items-center gap-[10px]">
                     <div className="font-bold">{link.shortUrl}</div>
                     <div className="h-[35px] py-[3.5px] px-[10px] flex items-center justify-center w-[35px] rounded-[31px] bg-copy_button_clr opacity-[69%]">
@@ -85,7 +85,7 @@ const LinkTable = () => {
                     </div>
                   </div>
                 </td>
-                <td className="p-3">
+                <td className="py-[21px]">
                   <div className="flex items-center gap-[10px]">
                     <div className="h-[32px] w-[32px] flex items-center justify-center rounded-[4px]">
                       <Image
@@ -99,17 +99,17 @@ const LinkTable = () => {
                     <div className="font-bold max-w-[300px] text-ellipsis truncate ">{link?.originalUrl}</div>
                   </div>
                 </td>
-                <td className="p-3">
+                <td className="py-[21px]">
                   {link.qrCode && (
                     <a href={link.qrCode} download>
                       <Image src={link.qrCode} alt="" width={32} height={32} />
                     </a>
                   )}
                 </td>
-                <td className="p-3">{link.analytics?.analytic.clicked}</td>
+                <td className="py-[21px]">{link.analytics?.analytic.clicked}</td>
                 <td
                   onClick={() => handleToggleStatus(link?.urlCode!, link?.active!)}
-                  className="p-3 cursor-pointer flex gap-[10px] items-center"
+                  className="py-[21px] cursor-pointer flex gap-[10px] items-center"
                 >
                   <div
                     className={`${
@@ -128,9 +128,9 @@ const LinkTable = () => {
                     <TfiLink className="text-white" />
                   </div>
                 </td>
-                <td className="p-3">{formatDate(link?.analytics?.analytic.updatedAt!)}</td>
+                <td className="py-[21px] pr-[25.19px]">{formatDate(link?.analytics?.analytic.updatedAt!)}</td>
                 {link?.user_email && (
-                <td className="p-3">
+                <td className="py-[21px] pr-[25.19px]">
                   
                     <div className="flex items-center gap-[10px]">
                       <button

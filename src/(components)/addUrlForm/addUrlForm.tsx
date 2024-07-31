@@ -7,7 +7,7 @@ const AddUrlForm=()=>{
     const {url, setUrl,slug,setSlug,loading,handleAutoGenerate,shorten}=useAddUrlForm();
     return (
         <form onSubmit={shorten}
-        className="flex flex-col gap-[32px] items-center justify-center mt-[352px] mb-[435px]"
+        className="flex flex-col gap-[32px] items-center justify-center mt-[352px] mb-[442px]"
         
       >
         <div className="relative flex flex-col gap-[32px] w-[1100px]">
@@ -49,13 +49,13 @@ const AddUrlForm=()=>{
               filter: "drop-shadow(10px 9px 5px rgba(20, 78, 227, 0.38)",
             }}
             type="button"
-            className="absolute right-2 top-[5.5px] font-semibold bg-brand_primary_blue border border-brand_primary_blue text-white rounded-[48px] py-[21px] pr-[25.05px] pl-[25px]"
+            className="absolute text-[16px] right-2 top-[5.5px] font-semibold bg-brand_primary_blue border border-brand_primary_blue text-white rounded-[48px] py-[21px] pr-[25.05px] pl-[25px]"
           >
             Auto Generate
           </button>
         </div>
 
-        <Button  type="submit" text="Shorten Now!" width="268px"/>
+        <Button  type="submit" text="Shorten Now!" paddingLeft="80.98px" paddingRight="81.02px"/>
       </form>
     );
 };

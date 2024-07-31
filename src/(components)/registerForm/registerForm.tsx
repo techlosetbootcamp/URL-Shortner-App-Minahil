@@ -15,7 +15,7 @@ function RegisterForm() {
         <InputField type="password" placeholder="Confirm Password" />
       </div>
       <div>
-        <Button type="submit" text="Register" width="268px" disabled={loading} />
+        <Button type="submit" text="Register" paddingRight="101.52px" paddingLeft="101.48px" disabled={loading} />
       </div>
     </form>
   );

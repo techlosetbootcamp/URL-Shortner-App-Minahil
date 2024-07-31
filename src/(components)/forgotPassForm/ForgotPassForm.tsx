@@ -13,7 +13,7 @@ const ForgotPassForm=()=>{
                 <InputField type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} disabled={loading}/>
                 </div>
                 
-                <Button type="submit" width="200px" text="Submit" disabled={loading}/>
+                <Button type="submit" paddingLeft="100px" paddingRight="100px" text="Submit" disabled={loading}/>
                 <div>
                 <p style={{filter: "drop-shadow(10px 9px 10px rgba(20, 78, 227, 0.38))"}} className="flex items-center justify-center text-text_secondary">-&nbsp;OR&nbsp;-</p>
                 <Link href={'/login'} className="font-bold hover:underline hover:decoration-brand_primary_blue text-brand_primary_blue">Login here</Link>

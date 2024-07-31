@@ -32,7 +32,7 @@ if(isLoading || isError) return <Loader/>
       </div>
       <div className="mt-6">
         <Link href="/profile/edit">
-          <Button text="Edit" width="200px" />
+          <Button text="Edit" paddingRight="100px" paddingLeft="100px" />
         </Link>
       </div>
     </div>

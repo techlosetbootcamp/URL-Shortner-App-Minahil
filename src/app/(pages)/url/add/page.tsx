@@ -5,22 +5,27 @@ import DropdownButton from "@/(components)/dropdownButton/dropdownButton";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Add Custom Slug | URL Shortner App"
+  title: "Add Custom Slug | URL Shortner App",
 };
 
-const Add=()=> {
+const Add = () => {
   return (
     <>
       <header className="mt-[44px]">
-        <div className="flex items-center justify-between mx-[52px]">
+        <div className="flex items-center justify-between ml-[52px] mr-[55px]">
           <Logo />
           <div className="flex gap-[20px]">
-            <div className="flex items-center justify-center w-[191px] h-[60px] rounded-[48px] bg-input_bg_clr border border-input_border_clr py-[21px] pr-[25] pl-[25px]">
-              <DropdownButton/>
+            <div className="flex items-center rounded-[48px] bg-input_bg_clr border border-input_border_clr py-[12.5px] px-[34.31px]">
+              <DropdownButton />
             </div>
 
-            <div style={{filter: "drop-shadow(10px 9px 10px rgba(20, 78, 227, 0.38))"}} className="cursor-pointer relative w-[58px] h-[58px] rounded-[48px] bg-brand_primary_blue flex items-center justify-center">
-              <div className="text-white">
+            <div
+              style={{
+                filter: "drop-shadow(10px 9px 10px rgba(20, 78, 227, 0.38))",
+              }}
+              className="cursor-pointer relative w-[58px] h-[58px] rounded-[48px] bg-brand_primary_blue py-[21px] px-[21.98px] flex items-center justify-center"
+            >
+              <div className="text-white flex items-center justify-center">
                 <sup className="absolute top-4 left-9">2</sup>
                 <FaBell />
               </div>
@@ -28,7 +33,7 @@ const Add=()=> {
           </div>
         </div>
       </header>
-      <AddUrlForm/>
+      <AddUrlForm />
       {/* <form onSubmit={shorten}
         className="flex flex-col gap-[32px] items-center justify-center mt-[352px] mb-[435px]"
         

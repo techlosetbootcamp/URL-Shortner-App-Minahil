@@ -15,8 +15,8 @@ function LogIn() {
       <header className="mt-[40px]">
         <Logo />
       </header>
-      <div className="flex flex-col items-center justify-center mb-[262px] mt-[216px]">
-        <div className="mb-[46px] flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center mb-[240px] mt-[216px]">
+        <div className="mb-[46px] flex gap-[20px] flex-col items-center justify-center">
           <p className="font-extrabold text-[60px] leading-[80.01px] animate-text bg-gradient-to-r from-[#144EE3] via-[#EB568E] to-[#A353AA] bg-clip-text text-transparent">
             Shorten Your Loooong Links &#58;&#41;
           </p>

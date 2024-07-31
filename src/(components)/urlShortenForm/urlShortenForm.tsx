@@ -10,7 +10,7 @@ const UrlShortenForm = () => {
     <div className="flex flex-col items-center">
       <form
         onSubmit={shorten}
-        className="relative flex flex-col gap-[32px] w-[659px] lg:w-[659px] 2xl:w-[1100px]"
+        className="relative flex flex-col gap-[32px] w-[659px] xxl:w-[1100px]"
       >
         <i className="absolute left-[25px] top-[24px] text-text_secondary">
           <TfiLink className="w-[25px] h-[28px]" />
@@ -34,13 +34,13 @@ const UrlShortenForm = () => {
             filter: "drop-shadow(10px 9px 5px rgba(20, 78, 227, 0.38)",
           }}
           type="submit"
-          className="absolute right-2 top-[5.5px] font-semibold bg-brand_primary_blue border border-brand_primary_blue text-white rounded-[48px] py-[21px] pr-[25.05px] pl-[25px]"
+          className="absolute right-2 top-[5.5px] font-semibold bg-brand_primary_blue border border-brand_primary_blue text-white rounded-[48px] py-[21px] pr-[36.02px] pl-[35.98px]"
         >
           Shorten Now!
         </button>
       </form>
 
-      <div className="flex items-center justify-center gap-[15px] text-text_secondary mb-[38px] mt-[32px]">
+      <div className="flex items-center justify-center gap-[15px] text-text_secondary mt-[32px]">
         <ToggleSwitch onChange={setAutoPaste} />
         <div>Auto paste from clipboard</div>
       </div>

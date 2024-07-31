@@ -16,7 +16,7 @@ function LoginForm(){
                 
                 </div>
                 
-                <Button type="submit" text="Login" width="268px" disabled={loading} />
+                <Button type="submit" text="Login" paddingRight="112.52px" paddingLeft="112.48px" disabled={loading} />
                 </form>   
     );
 }

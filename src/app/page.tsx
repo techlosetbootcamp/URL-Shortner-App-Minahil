@@ -22,7 +22,7 @@ export default function Home() {
   return (
    <>
       <header>
-        <div className="flex items-center justify-between mx-[52px] mt-[40px]">
+        <div className="flex items-center justify-between xxl:ml-[52px] xxl:mr-[55px] mt-[40px] xxl:mb-[130px]">
           <Logo />
           {/* <div>
     <div className="flex items-center justify-center relative">
@@ -65,9 +65,9 @@ export default function Home() {
         </div>
       </header>
        <main className="">
-      <div className="flex flex-col mx-[153px]">
-        <div className="flex flex-col items-center justify-center mt-[137px] mb-[40px]">
-          <div className="flex flex-col gap-[20px] items-center mb-[41px]">
+      <div className="flex flex-col xxl:ml-[153px] xxl:mr-[154px]">
+        <div className="flex flex-col items-center justify-center mb-[40px]">
+          <div className="flex flex-col gap-[20px] items-center mb-[46px]">
             <p className="font-extrabold text-[60px] leading-[80.01px] animate-text bg-gradient-to-r from-[#144EE3] via-[#EB568E] to-[#A353AA] bg-clip-text text-transparent">
               Shorten Your Loooong Links &#58;&#41;
             </p>
@@ -78,11 +78,20 @@ export default function Home() {
               </p>
             </div>
           </div>
-
+          {/* <button
+          style={{
+            width: "183px",
+            filter: "drop-shadow(10px 9px 5px rgba(20, 78, 227, 0.38)",
+          }}
+          type="submit"
+          className="absolute right-2 top-[5.5px] font-semibold bg-brand_primary_blue border border-brand_primary_blue text-white rounded-[48px] py-[21px] pr-[36.02px] pl-[35.98px]"
+        >
+          Shorten Now!
+        </button> */}
           <div className="flex flex-col items-center">
             <UrlShortenForm/>
 
-            <div className="mt-[32px] flex flex-col items-center gap-[16px]">
+            <div className="mt-[16px] flex flex-col items-center gap-[16px]">
              
                
               

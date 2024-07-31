@@ -12,7 +12,7 @@ const ChangePassword=()=>
 {
     return(
         <>
-        <header>
+        <header className="mt-[40px]">
           <Logo/>
         </header>
         <div className="flex flex-col items-center justify-center mb-[262px] mt-[216px]">
