@@ -3,6 +3,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
 import EditUrlForm from "@/(components)/editUrlForm/EditUrlForm";
 import { Metadata } from "next";
+import DropdownButton from "@/(components)/dropdownButton/dropdownButton";
 
 type Props={
   params:{
@@ -27,15 +28,7 @@ const EditUrl=(
           <Logo />
           <div className="flex gap-[20px]">
             <div className="flex items-center justify-center w-[191px] h-[60px] rounded-[48px] bg-input_bg_clr border border-input_border_clr py-[21px] pr-[25] pl-[25px]">
-              <div className="text-white flex gap-[10px] items-center">
-                <div>
-                  <p className="text-[10px]">Welcome</p>
-                  <p className="text-[16px] font-semibold">Mohammed</p>
-                </div>
-                <div>
-                  <IoIosArrowDown className="text-text_secondary h-[28px] w-[20px]" />
-                </div>
-              </div>
+            <DropdownButton/>
             </div>
 
             <div style={{filter: "drop-shadow(10px 9px 10px rgba(20, 78, 227, 0.38))"}} className="relative w-[58px] h-[58px] rounded-[48px] bg-brand_primary_blue flex items-center justify-center">

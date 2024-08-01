@@ -88,7 +88,6 @@ const LinkTable = () => {
                   <div className="flex items-center gap-[10px]">
                     <div className="h-[32px] w-[32px] flex items-center justify-center rounded-[4px]">
                       <Image
-                        unoptimized={true}
                         src={link.iconImg || imgFile}
                         alt=""
                         width={32}
