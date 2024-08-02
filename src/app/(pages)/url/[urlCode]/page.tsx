@@ -14,6 +14,18 @@ type Props={
 export const generateMetadata = ({params}:Props):Metadata=>{
   return{
     title:`${params.urlCode} | Edit`,
+    openGraph: {
+      title: `${params.urlCode} | Edit`,
+      description: "Edit your shortened URLs with ease.",
+      images: [
+        {
+          url: `${process.env.NEXTAUTH_URL}/assets/images/linkly.svg`,
+          alt: "Linkly",
+        },
+      ],
+      url: `${process.env.NEXTAUTH_URL}/dashboard`,
+      
+    },
   };
 };
 

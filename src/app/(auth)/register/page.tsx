@@ -4,7 +4,19 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Register | URL Shortner App"
+  title: "Register | URL Shortner App",
+  openGraph: {
+    title: "Register | URL Shortener App",
+    description: "Register yourself to shorten unlimited Urls.",
+    images: [
+      {
+        url: `${process.env.NEXTAUTH_URL}/assets/images/linkly.svg`,
+        alt: "Linkly",
+      },
+    ],
+    url: `${process.env.NEXTAUTH_URL}/dashboard`,
+    
+  },
 };
 
 

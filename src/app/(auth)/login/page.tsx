@@ -7,6 +7,19 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Login | URL Shortner App",
+
+  openGraph: {
+    title: "Login | URL Shortener App",
+    description: "Login to application",
+    images: [
+      {
+        url: `${process.env.NEXTAUTH_URL}/assets/images/linkly.svg`,
+        alt: "Linkly",
+      },
+    ],
+    url: `${process.env.NEXTAUTH_URL}/dashboard`,
+    
+  },
 };
 
 function LogIn() {

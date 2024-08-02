@@ -6,6 +6,18 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Add Custom Slug | URL Shortner App",
+  openGraph: {
+    title: "Add Custom Slug | URL Shortener App",
+    description: "Manage and shorten your URLs adding custom slug.",
+    images: [
+      {
+        url: `${process.env.NEXTAUTH_URL}/assets/images/linkly.svg`,
+        alt: "Linkly",
+      },
+    ],
+    url: `${process.env.NEXTAUTH_URL}/dashboard`,
+    
+  },
 };
 
 const Add = () => {

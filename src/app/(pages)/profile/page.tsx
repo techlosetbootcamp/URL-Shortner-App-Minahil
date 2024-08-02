@@ -5,7 +5,19 @@ import { Metadata } from "next";
 import { FaBell } from "react-icons/fa6";
 
 export const metadata: Metadata = {
-  title: "Profile | URL Shortner App"
+  title: "Profile | URL Shortner App",
+  openGraph: {
+    title: "Profile | URL Shortener App",
+    description: "Manage your Profile.",
+    images: [
+      {
+        url: `${process.env.NEXTAUTH_URL}/assets/images/linkly.svg`,
+        alt: "Linkly",
+      },
+    ],
+    url: `${process.env.NEXTAUTH_URL}/dashboard`,
+    
+  },
 };
 
 

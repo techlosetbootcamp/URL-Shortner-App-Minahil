@@ -5,6 +5,18 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Edit Profile | URL Shortner App",
+  openGraph: {
+    title: "Edit Profile | URL Shortener App",
+    description: "Edit your profile.",
+    images: [
+      {
+        url: `${process.env.NEXTAUTH_URL}/assets/images/linkly.svg`,
+        alt: "Linkly",
+      },
+    ],
+    url: `${process.env.NEXTAUTH_URL}/dashboard`,
+    
+  },
 };
 
 const EditProfile = () => {

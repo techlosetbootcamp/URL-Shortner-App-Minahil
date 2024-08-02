@@ -5,6 +5,18 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Change Password | URL Shortner App",
+  openGraph: {
+    title: "Change Password | URL Shortener App",
+    description: "Change your password.",
+    images: [
+      {
+        url: `${process.env.NEXTAUTH_URL}/assets/images/linkly.svg`,
+        alt: "Linkly",
+      },
+    ],
+    url: `${process.env.NEXTAUTH_URL}/dashboard`,
+    
+  },
 };
 
 const ChangePassword = () => {

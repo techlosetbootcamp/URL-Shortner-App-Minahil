@@ -3,7 +3,20 @@ import ResetPassForm from "@/(components)/resetPassForm/ResetPassForm";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Reset Password | URL Shortner App"
+  title: "Reset Password | URL Shortner App",
+
+  openGraph: {
+    title: "Reset Password | URL Shortener App",
+    description: "Reset your password.",
+    images: [
+      {
+        url: `${process.env.NEXTAUTH_URL}/assets/images/linkly.svg`,
+        alt: "Linkly",
+      },
+    ],
+    url: `${process.env.NEXTAUTH_URL}/dashboard`,
+    
+  },
 };
 
 

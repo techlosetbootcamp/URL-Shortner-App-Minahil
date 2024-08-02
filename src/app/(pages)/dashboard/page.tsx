@@ -14,13 +14,18 @@ import Filter from "@/(components)/filter/Filter";
 export const metadata: Metadata = {
   title: "Dashboard | URL Shortner App",
   description: "Manage and shorten your URLs with ease using our app.",
-  // openGraph: {
-  //   title: "Dashboard | URL Shortener App",
-  //   description: "Manage and shorten your URLs with ease using our app.",
-  //   images: "https://th.bing.com/th/id/R.a945d89eb85ba3a23d4cd7eceadf7b10?rik=H%2f49oOqKJYf9%2bg&riu=http%3a%2f%2fcdn.kidscreen.com%2fwp%2fwp-content%2fuploads%2f2016%2f08%2fMasha.jpg%3f25a214&ehk=lu2%2bgeaIxm%2fOk9AmJ7bkyD8qrjHpcn5fYfyQ0Z19N2A%3d&risl=&pid=ImgRaw&r=0", // URL to the OpenGraph image
-  //   url: "http://localhost:3000/dashboard",
-  //   type: "website",
-  // },
+  openGraph: {
+    title: "Dashboard | URL Shortener App",
+    description: "Manage and shorten your URLs with ease using our app.",
+    images: [
+      {
+        url: `${process.env.NEXTAUTH_URL}/assets/images/linkly.svg`,
+        alt: "Linkly",
+      },
+    ],
+    url: `${process.env.NEXTAUTH_URL}/dashboard`,
+    
+  },
 };
 
 const Dashboard = () => {
