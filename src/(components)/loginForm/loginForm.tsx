@@ -8,7 +8,7 @@ function LoginForm(){
     const {email, setEmail,password, setPassword,loading,login}=useLoginForm();
     return(
         <form onSubmit={login} className="flex flex-col gap-[32px] items-center justify-center" action="">
-                <div className="flex flex-col gap-[32px] w-[659px]">
+                <div className="flex flex-col gap-[32px] md:w-[659px] sm:w-[559px] xs:w-[359px]">
                 <InputField type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} disabled={loading}/>
                 <InputField type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} disabled={loading}/>
                 

@@ -7,9 +7,9 @@ import { FaRegCircleQuestion } from "react-icons/fa6";
 const FreeAccess=()=>{
     const {shortenCount}=useFreeAccess();
     return(
-        <div className="text-text_secondary flex items-center gap-[10px]">
-                You can create <b className="text-brand_primary_pink">{FREE_URL_LIMIT - shortenCount!}</b>{" "}
-                more links. Register Now to enjoy Unlimited usage <FaRegCircleQuestion />
+        <div className="text-text_secondary text-center flex items-center gap-[10px]">
+                <div>You can create <span className="text-brand_primary_pink font-bold">{FREE_URL_LIMIT - shortenCount!}</span>{" "}
+                more links. Register Now to enjoy Unlimited usage</div> <FaRegCircleQuestion className="hidden md:flex"/>
               </div>
     );
 };

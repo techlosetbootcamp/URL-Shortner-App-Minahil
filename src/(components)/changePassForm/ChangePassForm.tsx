@@ -19,7 +19,7 @@ const ChangePassForm = () => {
       className="flex flex-col gap-[32px] items-center justify-center"
       action=""
     >
-      <div className="flex flex-col gap-[32px] w-[659px]">
+      <div className="flex flex-col gap-[32px] md:w-[659px] sm:w-[559px] xs:w-[359px]">
         <InputField
           type="password"
           placeholder="Old Password"
@@ -37,7 +37,7 @@ const ChangePassForm = () => {
         <InputField type="password" placeholder="Confirm Password" />
       </div>
 
-      <Button text="Change Password" disabled={loading} />
+      <Button text="Change Password" disabled={loading} paddingLeft="50px" paddingRight="50px" />
     </form>
   );
 };

@@ -23,7 +23,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     const qrCode = await GenerateQRCode(shortUrl);
  
     const urlObject = new URL(url);
-    const domain = urlObject.hostname; // Extracts "www.youtube.com"
+    const domain = urlObject.hostname;
 
     const strippedDomain = domain.startsWith("www.") ? domain.slice(4) : domain;
 

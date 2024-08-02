@@ -8,7 +8,7 @@ const ForgotPassForm=()=>{
     const {email, setEmail,loading,forgot}=useForgotPassForm();
     return(
         <form onSubmit={forgot} className="flex flex-col gap-[32px] items-center justify-center" action="">
-                <div className="flex  flex-col gap-[32px] w-[659px]">
+                <div className="flex  flex-col gap-[32px] md:w-[659px] sm:w-[559px] xs:w-[359px]">
                     <p className="text-text_secondary text-lg font-semibold">Enter your Email to reset password:</p>
                 <InputField type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} disabled={loading}/>
                 </div>

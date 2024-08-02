@@ -12,7 +12,7 @@ const ResetPassForm=({token}:tokenProps)=>{
     if(!verified || loading) return <Loader/>
     return(
         <form onSubmit={reset} className="flex flex-col gap-[32px] items-center justify-center" action="">
-                <div className="flex flex-col gap-[32px] w-[659px]">
+                <div className="flex flex-col gap-[32px] md:w-[659px] sm:w-[559px] xs:w-[359px]">
                 <InputField type="password" placeholder="Enter new Password" value={password} onChange={(e)=>setPassword(e.target.value)} disabled={loading}/>
                 <InputField type="password" placeholder="Confirm Password"/>
                 </div>

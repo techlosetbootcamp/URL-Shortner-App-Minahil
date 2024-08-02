@@ -16,16 +16,16 @@ const Filter = ({ onFilterChange }: FilterProps) => {
   };
 
   return (
-    <div className="flex gap-[20px] mb-[20px]">
+    <div className="flex gap-[20px] ">
       <div className="">
         <select
           value={status}
           onChange={handleStatusChange}
           className="appearance-none bg-transparent"
         >
-          <option className=" bg-brand_grey bordertext-input_txt_clr font-bold text-[15px]  flex items-center justify-center" value="">Filter</option>
-          <option className=" bg-brand_grey bordertext-input_txt_clr font-bold text-[15px]  flex items-center justify-center" value="active">Active</option>
-          <option className=" bg-brand_grey bordertext-input_txt_clr font-bold text-[15px]  flex items-center justify-center" value="inactive">Inactive</option>
+          <option className=" bg-brand_grey bordertext-input_txt_clr font-bold text-[15px] flex items-center justify-center" value="">Filter</option>
+          <option className=" bg-brand_grey bordertext-input_txt_clr font-bold text-[15px] flex items-center justify-center" value="active">Active</option>
+          <option className=" bg-brand_grey bordertext-input_txt_clr font-bold text-[15px] flex items-center justify-center" value="inactive">Inactive</option>
         </select>
       </div>
     </div>

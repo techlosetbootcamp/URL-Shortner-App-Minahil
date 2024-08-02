@@ -26,33 +26,14 @@ const useLinkData = () => {
   const [loading, setLoading] = useState(false);
   const url = useAppSelector((state) => state.url);
   const dispatch = useAppDispatch();
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const toggleDetails = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
 
   const [filterCriteria, setFilterCriteria] = useState<string>("");
 
-  // const [linkImages, setLinkImages] = useState<{ [key: string]: string }>({});
-
-  // useEffect(() => {
-  //   const fetchImages = async () => {
-  //     const images: { [key: string]: string } = {};
-
-  //     for (const link of url?.urls!) {
-  //       if (link.urlCode) {
-  //         try {
-  //           const response = await AxiosInstance.get(`/ogImage`, {
-  //             params: { url: link.originalUrl }
-  //           });
-  //           images[link.urlCode] = response.data.image;
-  //         } catch (error) {
-            
-  //         }
-  //       }
-  //     }
-
-  //     setLinkImages(images);
-  //   };
-
-  //   fetchImages();
-  // }, [url?.urls]);
 
   useEffect(() => {
     dispatch(getUrls());
@@ -107,7 +88,7 @@ const useLinkData = () => {
     }
   };
 
-  return { url, handleCopy, handleToggleStatus, formatDate, handleEdit, handleDelete, loading, handleFilterChange, filteredLinks };
+  return { url, handleCopy, handleToggleStatus, formatDate, handleEdit, handleDelete, loading, handleFilterChange, filteredLinks,expandedIndex,toggleDetails };
 };
 
 export default useLinkData;

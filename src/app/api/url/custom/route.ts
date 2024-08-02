@@ -22,6 +22,19 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     const { shortUrl } = generateShortUrl(host!, customSlug);
     const qrCode = await GenerateQRCode(shortUrl);
 
+    const urlObject = new URL(url);
+    const domain = urlObject.hostname;
+
+    const strippedDomain = domain.startsWith("www.") ? domain.slice(4) : domain;
+
+    const favicon = `https://www.google.com/s2/favicons?sz=64&domain=${strippedDomain}`;
+    console.log("favicon:", favicon);
+
+    const image:string = favicon ||  "";
+
+    console.log("Final image selected:", image);
+
+
     const result = await prisma.$transaction(async (tx) => {
       const originalUrl = await tx.url.findFirst({
         where: {
@@ -38,6 +51,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
       const newUrl = await tx.url.create({
         data: {
           originalUrl: url,
+          iconImg: image,
           shortUrl,
           qrCode: qrCode,
           urlCode: customSlug,

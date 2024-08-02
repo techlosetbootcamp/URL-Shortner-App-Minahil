@@ -8,7 +8,7 @@ function RegisterForm() {
 
   return (
     <form onSubmit={register} className="flex flex-col gap-[32px] items-center justify-center">
-      <div className="flex flex-col gap-[32px] w-[659px]">
+      <div className="flex flex-col md:gap-[32px] gap-[22px] md:w-[659px] sm:w-[559px] xs:w-[350px] w-[260px]">
         <InputField type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} />
         <InputField type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} disabled={loading} />
         <InputField type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} disabled={loading} />

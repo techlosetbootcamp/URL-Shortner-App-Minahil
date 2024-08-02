@@ -37,7 +37,6 @@ const useEditProfileForm = () => {
         setLoading(false);
       } else {
         setLoading(false);
-        router.push("/dashboard");
       }
     }
   };

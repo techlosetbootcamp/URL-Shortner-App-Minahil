@@ -15,5 +15,6 @@ const colors = {
   active_link_clr: "#1EB036",
   inactive_link_clr: "#B0901E",
   nav_clr: "#D9D9D9",
+  cube_clr: "#0E131E",
 };
 export default colors;

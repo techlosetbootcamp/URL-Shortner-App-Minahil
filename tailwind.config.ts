@@ -5,13 +5,14 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       screens:{
         'xxl': {'min': '1728px'},
            
-        'xs': {'min': '430px',},
+        'xs': {'min': '430px', 'max': '640px'},
            
       },
       colors:{

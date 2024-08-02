@@ -39,16 +39,24 @@ const Profile = () => {
         </Link>
       </div>
     </div> */}
-       <header className="mt-[44px]">
-        <div className="flex items-center justify-between mx-[52px]">
-          <Logo />
-          <div className="flex gap-[20px]">
-            <div className="flex items-center justify-center w-[191px] h-[60px] rounded-[48px] bg-input_bg_clr border border-input_border_clr py-[21px] pr-[25] pl-[25px]">
-              <DropdownButton/>
+       <header>
+        <div className="flex xs:items-start sm:items-start sm:justify-between items-center justify-center xs:justify-between xxl:ml-[52px] xxl:mr-[55px] mx-[26px] mt-[44px] mb-[38px]">
+          <div className="mt-[10px]">
+            <Logo />
+          </div>
+
+          <div className="flex items-center mt-[7px] gap-[20px]">
+            <div className="hidden xs:flex sm:flex items-center rounded-[48px] bg-input_bg_clr border border-input_border_clr xxl:py-[12.5px] py-[5px] xxl:pl-[34.41px] xxl:pr-[34.59px] xs:px-[34.31px] px-[20.31px]">
+              <DropdownButton />
             </div>
 
-            <div style={{filter: "drop-shadow(10px 9px 10px rgba(20, 78, 227, 0.38))"}} className="cursor-pointer relative w-[58px] h-[58px] rounded-[48px] bg-brand_primary_blue flex items-center justify-center">
-              <div className="text-white">
+            <div
+              style={{
+                filter: "drop-shadow(10px 9px 10px rgba(20, 78, 227, 0.38))",
+              }}
+              className="cursor-pointer relative w-[58px] h-[58px] rounded-[48px] bg-brand_primary_blue py-[21px] px-[21.98px] hidden md:flex items-center justify-center"
+            >
+              <div className="text-white flex items-center justify-center">
                 <sup className="absolute top-4 left-9">2</sup>
                 <FaBell />
               </div>

@@ -9,16 +9,19 @@ const EditUrlForm=({urlCode}:urlType)=>{
     const {editablePart,setEditablePart,handleEdit,loading}=useEditUrlForm(urlCode!);
     return(
         <form onSubmit={handleEdit}
-        className="flex flex-col gap-[32px] items-center justify-center mt-[352px] mb-[435px]"
+        className="flex flex-col gap-[32px] items-center justify-center lg:mt-[352px] mt-[200px] lg:mb-[435px] mb-[200px] mx-[26px] md:mx-0"
         action=""
       >
-        <div className="relative flex flex-col gap-[32px] w-[1100px]">
+          <span className="flex xs:hidden sm:hidden text-text_secondary">Edit Slug:</span>
+
+        <div className="relative flex flex-col gap-[32px] xl:w-[1100px] lg:w-[900px] md:w-[700px] sm:w-[600px] xs:w-[400px] w-[282px]">
+          
           <i className="absolute left-[25px] top-[24px] text-text_secondary">
             <TfiLink className="w-[25px] h-[28px]" />
           </i>
           
           <div className="flex items-center shadow-custom border-4 bg-input_bg_clr border-input_border_clr rounded-[48px] py-[21px] pr-[25.19px] pl-[70px] text-text_secondary">
-            <span className="text-text_secondary">{DOMAIN}</span>
+            <span className="hidden xs:flex sm:flex text-text_secondary">{DOMAIN}</span>
             <input
               value={editablePart}
               onChange={(e)=>setEditablePart(e.target.value)}
