@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/config/prismadb";
 import GENERATE_SHORT_URL from "@/constants/generateShortUrl";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/options";
+import { authOptions } from "../../../lib/options";
 import { URL_TYPE } from "@/types/types";
 import { GENERATE_QR_CODE } from "@/constants/generateQrCode";
 
