@@ -31,7 +31,7 @@ const Dashboard = () => {
             <Logo />
           </div>
 
-          <div className="hidden xl:flex">
+          <div className="hidden lg:flex">
             <UrlShortenForm />
           </div>
 
