@@ -1,6 +1,6 @@
 "use client";
 
-import axios from "axios";
+import { AxiosInstance } from "@/utils/axiosInstance";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -13,7 +13,7 @@ const useForgotPassForm = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("api/password/forgot", {
+      const response = await AxiosInstance.post("/password/forgot", {
         email,
       });
       if (response.data) {

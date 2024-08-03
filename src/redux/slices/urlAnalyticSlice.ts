@@ -1,6 +1,7 @@
 import { URL_ANALYTIC_PROPS, URL_ANALYTIC_STATE } from "@/types/types";
+import { AxiosInstance } from "@/utils/axiosInstance";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+
 
 const initialState: URL_ANALYTIC_STATE = {
   isLoading: false,
@@ -14,7 +15,7 @@ export const getUrlAnalytic = createAsyncThunk(
   "urlAnalytic/getUrlAnalytic",
   async ({ code }: URL_ANALYTIC_PROPS, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`api/analytic/${code}`);
+      const response = await AxiosInstance.get(`/analytic/${code}`);
 
       if (response?.data) {
         const urlAnalytic = {

@@ -58,7 +58,7 @@ const useEditProfileForm = () => {
     },
     {
       label: "Email:",
-      type: "text",
+      type: "email",
       value: newEmail,
       onChange: (e: any) => setEmail(e.target.value),
     },

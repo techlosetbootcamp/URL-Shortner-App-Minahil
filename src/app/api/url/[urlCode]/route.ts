@@ -44,7 +44,6 @@ export const PATCH = async (req: NextRequest) => {
 export const DELETE = async (req: NextRequest) => {
   try {
     const urlCode: string = req.url.split("/url/")[1];
-
     const url = await prisma.url.findUnique({
       where: { urlCode },
       include: { UrlAnalytic: true },

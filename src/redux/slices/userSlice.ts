@@ -1,6 +1,6 @@
 import { USER_STATE, USER_TYPE } from "@/types/userType";
+import { AxiosInstance } from "@/utils/axiosInstance";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import toast from "react-hot-toast";
 
 const initialState: USER_STATE = {
@@ -13,7 +13,7 @@ export const getUser = createAsyncThunk(
   "user/getUser",
   async (_: void, { rejectWithValue }) => {
     try {
-      const response = await axios.get("api/user");
+      const response = await AxiosInstance.get("/user");
 
       if (response?.data) {
         const user = {
@@ -36,7 +36,7 @@ export const editUser = createAsyncThunk(
   "user/editUser",
   async ({ name, email, newEmail }: USER_TYPE, { rejectWithValue }) => {
     try {
-      const response = await axios.patch("api/user/edit", {
+      const response = await AxiosInstance.patch("/user/edit", {
         name,
         email,
         newEmail,
