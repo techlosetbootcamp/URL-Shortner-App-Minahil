@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./lib/options";
 
 export async function middleware(request:NextRequest) {
+    const session=await getServerSession(authOptions);
   const path = request.nextUrl.pathname;
 
   const isPublicPath =
@@ -23,11 +26,11 @@ export async function middleware(request:NextRequest) {
     secret: process.env.NEXTAUTH_SECRET,
   });
 
-  if (isPublicPath && token) {
+  if (isPublicPath && session) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
-  if (isProtectedPath && !token) {
+  if (isProtectedPath && !session) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
