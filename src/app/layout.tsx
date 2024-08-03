@@ -17,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="bg-[#0B101B] font-Inter lg:bg-swirl-pattern bg-no-repeat drop-shadow-custom-drop-shadow">
+    <html lang="en" className={inter.className}>
+      <body className="bg-[#0B101B] lg:bg-swirl-pattern bg-no-repeat drop-shadow-custom-drop-shadow">
         <div className="rotating-cube-container">
           <div
             className="absolute lg:top-0 top-[10.56%] left-[67.55%] right-[15.28%] bottom-[65.22%] md:w-[161.21px] md:h-[161.21px] xl:w-[261.21px] xl:h-[261.21px] w-[76.93px] h-[76.93px] -z-10 xl:rounded-[49.217px] rounded-[17.44px] bg-[#0e131e] shadow-[0px_-24px_39px_#040406,0px_10.7667px_26.9168px_rgba(0,0,0,0.1)] backdrop-blur-[43.0669px]"

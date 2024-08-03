@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/config/prismadb";
-import generateShortUrl from "@/constants/generateShortUrl";
+import GENERATE_SHORT_URL from "@/constants/generateShortUrl";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/options";
-import { urlType } from "@/constants/types/types";
-import { GenerateQRCode } from "@/constants/generateQrCode";
-import { load } from "cheerio";
+import { URL_TYPE } from "@/types/types";
+import { GENERATE_QR_CODE } from "@/constants/generateQrCode";
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   const session = await getServerSession(authOptions);
@@ -19,20 +18,17 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
       );
     }
     const host = req.headers.get("host");
-    const { shortCode, shortUrl } = generateShortUrl(host!);
-    const qrCode = await GenerateQRCode(shortUrl);
- 
+    const { shortCode, shortUrl } = GENERATE_SHORT_URL(host!);
+    const qrCode = await GENERATE_QR_CODE(shortUrl);
+
     const urlObject = new URL(url);
     const domain = urlObject.hostname;
 
     const strippedDomain = domain.startsWith("www.") ? domain.slice(4) : domain;
 
     const favicon = `https://www.google.com/s2/favicons?sz=64&domain=${strippedDomain}`;
-    console.log("favicon:", favicon);
 
-    const image:string = favicon ||  "";
-
-    console.log("Final image selected:", image);
+    const image: string = favicon || "";
 
     const result = await prisma.$transaction(async (tx) => {
       const originalUrl = await tx.url.findFirst({
@@ -82,7 +78,6 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error in POST handler:", error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }
@@ -93,7 +88,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
 export const GET = async (req: NextRequest, res: NextResponse) => {
   const session = await getServerSession(authOptions);
   try {
-    let urls: urlType[] = [];
+    let urls: URL_TYPE[] = [];
     if (session?.user) {
       urls = await prisma.url.findMany({
         where: { user_email: session.user.email },
@@ -107,7 +102,6 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error in GET handler:", error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }

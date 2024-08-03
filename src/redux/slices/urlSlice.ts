@@ -1,14 +1,14 @@
 import {
-  urlProp,
-  urlState,
-  urlType,
-  urlEditType,
-} from "@/constants/types/types";
+  URL_PROPS,
+  URL_STATE,
+  URL_TYPE,
+  URL_EDIT_TYPE,
+} from "@/types/types";
 import { AxiosInstance } from "@/utils/axiosInstance";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 
-const initialState: urlState = {
+const initialState: URL_STATE = {
   isLoading: false,
   isError: false,
   url: {},
@@ -17,7 +17,7 @@ const initialState: urlState = {
 
 export const shortenUrl = createAsyncThunk(
   "url/shortenUrl",
-  async ({ url }: urlProp, { rejectWithValue }) => {
+  async ({ url }: URL_PROPS, { rejectWithValue }) => {
     try {
       const response = await AxiosInstance.post("/url", { url });
 
@@ -50,7 +50,7 @@ export const shortenUrl = createAsyncThunk(
 
 export const shortenUrlWithCustomSlug = createAsyncThunk(
   "url/shortenUrlWithCustomSlug",
-  async ({ url, customSlug }: urlProp, { rejectWithValue }) => {
+  async ({ url, customSlug }: URL_PROPS, { rejectWithValue }) => {
     try {
       const response = await AxiosInstance.post("/url/custom", {
         url,
@@ -86,7 +86,7 @@ export const shortenUrlWithCustomSlug = createAsyncThunk(
 
 export const editUrl = createAsyncThunk(
   "url/editUrl",
-  async ({ urlCode, newUrlCode }: urlEditType, { rejectWithValue }) => {
+  async ({ urlCode, newUrlCode }: URL_EDIT_TYPE, { rejectWithValue }) => {
     try {
       const response = await AxiosInstance.patch(`/url/${urlCode}`, {
         newUrlCode,
@@ -100,7 +100,7 @@ export const editUrl = createAsyncThunk(
 
 export const deleteUrl = createAsyncThunk(
   "url/deleteUrl",
-  async ({ urlCode }: urlEditType, { rejectWithValue }) => {
+  async ({ urlCode }: URL_EDIT_TYPE, { rejectWithValue }) => {
     try {
       const response = await AxiosInstance.delete(`/url/${urlCode}`);
       return response.data;
@@ -132,8 +132,8 @@ export const getUrls = createAsyncThunk(
           user_email: url.user_email ? url.user_email : null,
         }));
 
-        const urlsWithAnalytics: urlType[] = await Promise.all(
-          urls.map(async (url: urlType) => {
+        const urlsWithAnalytics: URL_TYPE[] = await Promise.all(
+          urls.map(async (url: URL_TYPE) => {
             const code = url?.urlCode;
             const analyticResponse = await AxiosInstance.get(
               `/analytic/${code}`
@@ -153,7 +153,7 @@ export const getUrls = createAsyncThunk(
 
 export const toggleUrlStatus = createAsyncThunk(
   "url/toggleUrlStatus",
-  async ({ urlCode }: urlType, { rejectWithValue }) => {
+  async ({ urlCode }: URL_TYPE, { rejectWithValue }) => {
     try {
       const response = await AxiosInstance.patch("/url/status", { urlCode });
       const updatedUrl = response.data.updatedUrl;
@@ -207,7 +207,7 @@ export const urlSlice = createSlice({
       .addCase(toggleUrlStatus.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
-        const updatedUrl: urlType = action.payload;
+        const updatedUrl: URL_TYPE = action.payload;
 
         state.urls = state.urls?.map((url) =>
           url.urlCode === updatedUrl?.urlCode

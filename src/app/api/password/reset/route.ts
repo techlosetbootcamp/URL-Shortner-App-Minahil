@@ -8,20 +8,14 @@ export const POST = async (req: NextRequest) => {
 
     if (!password) {
       return NextResponse.json(
-        { message: "Please enter password}" },
+        { message: "Please enter password" },
         { status: 400 }
       );
     }
 
-    const existingUser = await prisma.user.findUnique({
-      where: {
-        email: email,
-      },
-    });
-
     const hashedPassword = await bcrypt.hash(password, 5);
     try {
-      const updatedUser = await prisma.user.update({
+      await prisma.user.update({
         where: { email },
         data: {
           password: hashedPassword,

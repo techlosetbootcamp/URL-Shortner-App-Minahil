@@ -1,14 +1,8 @@
-"use client"
-import { useState } from "react";
+"use client";
+import useToggleSwitch from "./useToggleSwitch";
 
-const ToggleSwitch = ({onChange}:any) => {
-  const [enabled, setEnabled] = useState(false);
-
-  const toggleSwitch = () =>{ 
-    setEnabled(!enabled);
-    onChange(!enabled);
-  }
-
+const ToggleSwitch = ({ onChange }: any) => {
+  const { enabled, toggleSwitch } = useToggleSwitch(onChange);
   return (
     <div className="flex items-center">
       <div
@@ -19,11 +13,12 @@ const ToggleSwitch = ({onChange}:any) => {
       >
         <span
           className={`${
-            enabled ? "translate-x-1 bg-input_bg_clr" : "translate-x-6 bg-brand_primary_blue"
+            enabled
+              ? "translate-x-1 bg-input_bg_clr"
+              : "translate-x-6 bg-brand_primary_blue"
           } inline-block w-4 h-4 transform rounded-full transition-transform duration-300`}
         />
       </div>
-     
     </div>
   );
 };

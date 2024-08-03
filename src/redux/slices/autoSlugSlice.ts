@@ -1,15 +1,9 @@
-import {
-  urlProp,
-  urlState,
-  urlType,
-  urlEditType,
-  slugState,
-} from "@/constants/types/types";
+import { SLUG_STATE } from "@/types/types";
 import { AxiosInstance } from "@/utils/axiosInstance";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 
-const initialState: slugState = {
+const initialState: SLUG_STATE = {
   isLoading: false,
   isError: false,
   slug: "",

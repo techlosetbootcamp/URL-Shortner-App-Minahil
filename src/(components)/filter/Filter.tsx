@@ -1,14 +1,10 @@
-"use client"
-import { useState } from "react";
-import { CiFilter } from "react-icons/ci";
+"use client";
+import { FILTER_OPTIONS } from "@/constants/constants";
+import { FILTER_PROPS } from "@/types/types";
+import useFilter from "./useFilter";
 
-interface FilterProps {
-  onFilterChange: (criteria: string) => void;
-}
-
-const Filter = ({ onFilterChange }: FilterProps) => {
-  const [status, setStatus] = useState<string>("");
-
+const Filter = ({ onFilterChange }: FILTER_PROPS) => {
+  const { status, setStatus } = useFilter(onFilterChange);
   const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedStatus = e.target.value;
     setStatus(selectedStatus);
@@ -23,9 +19,15 @@ const Filter = ({ onFilterChange }: FilterProps) => {
           onChange={handleStatusChange}
           className="appearance-none bg-transparent"
         >
-          <option className=" bg-brand_grey bordertext-input_txt_clr font-bold text-[15px] flex items-center justify-center" value="">Filter</option>
-          <option className=" bg-brand_grey bordertext-input_txt_clr font-bold text-[15px] flex items-center justify-center" value="active">Active</option>
-          <option className=" bg-brand_grey bordertext-input_txt_clr font-bold text-[15px] flex items-center justify-center" value="inactive">Inactive</option>
+          {FILTER_OPTIONS.map((option, index) => (
+            <option
+              key={index}
+              className="bg-brand_grey bordertext-input_txt_clr font-bold text-[15px] flex items-center justify-center"
+              value={option.value}
+            >
+              {option.label}
+            </option>
+          ))}
         </select>
       </div>
     </div>

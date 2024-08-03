@@ -1,4 +1,4 @@
-const colors = {
+const COLORS = {
   text_secondary: "#C9CED6",
   brand_primary_pink: "#EB568E",
   brand_primary_blue: "#144EE3",
@@ -17,4 +17,4 @@ const colors = {
   nav_clr: "#D9D9D9",
   cube_clr: "#0E131E",
 };
-export default colors;
+export default COLORS;

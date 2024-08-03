@@ -1,9 +1,9 @@
-import { userState, userType } from "@/constants/types/userType";
+import { USER_STATE, USER_TYPE } from "@/types/userType";
 import { AxiosInstance } from "@/utils/axiosInstance";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 
-const initialState: userState = {
+const initialState: USER_STATE = {
   isLoading: false,
   isError: false,
   user: { id: "", name: "", email: "", password: "" },
@@ -34,16 +34,13 @@ export const getUser = createAsyncThunk(
 
 export const editUser = createAsyncThunk(
   "user/editUser",
-  async ({ name, email, newEmail }: userType, { rejectWithValue }) => {
+  async ({ name, email, newEmail }: USER_TYPE, { rejectWithValue }) => {
     try {
       const response = await AxiosInstance.patch("/user/edit", {
         name,
         email,
         newEmail,
       });
-      if (response.status == 200) {
-        toast.success("Profile Updated");
-      }
 
       if (response.status == 400) {
         toast.error("This email is already registered");

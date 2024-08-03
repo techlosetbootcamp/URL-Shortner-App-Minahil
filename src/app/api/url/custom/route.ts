@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/config/prismadb";
-import generateShortUrl from "@/constants/generateShortUrl";
+import GENERATE_SHORT_URL from "@/constants/generateShortUrl";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/options";
-import { GenerateQRCode } from "@/constants/generateQrCode";
+import { GENERATE_QR_CODE } from "@/constants/generateQrCode";
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   const session = await getServerSession(authOptions);
@@ -19,8 +19,8 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
 
     const host = req.headers.get("host");
 
-    const { shortUrl } = generateShortUrl(host!, customSlug);
-    const qrCode = await GenerateQRCode(shortUrl);
+    const { shortUrl } = GENERATE_SHORT_URL(host!, customSlug);
+    const qrCode = await GENERATE_QR_CODE(shortUrl);
 
     const urlObject = new URL(url);
     const domain = urlObject.hostname;
@@ -28,12 +28,8 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     const strippedDomain = domain.startsWith("www.") ? domain.slice(4) : domain;
 
     const favicon = `https://www.google.com/s2/favicons?sz=64&domain=${strippedDomain}`;
-    console.log("favicon:", favicon);
 
-    const image:string = favicon ||  "";
-
-    console.log("Final image selected:", image);
-
+    const image: string = favicon || "";
 
     const result = await prisma.$transaction(async (tx) => {
       const originalUrl = await tx.url.findFirst({

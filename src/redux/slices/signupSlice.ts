@@ -1,10 +1,10 @@
 import { AxiosInstance } from "@/utils/axiosInstance";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
-import { SignupState, SignupProps } from "@/constants/types/types";
+import { SIGN_UP_STATE, SIGN_UP_PROPS } from "@/types/types";
 import { AxiosResponse } from "axios";
 
-const initialState: SignupState = {
+const initialState: SIGN_UP_STATE = {
   error: null,
   signupStatus: "idle",
   userDetails: {},
@@ -12,7 +12,7 @@ const initialState: SignupState = {
 
 export const signupUser = createAsyncThunk(
   "signup/signupUser",
-  async (data: SignupProps, { rejectWithValue }) => {
+  async (data: SIGN_UP_PROPS, { rejectWithValue }) => {
     try {
       const response = await AxiosInstance.post("/signup", data);
       toast.success("Successfully registered");

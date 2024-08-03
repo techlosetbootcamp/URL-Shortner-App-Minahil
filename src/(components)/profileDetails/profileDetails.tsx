@@ -4,10 +4,9 @@ import Button from "../button/Button";
 import useProfileDetails from "./useProfileDetails";
 import Loader from "../loader/Loader";
 
-
 const ProfileDetails = () => {
   const { getInitials, user, isLoading, isError } = useProfileDetails();
-if(isLoading || isError) return <Loader/>
+  if (isLoading || isError) return <Loader />;
   return (
     <div className="px-6 py-4 mt-20 flex flex-col gap-7 items-center justify-center">
       <div className="flex items-center justify-center">

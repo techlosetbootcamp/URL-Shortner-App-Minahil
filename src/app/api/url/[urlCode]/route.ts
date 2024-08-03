@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/config/prismadb";
-import generateShortUrl from "@/constants/generateShortUrl";
+import GENERATE_SHORT_URL from "@/constants/generateShortUrl";
 
 export const PATCH = async (req: NextRequest) => {
   try {
@@ -8,7 +8,7 @@ export const PATCH = async (req: NextRequest) => {
     const host = req.headers?.get("host");
     const body = await req.json();
     const { newUrlCode } = body;
-    const { shortUrl } = generateShortUrl(host!, newUrlCode);
+    const { shortUrl } = GENERATE_SHORT_URL(host!, newUrlCode);
     if (newUrlCode) {
       const url = await prisma.url.findUnique({
         where: { urlCode: newUrlCode },

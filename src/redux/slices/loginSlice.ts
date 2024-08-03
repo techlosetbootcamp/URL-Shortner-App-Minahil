@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { signIn } from "next-auth/react";
-import { LoginState } from "@/constants/types/types";
+import { LOGIN_STATE } from "@/types/types";
 
-const initialState: LoginState = {
+const initialState: LOGIN_STATE = {
   loginStatus: "idle",
   error: null,
   userDetails: null,

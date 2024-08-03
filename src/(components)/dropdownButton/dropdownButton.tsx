@@ -6,14 +6,14 @@ import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
 const DropdownButton = () => {
-  const { user, isLoading, isError }=useFetchUser();
+  const { user, isLoading } = useFetchUser();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  if(isLoading) return <div className="text-white" >Loading....</div>
+  if (isLoading) return <div className="text-white">Loading....</div>;
 
   return (
     <div className="relative inline-block text-left">
@@ -29,7 +29,9 @@ const DropdownButton = () => {
           <div className="text-white flex gap-[10px] items-center">
             <div className="flex flex-col text-left">
               <div className="flex text-[10px]">Welcome</div>
-              <div className="flex text-[16px] font-semibold text-nowrap">{user?.name}</div>
+              <div className="flex text-[16px] font-semibold text-nowrap">
+                {user?.name}
+              </div>
             </div>
             <div>
               <IoIosArrowDown className="text-text_secondary h-[28px] w-[20px]" />

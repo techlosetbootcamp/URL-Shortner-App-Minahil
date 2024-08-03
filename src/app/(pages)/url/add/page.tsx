@@ -16,7 +16,6 @@ export const metadata: Metadata = {
       },
     ],
     url: `${process.env.NEXTAUTH_URL}/dashboard`,
-    
   },
 };
 
@@ -49,7 +48,6 @@ const Add = () => {
         </div>
       </header>
       <AddUrlForm />
-     
     </>
   );
 };

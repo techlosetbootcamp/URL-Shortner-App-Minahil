@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/config/prismadb";
+
 export const PATCH = async (req: NextRequest) => {
   try {
     const body = await req.json();
@@ -11,8 +12,9 @@ export const PATCH = async (req: NextRequest) => {
         { status: 401 }
       );
     }
+
     if (newEmail !== email) {
-      const existingUser = await prisma.user.findFirst({
+      const existingUser = await prisma.user.findUnique({
         where: { email: newEmail },
       });
 
@@ -25,17 +27,19 @@ export const PATCH = async (req: NextRequest) => {
     }
 
     try {
-      const updatedUser = await prisma.user.update({
+      await prisma.user.update({
         where: { email },
         data: {
-          name: name,
+          name,
           email: newEmail,
         },
       });
 
       return new NextResponse("User's profile updated", { status: 200 });
     } catch (error: any) {
-      return new NextResponse(error, { status: 500 });
+      return new NextResponse(error.message || "Internal Server Error", {
+        status: 500,
+      });
     }
   } catch (error) {
     return NextResponse.json(

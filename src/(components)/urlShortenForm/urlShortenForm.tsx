@@ -9,48 +9,48 @@ const UrlShortenForm = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <form onSubmit={shorten}
-       
-       className="relative flex flex-col gap-[32px] w-[378px] md:w-[700px] xxl:w-[1100px]"
-     >
-       <i className="absolute left-[25px] md:top-[24px] top-[17px] text-text_secondary">
-         <TfiLink className="w-[25px] h-[28px]" />
-       </i>
-       <input
-         style={{
-           borderColor:
-             "linear-gradient(89.92deg, #144EE3 -0.02%, #EB568E 18.86%, #A353AA 64.49%, #144EE3 100.67%)",
-         }}
-         className="shadow-custom border-4 bg-input_bg_clr border-input_border_clr rounded-[48px] py-[16px] md:py-[24px] pr-[25px] pl-[70px] text-text_secondary"
-         type="text"
-         placeholder="Enter the link here"
-         value={url}
-         onChange={(e) => setUrl(e.target.value)}
-         disabled={loading}
-       />
-       <button
-         style={{
-           width: "45px",
-           height: "45px",
-           filter: "drop-shadow(10px 9px 5px rgba(20, 78, 227, 0.38)",
-         }}
-         type="submit"
-         className="md:flex rounded-[48px] items-center justify-center absolute right-2 top-[9.5px] font-semibold bg-brand_primary_blue border border-brand_primary_blue text-white py-[13.5px] px-[15.48px]"
-       >
-         <FaArrowRight/>
-       </button>
+      <form
+        onSubmit={shorten}
+        className="relative flex flex-col gap-[32px] w-[378px] md:w-[700px] xxl:w-[1100px]"
+      >
+        <i className="absolute left-[25px] md:top-[24px] top-[17px] text-text_secondary">
+          <TfiLink className="w-[25px] h-[28px]" />
+        </i>
+        <input
+          style={{
+            borderColor:
+              "linear-gradient(89.92deg, #144EE3 -0.02%, #EB568E 18.86%, #A353AA 64.49%, #144EE3 100.67%)",
+          }}
+          className="shadow-custom border-4 bg-input_bg_clr border-input_border_clr rounded-[48px] py-[16px] md:py-[24px] pr-[25px] pl-[70px] text-text_secondary"
+          type="text"
+          placeholder="Enter the link here"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          disabled={loading}
+        />
+        <button
+          style={{
+            width: "45px",
+            height: "45px",
+            filter: "drop-shadow(10px 9px 5px rgba(20, 78, 227, 0.38)",
+          }}
+          type="submit"
+          className="md:flex rounded-[48px] items-center justify-center absolute right-2 top-[9.5px] font-semibold bg-brand_primary_blue border border-brand_primary_blue text-white py-[13.5px] px-[15.48px]"
+        >
+          <FaArrowRight />
+        </button>
 
-       <button
-         style={{
-           width: "183px",
-           filter: "drop-shadow(10px 9px 5px rgba(20, 78, 227, 0.38)",
-         }}
-         type="submit"
-         className="hidden md:flex absolute right-2 top-[5.5px] font-semibold bg-brand_primary_blue border border-brand_primary_blue text-white rounded-[48px] py-[21px] pr-[36.02px] pl-[35.98px]"
-       >
-         Shorten Now!
-       </button>
-     </form>
+        <button
+          style={{
+            width: "183px",
+            filter: "drop-shadow(10px 9px 5px rgba(20, 78, 227, 0.38)",
+          }}
+          type="submit"
+          className="hidden md:flex absolute right-2 top-[5.5px] font-semibold bg-brand_primary_blue border border-brand_primary_blue text-white rounded-[48px] py-[21px] pr-[36.02px] pl-[35.98px]"
+        >
+          Shorten Now!
+        </button>
+      </form>
       <div className="flex items-center justify-center gap-[15px] text-text_secondary mt-[32px]">
         <ToggleSwitch onChange={setAutoPaste} />
         <div>Auto paste from clipboard</div>

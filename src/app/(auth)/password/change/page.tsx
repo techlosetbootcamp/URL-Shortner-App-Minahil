@@ -1,7 +1,6 @@
 import ChangePassForm from "@/(components)/changePassForm/ChangePassForm";
 import Logo from "@/(components)/logo/Logo";
 import { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Change Password | URL Shortner App",
@@ -15,7 +14,6 @@ export const metadata: Metadata = {
       },
     ],
     url: `${process.env.NEXTAUTH_URL}/dashboard`,
-    
   },
 };
 
@@ -39,18 +37,6 @@ const ChangePassword = () => {
         </div>
         <ChangePassForm />
       </div>
-      <footer className="mb-[30px]">
-        <div className="flex items-center justify-center text-text_secondary">
-          {" "}
-          <Link
-            className="text-brand_primary_blue underline"
-            href={"/register"}
-          >
-            Register
-          </Link>{" "}
-          &nbsp; if not already registered
-        </div>
-      </footer>
     </>
   );
 };

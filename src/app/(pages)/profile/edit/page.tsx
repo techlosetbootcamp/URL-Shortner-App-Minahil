@@ -15,14 +15,12 @@ export const metadata: Metadata = {
       },
     ],
     url: `${process.env.NEXTAUTH_URL}/dashboard`,
-    
   },
 };
 
 const EditProfile = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-9 mx-[26px]">
-     
       <div className="flex flex-col items-center justify-center mt-[216px]">
         <div className="mb-[46px] flex flex-col items-center justify-center">
           <p className="font-extrabold text-[60px] leading-[80.01px] animate-text bg-gradient-to-r from-[#144EE3] via-[#EB568E] to-[#A353AA] bg-clip-text text-transparent">

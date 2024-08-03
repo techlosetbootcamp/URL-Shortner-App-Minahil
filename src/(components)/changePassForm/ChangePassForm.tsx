@@ -1,18 +1,10 @@
-"use client"
+"use client";
 import useChange from "@/(components)/changePassForm/useChangePassForm";
 import Button from "../button/Button";
 import InputField from "../input/Input";
 
 const ChangePassForm = () => {
-  const {
-    loading,
-    error,
-    password,
-    setNewPassword,
-    oldpassword,
-    setOldPassword,
-    change,
-  } = useChange();
+  const { loading, change, INPUT_FIELDS } = useChange();
   return (
     <form
       onSubmit={change}
@@ -20,24 +12,24 @@ const ChangePassForm = () => {
       action=""
     >
       <div className="flex flex-col gap-[32px] md:w-[659px] sm:w-[559px] xs:w-[359px]">
-        <InputField
-          type="password"
-          placeholder="Old Password"
-          value={oldpassword}
-          onChange={(e) => setOldPassword(e.target.value)}
-          disabled={loading}
-        />
-        <InputField
-          type="password"
-          placeholder="New Password"
-          value={password}
-          onChange={(e) => setNewPassword(e.target.value)}
-          disabled={loading}
-        />
-        <InputField type="password" placeholder="Confirm Password" />
+        {INPUT_FIELDS.map((field, index) => (
+          <InputField
+            key={index}
+            type={field.type}
+            placeholder={field.placeholder}
+            value={field.value}
+            onChange={(e) => field.onChange(e.target.value)}
+            disabled={loading}
+          />
+        ))}
       </div>
 
-      <Button text="Change Password" disabled={loading} paddingLeft="50px" paddingRight="50px" />
+      <Button
+        text="Change Password"
+        disabled={loading}
+        paddingLeft="50px"
+        paddingRight="50px"
+      />
     </form>
   );
 };

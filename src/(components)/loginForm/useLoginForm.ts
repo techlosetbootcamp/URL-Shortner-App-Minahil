@@ -20,39 +20,50 @@ const useLoginForm = () => {
     e.preventDefault();
     setLoading(true);
 
-      try {
-        if(!email || !password){
-          toast.error("Please fill all fields!");
-          setLoading(false);
-        return false;
-        }
-        dispatch(loginWithEmail({email,password}));
+    try {
+      if (!email || !password) {
+        toast.error("Please fill all fields!");
         setLoading(false);
-      } catch (error) {
-        toast.error(`${error}`);
-        console.error("Failed to navigate using RSC:", error);
-        window.location.href = "/dashboard";
+        return false;
       }
-      
+      dispatch(loginWithEmail({ email, password }));
+      setLoading(false);
+    } catch (error) {
+      toast.error(`${error}`);
+      window.location.href = "/dashboard";
     }
-    
-    useEffect(() => {
-      if (loginState.loginStatus === "succeeded") {
-        toast.success("Logged in successfully");
-        router.push("/dashboard");
-      } else if (loginState.loginStatus === "failed") {
-        toast.error("Invalid Credentials");
-      }
-    }, [loginState.loginStatus, loginState.error, router]);
+  };
 
-    useEffect(() => {
-      return () => {
-        dispatch(clearLoginDetails());
-      };
-    }, [dispatch]);
- 
-  
+  useEffect(() => {
+    if (loginState.loginStatus === "succeeded") {
+      toast.success("Logged in successfully");
+      router.push("/dashboard");
+    } else if (loginState.loginStatus === "failed") {
+      toast.error("Invalid Credentials");
+    }
+  }, [loginState.loginStatus, loginState.error, router]);
 
-  return { email, setEmail, password, setPassword, loading, login };
+  useEffect(() => {
+    return () => {
+      dispatch(clearLoginDetails());
+    };
+  }, [dispatch]);
+
+  const PASSWORD_INPUT_FIELDS = [
+    {
+      type: "email",
+      placeholder: "Email",
+      value: email,
+      onChange: setEmail,
+    },
+    {
+      type: "password",
+      placeholder: "Password",
+      value: password,
+      onChange: setPassword,
+    },
+  ];
+
+  return { loading, login, PASSWORD_INPUT_FIELDS };
 };
 export default useLoginForm;

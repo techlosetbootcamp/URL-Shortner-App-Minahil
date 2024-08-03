@@ -1,7 +1,6 @@
-"use client"
+"use client";
 import { FREE_URL_LIMIT } from "@/constants/constants";
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { getUrlAnalytic } from "@/redux/slices/urlAnalyticSlice";
 import { getUrls, shortenUrl } from "@/redux/slices/urlSlice";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -17,8 +16,8 @@ const useUrlShortenForm = () => {
   const dispatch = useAppDispatch();
   const link = useAppSelector((state) => state.url);
   const code = link?.url?.urlCode;
-  const {url}=useLinkData();
-  const count=url?.urls?.length;
+  const { url } = useLinkData();
+  const count = url?.urls?.length;
 
   useEffect(() => {
     if (autoPaste) {
@@ -26,9 +25,7 @@ const useUrlShortenForm = () => {
         try {
           const text = await navigator.clipboard.readText();
           setUrl(text);
-        } catch (err) {
-          console.error('Failed to read clipboard contents: ', err);
-        }
+        } catch (err) {}
       };
 
       readFromClipboard();
@@ -56,8 +53,10 @@ const useUrlShortenForm = () => {
         return false;
       }
 
-      if (!session.data?.user &&  count! >= FREE_URL_LIMIT) {
-        toast.error("You have reached the free URL limit. Please log in to continue shortening URLs.");
+      if (!session.data?.user && count! >= FREE_URL_LIMIT) {
+        toast.error(
+          "You have reached the free URL limit. Please log in to continue shortening URLs."
+        );
         setLoading(false);
         return false;
       }
@@ -66,7 +65,6 @@ const useUrlShortenForm = () => {
         setUrl("");
         setLoading(false);
       });
-      
     } catch (error) {
       toast.error(`${error}`);
       setLoading(false);

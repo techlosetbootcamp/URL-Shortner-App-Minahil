@@ -1,4 +1,4 @@
-export type userType={
+export type USER_TYPE={
     id?:string,
     name?: string,
     email?: string,
@@ -7,14 +7,14 @@ export type userType={
 };
 
 
-export type editUserProps={
+export type EDIT_USER_PROPS={
     id:string,
     name: string,
     newEmail: string,
 };
 
-export type userState={
+export type USER_STATE={
     isLoading:boolean,
     isError:boolean,
-    user:userType
+    user:USER_TYPE
 };

@@ -1,9 +1,9 @@
 import { AxiosInstance } from "@/utils/axiosInstance";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
-import { passwordProps, PasswordState } from "@/constants/types/types";
+import { PASSWORD_PROPS, PASSWORD_STATE } from "@/types/types";
 
-const initialState: PasswordState = {
+const initialState: PASSWORD_STATE = {
   isLoading: false,
   isError: null,
   passwordStatus: "idle",
@@ -11,7 +11,7 @@ const initialState: PasswordState = {
 
 export const changePassword = createAsyncThunk(
   "changePassword/ChangePassword",
-  async ({ password, email }: passwordProps, { rejectWithValue }) => {
+  async ({ password, email }: PASSWORD_PROPS, { rejectWithValue }) => {
     try {
       const response = await AxiosInstance.patch("/password/change", {
         password,
@@ -28,7 +28,7 @@ export const changePassword = createAsyncThunk(
 
 export const resetPassword = createAsyncThunk(
   "resetPassword/ResetPassword",
-  async ({ password, email }: passwordProps, { rejectWithValue }) => {
+  async ({ password, email }: PASSWORD_PROPS, { rejectWithValue }) => {
     try {
       const response = await AxiosInstance.post("/password/reset", {
         password,

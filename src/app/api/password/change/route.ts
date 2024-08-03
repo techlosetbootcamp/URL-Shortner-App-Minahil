@@ -15,7 +15,7 @@ export const PATCH = async (req: NextRequest) => {
 
     const hashedPassword = await bcrypt.hash(password, 5);
     try {
-      const updatedUser = await prisma.user.update({
+      await prisma.user.update({
         where: { email },
         data: {
           password: hashedPassword,

@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-export default async function sendResetPasswordEmail(
+export default async function SEND_RESET_PASSWORD_EMAIL(
   email: string,
   token: string
 ) {

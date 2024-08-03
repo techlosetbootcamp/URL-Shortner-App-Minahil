@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/config/prismadb";
 import crypto from "crypto";
-import sendResetPasswordEmail from "@/constants/sendEmail";
+import SEND_RESET_PASSWORD_EMAIL from "@/constants/sendEmail";
 export const POST = async (req: NextRequest) => {
   try {
     const body = await req.json();
@@ -30,14 +30,14 @@ export const POST = async (req: NextRequest) => {
     existingUser.resetToken = passwordResetToken;
     existingUser.resetTokenExpiry = passwordResetExpires;
 
-    const updatedUser = await prisma.user.update({
+    await prisma.user.update({
       where: { email },
       data: {
         resetToken: passwordResetToken,
         resetTokenExpiry: passwordResetExpires,
       },
     });
-    await sendResetPasswordEmail(email, resetToken);
+    await SEND_RESET_PASSWORD_EMAIL(email, resetToken);
 
     return NextResponse.json(
       { message: "Password Reset Email Sent" },

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { getUrlAnalytic } from "@/redux/slices/urlAnalyticSlice";
 import { deleteUrl, getUrls, toggleUrlStatus } from "@/redux/slices/urlSlice";
@@ -14,11 +14,13 @@ const formatDate = (dateString: string) => {
   if (isNaN(date.getTime())) return "Invalid Date";
 
   const options: Intl.DateTimeFormatOptions = {
-    month: 'short',
-    day: '2-digit',
-    year: 'numeric'
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
   };
-  return new Intl.DateTimeFormat('en-US', options).format(date).replace(/ /g, ' - ');
+  return new Intl.DateTimeFormat("en-US", options)
+    .format(date)
+    .replace(/ /g, " - ");
 };
 
 const useLinkData = () => {
@@ -33,7 +35,6 @@ const useLinkData = () => {
   };
 
   const [filterCriteria, setFilterCriteria] = useState<string>("");
-
 
   useEffect(() => {
     dispatch(getUrls());
@@ -81,14 +82,28 @@ const useLinkData = () => {
     if (urlCode) {
       try {
         await dispatch(toggleUrlStatus({ urlCode })).unwrap();
-        toast.success(`URL ${active ? 'deactivated' : 'activated'} successfully`);
+        toast.success(
+          `URL ${active ? "deactivated" : "activated"} successfully`
+        );
       } catch (error) {
-        toast.error('Failed to toggle URL status');
+        toast.error("Failed to toggle URL status");
       }
     }
   };
 
-  return { url, handleCopy, handleToggleStatus, formatDate, handleEdit, handleDelete, loading, handleFilterChange, filteredLinks,expandedIndex,toggleDetails };
+  return {
+    url,
+    handleCopy,
+    handleToggleStatus,
+    formatDate,
+    handleEdit,
+    handleDelete,
+    loading,
+    handleFilterChange,
+    filteredLinks,
+    expandedIndex,
+    toggleDetails,
+  };
 };
 
 export default useLinkData;

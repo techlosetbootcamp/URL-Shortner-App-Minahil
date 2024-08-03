@@ -4,18 +4,33 @@ import InputField from "../input/Input";
 import useRegisterForm from "./useRegisterForm";
 
 function RegisterForm() {
-  const {name, setName, email, setEmail, password, setPassword, loading, register} = useRegisterForm();
+  const { loading, register, REGISTER_INPUT_FIELDS } = useRegisterForm();
 
   return (
-    <form onSubmit={register} className="flex flex-col gap-[32px] items-center justify-center">
+    <form
+      onSubmit={register}
+      className="flex flex-col gap-[32px] items-center justify-center"
+    >
       <div className="flex flex-col md:gap-[32px] gap-[22px] md:w-[659px] sm:w-[559px] xs:w-[350px] w-[260px]">
-        <InputField type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} />
-        <InputField type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} disabled={loading} />
-        <InputField type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} disabled={loading} />
-        <InputField type="password" placeholder="Confirm Password" />
+        {REGISTER_INPUT_FIELDS.map((field, index) => (
+          <InputField
+            key={index}
+            type={field.type}
+            placeholder={field.placeholder}
+            value={field.value}
+            onChange={field.onChange}
+            disabled={field.disabled}
+          />
+        ))}
       </div>
       <div>
-        <Button type="submit" text="Register" paddingRight="101.52px" paddingLeft="101.48px" disabled={loading} />
+        <Button
+          type="submit"
+          text="Register"
+          paddingRight="101.52px"
+          paddingLeft="101.48px"
+          disabled={loading}
+        />
       </div>
     </form>
   );

@@ -1,16 +1,11 @@
-import { FaRegClock } from "react-icons/fa6";
-import { IoStatsChartOutline } from "react-icons/io5";
-import { IoSettingsOutline } from "react-icons/io5";
-import { CiFilter } from "react-icons/ci";
 import Logo from "@/(components)/logo/Logo";
 import { FaBell } from "react-icons/fa";
-import ToggleSwitch from "@/(components)/toggleSwitch/ToggleSwitch";
 import LinkTable from "@/(components)/linkData/LinkData";
 import DropdownButton from "@/(components)/dropdownButton/dropdownButton";
 import UrlShortenForm from "@/(components)/urlShortenForm/urlShortenForm";
 
 import { Metadata } from "next";
-import Filter from "@/(components)/filter/Filter";
+import { MENU_ITEMS } from "@/constants/constants";
 export const metadata: Metadata = {
   title: "Dashboard | URL Shortner App",
   description: "Manage and shorten your URLs with ease using our app.",
@@ -24,7 +19,6 @@ export const metadata: Metadata = {
       },
     ],
     url: `${process.env.NEXTAUTH_URL}/dashboard`,
-    
   },
 };
 
@@ -62,18 +56,12 @@ const Dashboard = () => {
       </header>
 
       <div className="flex mb-[26px] items-center justify-center font-bold gap-[64px] text-nav_clr bg-input_bg_clr h-[70px] w-full px-[26px] md:px-0">
-        <div className="flex gap-[10px] items-center">
-          <FaRegClock className="h-[30px] w-[30px] sm:h-[16px] sm:w-[16px]" />
-          <div className="hidden sm:flex">History</div>
-        </div>
-        <div className="flex gap-[10px] items-center">
-          <IoStatsChartOutline className="h-[30px] w-[30px] sm:h-[16px] sm:w-[16px]" />
-          <div className="hidden sm:flex">Statistics</div>
-        </div>
-        <div className="flex gap-[10px] items-center">
-          <IoSettingsOutline className="h-[30px] w-[30px] sm:h-[16px] sm:w-[16px]" />
-          <div className="hidden sm:flex">Settings</div>
-        </div>
+        {MENU_ITEMS.map((item, index) => (
+          <div key={index} className="flex gap-[10px] items-center">
+            <item.icon className="h-[30px] w-[30px] sm:h-[16px] sm:w-[16px]" />
+            <div className="hidden sm:flex">{item.label}</div>
+          </div>
+        ))}
       </div>
 
       <div className="xl:ml-[153px] xl:mr-[154px] ml-[26px] mr-[26px] lg:ml-[40px] lg:mr-[41px]">

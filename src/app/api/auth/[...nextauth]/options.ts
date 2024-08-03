@@ -35,11 +35,6 @@ export const authOptions: NextAuthOptions = {
           throw new Error("Invalid credentials");
         }
 
-        const currentHashedPassword = await bcrypt.hash(
-          credentials?.password,
-          12
-        );
-
         const passMAtch = await bcrypt.compare(
           credentials.password,
           existingUser.password

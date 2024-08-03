@@ -1,6 +1,6 @@
 import { customAlphabet } from "nanoid";
 
-const generateShortUrl = (host: string, newUrlCode?: string) => {
+const GENERATE_SHORT_URL = (host: string, newUrlCode?: string) => {
   if (newUrlCode) {
     return {
       shortUrl: `http://${host}/api/${newUrlCode}`,
@@ -15,4 +15,4 @@ const generateShortUrl = (host: string, newUrlCode?: string) => {
     };
   }
 };
-export default generateShortUrl;
+export default GENERATE_SHORT_URL;

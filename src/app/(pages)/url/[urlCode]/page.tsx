@@ -1,19 +1,18 @@
 import Logo from "@/(components)/logo/Logo";
-import { IoIosArrowDown } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
 import EditUrlForm from "@/(components)/editUrlForm/EditUrlForm";
 import { Metadata } from "next";
 import DropdownButton from "@/(components)/dropdownButton/dropdownButton";
 
-type Props={
-  params:{
+type Props = {
+  params: {
     urlCode: string;
   };
 };
 
-export const generateMetadata = ({params}:Props):Metadata=>{
-  return{
-    title:`${params.urlCode} | Edit`,
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `${params.urlCode} | Edit`,
     openGraph: {
       title: `${params.urlCode} | Edit`,
       description: "Edit your shortened URLs with ease.",
@@ -24,18 +23,14 @@ export const generateMetadata = ({params}:Props):Metadata=>{
         },
       ],
       url: `${process.env.NEXTAUTH_URL}/dashboard`,
-      
     },
   };
 };
 
-const EditUrl=(
-  {params}:Props
-)=> {
-  
+const EditUrl = ({ params }: Props) => {
   return (
     <>
-     <header>
+      <header>
         <div className="flex xs:items-start sm:items-start sm:justify-between items-center justify-center xs:justify-between xxl:ml-[52px] xxl:mr-[55px] mx-[26px] mt-[44px] mb-[38px]">
           <div className="mt-[10px]">
             <Logo />
@@ -60,9 +55,9 @@ const EditUrl=(
           </div>
         </div>
       </header>
-      
-      <EditUrlForm urlCode={params.urlCode}/>
+
+      <EditUrlForm urlCode={params.urlCode} />
     </>
   );
-}
+};
 export default EditUrl;

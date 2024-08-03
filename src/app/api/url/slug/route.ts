@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import generateShortUrl from "@/constants/generateShortUrl";
+import GENERATE_SHORT_URL from "@/constants/generateShortUrl";
 
 export const GET = async (req: NextRequest, res: NextResponse) => {
   try {
     const host = req.headers.get("host");
 
-    const { shortCode } = generateShortUrl(host!);
+    const { shortCode } = GENERATE_SHORT_URL(host!);
 
     return NextResponse.json(
       { message: "slug generated", slug: shortCode },

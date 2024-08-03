@@ -1,12 +1,8 @@
-import {
-  urlAnalyticProp,
-  urlAnalyticState,
-  urlProp,
-} from "@/constants/types/types";
+import { URL_ANALYTIC_PROPS, URL_ANALYTIC_STATE } from "@/types/types";
 import { AxiosInstance } from "@/utils/axiosInstance";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const initialState: urlAnalyticState = {
+const initialState: URL_ANALYTIC_STATE = {
   isLoading: false,
   isError: false,
   urlAnalytic: {
@@ -16,7 +12,7 @@ const initialState: urlAnalyticState = {
 
 export const getUrlAnalytic = createAsyncThunk(
   "urlAnalytic/getUrlAnalytic",
-  async ({ code }: urlAnalyticProp, { rejectWithValue }) => {
+  async ({ code }: URL_ANALYTIC_PROPS, { rejectWithValue }) => {
     try {
       const response = await AxiosInstance.get(`/analytic/${code}`);
 
