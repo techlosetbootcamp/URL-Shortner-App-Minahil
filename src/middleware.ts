@@ -1,10 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
-import { getServerSession } from "next-auth";
-import { authOptions } from "./lib/options";
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function middleware(request:NextRequest) {
-    const session=await getServerSession(authOptions);
+export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
   const isPublicPath =
@@ -21,16 +17,13 @@ export async function middleware(request:NextRequest) {
     path === "/profile/edit" ||
     path === "/url/add";
 
-  const token = await getToken({
-    req: request,
-    secret: process.env.NEXTAUTH_SECRET,
-  });
+  const cookie = request.cookies.get('__Secure-next-auth.session-token'); 
 
-  if (isPublicPath && session) {
+  if (isPublicPath && cookie) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
-  if (isProtectedPath && !session) {
+  if (isProtectedPath && !cookie) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
