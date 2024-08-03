@@ -2,7 +2,7 @@ import { AxiosInstance } from "@/utils/axiosInstance";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 import { SIGN_UP_STATE, SIGN_UP_PROPS } from "@/types/types";
-import { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 
 const initialState: SIGN_UP_STATE = {
   error: null,
@@ -14,7 +14,7 @@ export const signupUser = createAsyncThunk(
   "signup/signupUser",
   async (data: SIGN_UP_PROPS, { rejectWithValue }) => {
     try {
-      const response = await AxiosInstance.post("/signup", data);
+      const response = await axios.post("api/signup", data);
       toast.success("Successfully registered");
 
       return response.data;
