@@ -1,6 +1,6 @@
 import { SLUG_STATE } from "@/types/types";
-import { AxiosInstance } from "@/utils/axiosInstance";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 import toast from "react-hot-toast";
 
 const initialState: SLUG_STATE = {
@@ -13,7 +13,7 @@ export const autoGenerateUrlSlug = createAsyncThunk(
   "url/autoGenerateUrlSlug",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await AxiosInstance.get("/url/slug");
+      const response = await axios.get("api/url/slug");
       if (response.status === 400) {
         toast.error("Error generating slug");
         throw new Error("Error generating URLs");

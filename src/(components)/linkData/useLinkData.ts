@@ -1,8 +1,6 @@
 "use client";
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { getUrlAnalytic } from "@/redux/slices/urlAnalyticSlice";
 import { deleteUrl, getUrls, toggleUrlStatus } from "@/redux/slices/urlSlice";
-import { AxiosInstance } from "@/utils/axiosInstance";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";

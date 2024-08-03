@@ -1,4 +1,3 @@
-import { AxiosInstance } from "@/utils/axiosInstance";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 import { SIGN_UP_STATE, SIGN_UP_PROPS } from "@/types/types";

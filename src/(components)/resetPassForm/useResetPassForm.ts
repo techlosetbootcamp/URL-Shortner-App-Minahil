@@ -1,6 +1,6 @@
 "use client";
 import { USER_TYPE } from "@/types/userType";
-import { AxiosInstance } from "@/utils/axiosInstance";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -18,7 +18,7 @@ const useReset = (token: string) => {
   useEffect(() => {
     const verifyToken = async () => {
       try {
-        const response = await AxiosInstance.post("/password/verifytoken", {
+        const response = await axios.post("api/password/verifytoken", {
           token: token,
         });
         if (response.status === 409) {
@@ -50,7 +50,7 @@ const useReset = (token: string) => {
       return false;
     }
     try {
-      const response = await AxiosInstance.post("/password/reset", {
+      const response = await axios.post("api/password/reset", {
         password,
         email: user?.email,
       });
