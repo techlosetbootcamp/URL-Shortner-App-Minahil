@@ -37,7 +37,6 @@ const useLoginForm = () => {
     if (loginState.loginStatus === "succeeded") {
       toast.success("Logged in successfully");
       router.push("/dashboard");
-      window.location.href = "/dashboard";
     } else if (loginState.loginStatus === "failed") {
       toast.error("Invalid Credentials");
     }

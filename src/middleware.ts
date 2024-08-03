@@ -10,7 +10,6 @@ export async function middleware(request: NextRequest) {
     path === "/" ||
     path === "/password/forgot" ||
     path === "/password/reset";
-    path === "/dashboard";
   const isPath =
     path === "/dashboard" ||
     path === "/password/change" ||
