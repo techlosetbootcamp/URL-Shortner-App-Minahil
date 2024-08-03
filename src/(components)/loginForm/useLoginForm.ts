@@ -29,8 +29,7 @@ const useLoginForm = () => {
       dispatch(loginWithEmail({ email, password }));
       setLoading(false);
     } catch (error) {
-      toast.error(`${error}`);
-      window.location.href = "/dashboard";
+      toast.error(`${error}`);      
     }
   };
 
@@ -38,6 +37,7 @@ const useLoginForm = () => {
     if (loginState.loginStatus === "succeeded") {
       toast.success("Logged in successfully");
       router.push("/dashboard");
+      window.location.href = "/dashboard";
     } else if (loginState.loginStatus === "failed") {
       toast.error("Invalid Credentials");
     }
