@@ -14,7 +14,7 @@ const EditProfileForm = () => {
       className="flex gap-7 flex-col items-center justify-center text-text_secondary w-full "
     >
       {EDIT_INPUT_FIELDS.map((field, index) => (
-        <div key={index} className="flex gap-10 items-center justify-between">
+        <div key={index} className="flex gap-[10px] items-center">
           <div>{field.label}</div>
           <InputField
             type={field.type}

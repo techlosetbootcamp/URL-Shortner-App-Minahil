@@ -59,7 +59,7 @@ const Dashboard = () => {
 
       <div className="flex mb-[26px] items-center justify-center font-bold gap-[64px] text-nav_clr bg-input_bg_clr h-[70px] w-full px-[26px] md:px-0">
         {MENU_ITEMS.map((item, index) => (
-          <div key={index} className="flex gap-[10px] items-center">
+          <div key={index} className="flex gap-[10px] cursor-pointer items-center">
             <item.icon className="h-[30px] w-[30px] sm:h-[16px] sm:w-[16px]" />
             <div className="hidden sm:flex">{item.label}</div>
           </div>
