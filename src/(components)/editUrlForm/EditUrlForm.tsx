@@ -24,8 +24,8 @@ const EditUrlForm = ({ urlCode }: URL_TYPE) => {
           <TfiLink className="w-[25px] h-[28px]" />
         </i>
 
-        <div className="flex items-center shadow-custom border-4 bg-input_bg_clr border-input_border_clr rounded-[48px] py-[21px] pr-[25.19px] pl-[70px] text-text_secondary">
-          <span className="hidden xs:flex sm:flex text-text_secondary">
+        <div className="flex items-center shadow-custom border-4 bg-input_bg_clr border-input_border_clr text-nowrap rounded-[48px] py-[21px] pr-[25.19px] pl-[70px] text-text_secondary">
+          <span className="hidden xs:flex sm:flex text-nowrap text-text_secondary">
             {DOMAIN}
           </span>
           <input
