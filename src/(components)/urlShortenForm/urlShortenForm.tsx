@@ -11,7 +11,7 @@ const UrlShortenForm = () => {
     <div className="flex flex-col items-center">
       <form
         onSubmit={shorten}
-        className="relative flex flex-col gap-[32px] w-[378px] md:w-[700px] xxl:w-[1100px]"
+        className="relative flex flex-col gap-[32px] w-[300px]  xs:w-[378px] md:w-[700px] xxl:w-[1100px]"
       >
         <i className="absolute left-[25px] md:top-[24px] top-[17px] text-text_secondary">
           <TfiLink className="w-[25px] h-[28px]" />
