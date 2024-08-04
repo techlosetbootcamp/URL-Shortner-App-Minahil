@@ -11,7 +11,7 @@ const UrlShortenForm = () => {
     <div className="flex flex-col items-center">
       <form
         onSubmit={shorten}
-        className="relative flex flex-col gap-[32px] w-[300px]  xs:w-[378px] md:w-[700px] xxl:w-[1100px]"
+        className="relative flex flex-col gap-[32px] w-[300px] xs:w-[378px] md:w-[500px] xl:w-[800px] xxl:w-[1100px]"
       >
         <i className="absolute left-[25px] md:top-[24px] top-[17px] text-text_secondary">
           <TfiLink className="w-[25px] h-[28px]" />
@@ -35,7 +35,7 @@ const UrlShortenForm = () => {
             filter: "drop-shadow(10px 9px 5px rgba(20, 78, 227, 0.38)",
           }}
           type="submit"
-          className="md:flex rounded-[48px] items-center justify-center absolute right-2 top-[9.5px] font-semibold bg-brand_primary_blue border border-brand_primary_blue text-white py-[13.5px] px-[15.48px]"
+          className="md:hidden rounded-[48px] items-center justify-center absolute right-2 top-[9.5px] font-semibold bg-brand_primary_blue border border-brand_primary_blue text-white py-[13.5px] px-[15.48px]"
         >
           <FaArrowRight />
         </button>

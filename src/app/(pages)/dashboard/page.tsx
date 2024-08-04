@@ -26,7 +26,7 @@ const Dashboard = () => {
   return (
     <>
       <header>
-        <div className="flex xs:items-start sm:items-start sm:justify-between items-center justify-center xs:justify-between xxl:ml-[52px] xxl:mr-[55px] mx-[26px] mt-[44px] mb-[38px]">
+        <div className="flex xs:items-start sm:items-start sm:justify-between items-center justify-between xxl:ml-[52px] xxl:mr-[55px] mx-[26px] mt-[44px] mb-[38px]">
           <div className="mt-[10px]">
             <Logo />
           </div>
@@ -36,7 +36,7 @@ const Dashboard = () => {
           </div>
 
           <div className="flex items-center mt-[7px] gap-[20px]">
-            <div className="hidden xs:flex sm:flex items-center rounded-[48px] bg-input_bg_clr border border-input_border_clr xxl:py-[12.5px] py-[5px] xxl:pl-[34.41px] xxl:pr-[34.59px] xs:px-[34.31px] px-[20.31px]">
+            <div className="flex items-center rounded-[48px] bg-input_bg_clr border border-input_border_clr  xxl:py-[12.5px] py-[5px] xxl:pl-[34.41px] xxl:pr-[34.59px] xs:px-[34.31px] px-[20.31px]">
               <DropdownButton />
             </div>
 
@@ -55,6 +55,8 @@ const Dashboard = () => {
         </div>
       </header>
 
+      
+
       <div className="flex mb-[26px] items-center justify-center font-bold gap-[64px] text-nav_clr bg-input_bg_clr h-[70px] w-full px-[26px] md:px-0">
         {MENU_ITEMS.map((item, index) => (
           <div key={index} className="flex gap-[10px] items-center">
@@ -64,6 +66,7 @@ const Dashboard = () => {
         ))}
       </div>
 
+      <div className="mb-10 mt-8 lg:hidden"><UrlShortenForm/></div>
       <div className="xl:ml-[153px] xl:mr-[154px] ml-[26px] mr-[26px] lg:ml-[40px] lg:mr-[41px]">
         <LinkTable />
       </div>

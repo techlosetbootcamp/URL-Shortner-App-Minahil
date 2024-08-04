@@ -1,18 +1,12 @@
 "use client";
-import useFetchUser from "@/hooks/useFetchUser";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import useDropdownButton from "./useDropdownButton";
 
 const DropdownButton = () => {
-  const { user, isLoading } = useFetchUser();
   const router = useRouter();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  const { user, isLoading, toggleDropdown, isOpen,getInitials } = useDropdownButton();
   if (isLoading) return <div className="text-white">Loading....</div>;
 
   return (
@@ -20,13 +14,13 @@ const DropdownButton = () => {
       <div>
         <button
           type="button"
-          className="inline-flex justify-center w-full rounded-md shadow-sm px-4 py-2 text-sm font-medium text-gray-700 focus:outline-none"
+          className="inline-flex justify-center w-full rounded-md shadow-sm px-2 py-1 xs:px-4 xs:py-2 sm:px-4 sm:py-2 text-sm font-medium text-gray-700 focus:outline-none"
           id="options-menu"
           aria-haspopup="true"
           aria-expanded="true"
           onClick={toggleDropdown}
         >
-          <div className="text-white flex gap-[10px] items-center">
+          <div className="hidden xs:flex sm:flex text-white gap-[10px] items-center">
             <div className="flex flex-col text-left">
               <div className="flex text-[10px]">Welcome</div>
               <div className="flex text-[16px] font-semibold text-nowrap">
@@ -37,6 +31,7 @@ const DropdownButton = () => {
               <IoIosArrowDown className="text-text_secondary h-[28px] w-[20px]" />
             </div>
           </div>
+          <div className="flex xs:hidden sm:hidden text-white items-center justify-center">{getInitials(user?.name)}</div>
         </button>
       </div>
 
