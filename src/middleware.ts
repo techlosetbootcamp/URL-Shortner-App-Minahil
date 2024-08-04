@@ -16,8 +16,7 @@ export async function middleware(request: NextRequest) {
     path === "/profile" ||
     path === "/profile/edit" ||
     path === "/url/add";
-
-  const cookie = request.cookies.get('next-auth.session-token' || "__Secure-next-auth.session-token"); 
+  const cookie = request.cookies.get(process.env.AUTH_COOKIE!); 
 
   if (isPublicPath && cookie) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
