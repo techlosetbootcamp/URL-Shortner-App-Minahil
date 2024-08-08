@@ -25,7 +25,7 @@ const ForgotPassword = () => {
       </header>
       <div className="flex flex-col items-center justify-center mb-[100px] mt-[100px] lg:mb-[262px] lg:mt-[216px] mx-[26px] lg:mx-0">
         <div className="flex flex-col gap-[20px] items-center xxl:mb-[46px] mb-[24px]">
-          <p className="font-extrabold text-center xxl:text-[60px] text-[35px] leading-[41.48px] xxl:leading-[80.01px] animate-text bg-gradient-to-r from-[#144EE3] via-[#EB568E] to-[#A353AA] bg-clip-text text-transparent">
+          <p className="font-extrabold text-center xxl:text-[60px] text-[35px] leading-[41.48px] xxl:leading-[80.01px] animate-text bg-gradient-to-r from-brand_primary_blue via-brand_primary_pink to-gradient_clr_3 bg-clip-text text-transparent">
             Forgot Password
           </p>
           <div className="md:w-[634px]">

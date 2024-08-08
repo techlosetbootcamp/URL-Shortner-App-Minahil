@@ -23,7 +23,7 @@ const EditProfile = () => {
     <div className="flex flex-col items-center justify-center gap-9 mx-[26px]">
       <div className="flex flex-col items-center justify-center lg:mt-[216px] mt-[60px]">
         <div className="mb-[46px] flex flex-col items-center justify-center">
-          <p className="font-extrabold text-[40px] md:text-[50px] leading-[80.01px] animate-text bg-gradient-to-r from-[#144EE3] via-[#EB568E] to-[#A353AA] bg-clip-text text-transparent">
+          <p className="font-extrabold text-[40px] md:text-[50px] leading-[80.01px] animate-text bg-gradient-to-r from-brand_primary_blue via-brand_primary_pink to-gradient_clr_3 bg-clip-text text-transparent">
             Edit Profile
           </p>
         </div>

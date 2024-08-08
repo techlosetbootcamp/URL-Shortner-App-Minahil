@@ -27,7 +27,7 @@ const Register = () => {
       <div className="flex flex-col items-center justify-center mb-[114px] lg:mt-[216px] mt-[65px] mx-[26px] md:mx-0">
         <div className="mb-[46px] flex flex-col gap-[20px] items-center justify-center">
           <div>
-            <p className="font-extrabold text-center lg:text-[60px] text-[35px] leading-[41.48px] lg:leading-[80.01px] animate-text bg-gradient-to-r from-[#144EE3] via-[#EB568E] to-[#A353AA] bg-clip-text text-transparent">
+            <p className="font-extrabold text-center lg:text-[60px] text-[35px] leading-[41.48px] lg:leading-[80.01px] animate-text bg-gradient-to-r from-brand_primary_blue via-brand_primary_pink to-gradient_clr_3 bg-clip-text text-transparent">
               Shorten Your Loooong Links &#58;&#41;
             </p>
           </div>

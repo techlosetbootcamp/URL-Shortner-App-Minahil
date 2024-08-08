@@ -58,7 +58,7 @@ export default function Home() {
         <div className="flex flex-col xxl:ml-[153px] xxl:mr-[154px] mr-[26px] ml-[26px]">
           <div className="flex flex-col items-center justify-center mb-[40px]">
             <div className="flex flex-col gap-[20px] items-center xxl:mb-[46px] mb-[24px]">
-              <p className="font-extrabold text-center xxl:text-[60px] text-[35px] leading-[41.48px] xxl:leading-[80.01px] animate-text bg-gradient-to-r from-[#144EE3] via-[#EB568E] to-[#A353AA] bg-clip-text text-transparent">
+              <p className="font-extrabold text-center xxl:text-[60px] text-[35px] leading-[41.48px] xxl:leading-[80.01px] animate-text bg-gradient-to-r from-brand_primary_blue via-brand_primary_pink to-gradient_clr_3 bg-clip-text text-transparent">
                 Shorten Your Loooong Links &#58;&#41;
               </p>
               <div className="xxl:w-[634px]">
