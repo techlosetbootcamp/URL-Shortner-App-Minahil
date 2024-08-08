@@ -6,7 +6,7 @@ import { authOptions } from "../../../lib/options";
 export const GET = async () => {
   const session = await getServerSession(authOptions);
   try {
-    const email = session?.user.email;
+    const email = session?.user.email as string|undefined;
     if (!email) {
       return NextResponse.json({ message: email }, { status: 400 });
     }

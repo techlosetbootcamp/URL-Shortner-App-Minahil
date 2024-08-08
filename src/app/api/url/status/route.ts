@@ -26,7 +26,7 @@ export const PATCH = async (req: NextRequest) => {
         { message: "URL's status updated", updatedUrl },
         { status: 200 }
       );
-    } catch (error) {
+    } catch (error: any) {
       return new NextResponse("Failed to update URL status", { status: 500 });
     }
   } catch (error) {
