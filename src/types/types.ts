@@ -125,3 +125,9 @@ export type FORM_STATE = {
   newPassword: string;
   confirmPassword: string;
 };
+
+export type Props = {
+  params: {
+    urlCode: string;
+  };
+};

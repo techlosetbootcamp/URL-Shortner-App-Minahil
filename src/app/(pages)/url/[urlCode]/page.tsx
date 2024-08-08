@@ -3,12 +3,7 @@ import { FaBell } from "react-icons/fa";
 import EditUrlForm from "@/(components)/editUrlForm/EditUrlForm";
 import { Metadata } from "next";
 import DropdownButton from "@/(components)/dropdownButton/dropdownButton";
-
-type Props = {
-  params: {
-    urlCode: string;
-  };
-};
+import { Props } from "@/types/types";
 
 export const generateMetadata = ({ params }: Props): Metadata => {
   return {
