@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../lib/options";
 import { GENERATE_QR_CODE } from "@/constants/generateQrCode";
 
-export const POST = async (req: NextRequest, res: NextResponse) => {
+export const POST = async (req: NextRequest) => {
   const session = await getServerSession(authOptions);
   try {
     const body = await req.json();

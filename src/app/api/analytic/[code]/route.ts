@@ -1,8 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import prisma from "@/config/prismadb";
 
 export const GET = async (
-  req: NextRequest,
   { params }: { params: { code: string } }
 ) => {
   const { code } = params;

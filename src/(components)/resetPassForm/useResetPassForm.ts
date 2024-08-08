@@ -93,6 +93,7 @@ const useReset = (token: string) => {
     reset,
     verified,
     RESET_INPUT_FIELDS,
+    error
   };
 };
 export default useReset;

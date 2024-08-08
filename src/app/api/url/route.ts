@@ -6,7 +6,7 @@ import { authOptions } from "../../../lib/options";
 import { URL_TYPE } from "@/types/types";
 import { GENERATE_QR_CODE } from "@/constants/generateQrCode";
 
-export const POST = async (req: NextRequest, res: NextResponse) => {
+export const POST = async (req: NextRequest) => {
   const session = await getServerSession(authOptions);
   try {
     const body = await req.json();
@@ -85,7 +85,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
   }
 };
 
-export const GET = async (req: NextRequest, res: NextResponse) => {
+export const GET = async () => {
   const session = await getServerSession(authOptions);
   try {
     let urls: URL_TYPE[] = [];
