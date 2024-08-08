@@ -47,7 +47,7 @@ export type URL_ANALYTIC_PROPS = {
 };
 
 export type URL_TYPE = {
-  user_email?: string;
+  user_email?: string|null;
   analytics?: URL_ANALYTIC_TYPE;
   id?: string;
   originalUrl?: string;
