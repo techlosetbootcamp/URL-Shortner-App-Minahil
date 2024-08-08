@@ -35,6 +35,77 @@ export const INPUT_FIELDS = [
   },
 ];
 
+export const PASSWORD_INPUT_FIELDS = [
+  {
+    id: "email",
+    type: "email",
+    placeholder: "Email",
+    value: "",
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
+  },
+  {
+    id: "password",
+    type: "password",
+    placeholder: "Password",
+    value: "",
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
+  },
+];
+
+export const RESET_INPUT_FIELDS = [
+  {
+    id: "password",
+    type: "password",
+    placeholder: "Password",
+    value: "",
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
+    disabled: false,
+  },
+  {
+    id: "confirmPassword",
+    type: "password",
+    placeholder: "Confirm Password",
+    value: "",
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
+    disabled: false,
+  },
+];
+
+export const REGISTER_INPUT_FIELDS = [
+  {
+    id: "email",
+    type: "email",
+    placeholder: "Email",
+    value: "",
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
+    disabled: false,
+  },
+  {
+    id: "name",
+    type: "text",
+    placeholder: "Name",
+    value: "",
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
+    disabled: false,
+  },
+  {
+    id: "password",
+    type: "password",
+    placeholder: "Password",
+    value: "",
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
+    disabled: false,
+  },
+  {
+    id: "confirmPassword",
+    type: "password",
+    placeholder: "Confirm Password",
+    value: "",
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
+    disabled: false,
+  },
+];
+
 export const EDIT_INPUT_FIELDS = [
   {
     id: "name",

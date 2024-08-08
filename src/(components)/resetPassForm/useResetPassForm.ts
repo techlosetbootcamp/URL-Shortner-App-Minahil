@@ -4,6 +4,7 @@ import { AxiosInstance } from "@/utils/axiosInstance";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { RESET_INPUT_FIELDS as BASE_INPUT_FIELDS } from "@/constants/constants";
 
 const useReset = (token: string) => {
   const [password, setPassword] = useState("");
@@ -71,29 +72,23 @@ const useReset = (token: string) => {
       setLoading(false);
     }
   };
-  const RESET_INPUT_FIELDS = [
-    {
-      type: "password",
-      placeholder: "Password",
-      value: password,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value),
-      disabled: loading,
-    },
-    {
-      type: "password",
-      placeholder: "Confirm Password",
-      value: confirmPassword,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value),
-      disabled: loading,
-    },
-  ];
-
+  const RESET_INPUT_FIELDS = BASE_INPUT_FIELDS.map((field) => ({
+    ...field,
+    value: field.id === "password" ? password : confirmPassword,
+    onChange:
+      field.id === "password"
+        ? (e: React.ChangeEvent<HTMLInputElement>) =>
+            setPassword(e.target.value)
+        : (e: React.ChangeEvent<HTMLInputElement>) =>
+            setConfirmPassword(e.target.value),
+    disabled: loading,
+  }));
   return {
     loading,
     reset,
     verified,
     RESET_INPUT_FIELDS,
-    error
+    error,
   };
 };
 export default useReset;

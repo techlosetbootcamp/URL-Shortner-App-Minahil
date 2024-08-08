@@ -6,7 +6,7 @@ import { clearLoginDetails, loginWithEmail } from "@/redux/slices/loginSlice";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-
+import { PASSWORD_INPUT_FIELDS as BASE_INPUT_FIELDS } from "@/constants/constants";
 const useLoginForm = () => {
   const dispatch = useAppDispatch();
   const loginState = useAppSelector((state) => state.login);
@@ -29,7 +29,7 @@ const useLoginForm = () => {
       dispatch(loginWithEmail({ email, password }));
       setLoading(false);
     } catch (error) {
-      toast.error(`${error}`);      
+      toast.error(`${error}`);
     }
   };
 
@@ -48,20 +48,15 @@ const useLoginForm = () => {
     };
   }, [dispatch]);
 
-  const PASSWORD_INPUT_FIELDS = [
-    {
-      type: "email",
-      placeholder: "Email",
-      value: email,
-      onChange: setEmail,
-    },
-    {
-      type: "password",
-      placeholder: "Password",
-      value: password,
-      onChange: setPassword,
-    },
-  ];
+  const PASSWORD_INPUT_FIELDS = BASE_INPUT_FIELDS.map((field) => ({
+    ...field,
+    value: field.id === "email" ? email : password,
+    onChange:
+      field.id === "email"
+        ? (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)
+        : (e: React.ChangeEvent<HTMLInputElement>) =>
+            setPassword(e.target.value),
+  }));
 
   return { loading, login, PASSWORD_INPUT_FIELDS };
 };

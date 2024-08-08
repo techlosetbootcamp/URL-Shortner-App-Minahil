@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import Button from "../button/Button";
 import InputField from "../input/Input";
@@ -6,6 +7,7 @@ import useLoginForm from "./useLoginForm";
 
 function LoginForm() {
   const { loading, login, PASSWORD_INPUT_FIELDS } = useLoginForm();
+
   return (
     <form
       onSubmit={login}
@@ -19,7 +21,7 @@ function LoginForm() {
             type={field.type}
             placeholder={field.placeholder}
             value={field.value}
-            onChange={(e) => field.onChange(e.target.value)}
+            onChange={field.onChange}
             disabled={loading}
           />
         ))}
@@ -50,4 +52,5 @@ function LoginForm() {
     </form>
   );
 }
+
 export default LoginForm;
