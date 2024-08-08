@@ -37,7 +37,7 @@ const useChange = () => {
         redirect: true,
         callbackUrl: `${window.location.origin}/login`,
       });
-    } catch (err: any) {
+    } catch (err) {
       toast.error("Error try again!");
     } finally {
       setLoading(false);

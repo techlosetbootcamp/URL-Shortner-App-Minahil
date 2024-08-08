@@ -22,7 +22,7 @@ const useForgotPassForm = () => {
       if (response.status === 409) {
         toast.error("Email doesn't exist");
       }
-    } catch (err: any) {
+    } catch (err) {
       toast.error("Error sending Password Reset Email");
     } finally {
       setLoading(false);

@@ -1,7 +1,10 @@
 "use client";
+
+import { ON_CHANGE_PROPS } from "@/types/types";
 import useToggleSwitch from "./useToggleSwitch";
 
-const ToggleSwitch = ({ onChange }: any) => {
+
+const ToggleSwitch = ({ onChange }: ON_CHANGE_PROPS) => {
   const { enabled, toggleSwitch } = useToggleSwitch(onChange);
   return (
     <div className="flex items-center">

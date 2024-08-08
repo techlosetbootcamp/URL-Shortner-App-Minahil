@@ -36,8 +36,8 @@ export const PATCH = async (req: NextRequest) => {
       });
 
       return new NextResponse("User's profile updated", { status: 200 });
-    } catch (error: any) {
-      return new NextResponse(error.message || "Internal Server Error", {
+    } catch (error) {
+      return new NextResponse("Internal Server Error", {
         status: 500,
       });
     }

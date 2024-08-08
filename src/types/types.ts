@@ -1,6 +1,7 @@
 import { USER_TYPE } from "./userType";
 import { MouseEventHandler } from "react";
 import { ChangeEvent } from "react";
+import { Dispatch, SetStateAction } from "react";
 export type SIGN_UP_STATE = {
   error: null | string;
   signupStatus: "idle" | "loading" | "failed" | "succeeded";
@@ -46,7 +47,7 @@ export type URL_ANALYTIC_PROPS = {
 };
 
 export type URL_TYPE = {
-  user_email?: any;
+  user_email?: string;
   analytics?: URL_ANALYTIC_TYPE;
   id?: string;
   originalUrl?: string;
@@ -113,3 +114,7 @@ export type INPUT_TYPE = {
 export type FILTER_PROPS = {
   onFilterChange: (criteria: string) => void;
 };
+
+export type ON_CHANGE_PROPS={
+  onChange:Dispatch<SetStateAction<boolean>>
+  };

@@ -27,8 +27,8 @@ const useRegisterForm = () => {
     }
     try {
       dispatch(signupUser({ email, name, password }));
-    } catch (err: any) {
-      toast.error(err?.response?.data?.message || "Registration failed");
+    } catch (err) {
+      toast.error("Registration failed");
     } finally {
       setLoading(false);
     }
@@ -45,28 +45,28 @@ const useRegisterForm = () => {
       type: "email",
       placeholder: "Email",
       value: email,
-      onChange: (e: any) => setEmail(e.target.value),
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value),
       disabled: loading,
     },
     {
       type: "text",
       placeholder: "Name",
       value: name,
-      onChange: (e: any) => setName(e.target.value),
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value),
       disabled: loading,
     },
     {
       type: "password",
       placeholder: "Password",
       value: password,
-      onChange: (e: any) => setPassword(e.target.value),
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value),
       disabled: loading,
     },
     {
       type: "password",
       placeholder: "Confirm Password",
       value: confirmPassword,
-      onChange: (e: any) => setConfirmPassword(e.target.value),
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value),
       disabled: loading,
     },
   ];

@@ -65,7 +65,7 @@ const useReset = (token: string) => {
         router.refresh();
         router.push("/login");
       }
-    } catch (err: any) {
+    } catch (err) {
       toast.error("Error try again!");
     } finally {
       setLoading(false);
@@ -76,14 +76,14 @@ const useReset = (token: string) => {
       type: "password",
       placeholder: "Password",
       value: password,
-      onChange: (e: any) => setPassword(e.target.value),
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value),
       disabled: loading,
     },
     {
       type: "password",
       placeholder: "Confirm Password",
       value: confirmPassword,
-      onChange: (e: any) => setConfirmPassword(e.target.value),
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value),
       disabled: loading,
     },
   ];

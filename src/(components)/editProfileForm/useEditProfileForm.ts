@@ -54,13 +54,13 @@ const useEditProfileForm = () => {
       label: "Name:",
       type: "text",
       value: name,
-      onChange: (e: any) => setName(e.target.value),
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value),
     },
     {
       label: "Email:",
       type: "email",
       value: newEmail,
-      onChange: (e: any) => setEmail(e.target.value),
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value),
     },
   ];
   return {
