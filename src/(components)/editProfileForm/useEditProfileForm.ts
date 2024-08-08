@@ -6,10 +6,13 @@ import { editUser } from "@/redux/slices/userSlice";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { EDIT_INPUT_FIELDS as BASE_INPUT_FIELDS } from "@/constants/constants";
+import { useRouter } from "next/navigation";
 
 const useEditProfileForm = () => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
-  const { user, isLoading, isError } = useFetchUser();
+  const { user, isLoading } = useFetchUser();
   const email = user?.email;
   const prevName = user?.name;
   const [loading, setLoading] = useState(false);
@@ -38,6 +41,7 @@ const useEditProfileForm = () => {
           });
         } else {
           toast.success("Profile updated successfully.");
+          router.push("/dashboard");
         }
       } else if (editUser.rejected.match(action)) {
         toast.error("Email already exists");
@@ -49,20 +53,15 @@ const useEditProfileForm = () => {
     }
   };
 
-  const EDIT_INPUT_FIELDS = [
-    {
-      label: "Name:",
-      type: "text",
-      value: name,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value),
-    },
-    {
-      label: "Email:",
-      type: "email",
-      value: newEmail,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value),
-    },
-  ];
+  const EDIT_INPUT_FIELDS = BASE_INPUT_FIELDS.map((field) => ({
+    ...field,
+    value: field.id === "name" ? name : newEmail,
+    onChange:
+      field.id === "name"
+        ? (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)
+        : (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value),
+  }));
+
   return {
     isLoading,
     handleSaveChanges,
@@ -70,4 +69,5 @@ const useEditProfileForm = () => {
     EDIT_INPUT_FIELDS,
   };
 };
+
 export default useEditProfileForm;

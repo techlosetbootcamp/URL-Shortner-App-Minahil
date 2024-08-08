@@ -26,7 +26,7 @@ const EditUrlForm = ({ urlCode }: URL_TYPE) => {
 
         <div className="flex items-center shadow-custom border-4 bg-input_bg_clr border-input_border_clr text-nowrap rounded-[48px] py-[21px] pr-[25.19px] pl-[70px] text-text_secondary">
           <span className="hidden xs:flex sm:flex text-nowrap text-text_secondary">
-            {DOMAIN}
+            {DOMAIN}/
           </span>
           <input
             value={editablePart}

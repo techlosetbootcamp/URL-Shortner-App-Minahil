@@ -1,10 +1,12 @@
-"use client";
-import useChange from "@/(components)/changePassForm/useChangePassForm";
+"use client"
+import { FORM_STATE } from "@/types/types";
 import Button from "../button/Button";
 import InputField from "../input/Input";
+import useChange from "./useChangePassForm";
 
 const ChangePassForm = () => {
-  const { loading, change, INPUT_FIELDS } = useChange();
+  const { loading, change, formState, handleInputChange, INPUT_FIELDS } = useChange();
+
   return (
     <form
       onSubmit={change}
@@ -12,13 +14,14 @@ const ChangePassForm = () => {
       action=""
     >
       <div className="flex flex-col gap-[32px] md:w-[659px] sm:w-[559px] xs:w-[359px]">
-        {INPUT_FIELDS.map((field, index) => (
+        {INPUT_FIELDS.map((field) => (
           <InputField
-            key={index}
-            type={field.type}
-            placeholder={field.placeholder}
-            value={field.value}
-            onChange={(e) => field.onChange(e.target.value)}
+            key={field?.id}
+            type={field?.type}
+            placeholder={field?.placeholder}
+            value={formState[field?.id as keyof FORM_STATE]}
+            onChange={handleInputChange}
+            name={field?.id}
             disabled={loading}
           />
         ))}
@@ -33,4 +36,5 @@ const ChangePassForm = () => {
     </form>
   );
 };
+
 export default ChangePassForm;

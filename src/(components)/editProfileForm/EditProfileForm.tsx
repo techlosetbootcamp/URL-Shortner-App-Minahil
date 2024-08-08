@@ -1,4 +1,5 @@
 "use client";
+
 import useEditProfileForm from "@/(components)/editProfileForm/useEditProfileForm";
 import InputField from "../input/Input";
 import Button from "../button/Button";
@@ -7,7 +8,9 @@ import Loader from "../loader/Loader";
 const EditProfileForm = () => {
   const { isLoading, handleSaveChanges, loading, EDIT_INPUT_FIELDS } =
     useEditProfileForm();
+
   if (isLoading) return <Loader />;
+
   return (
     <form
       onSubmit={handleSaveChanges}
@@ -34,4 +37,5 @@ const EditProfileForm = () => {
     </form>
   );
 };
+
 export default EditProfileForm;

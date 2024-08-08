@@ -16,3 +16,38 @@ export const MENU_ITEMS = [
   { icon: IoStatsChartOutline, label: "Statistics" },
   { icon: IoSettingsOutline, label: "Settings" },
 ];
+
+export const INPUT_FIELDS = [
+  {
+    id: "oldPassword",
+    type: "password",
+    placeholder: "Old Password",
+  },
+  {
+    id: "newPassword",
+    type: "password",
+    placeholder: "New Password",
+  },
+  {
+    id: "confirmPassword",
+    type: "password",
+    placeholder: "Confirm Password",
+  },
+];
+
+export const EDIT_INPUT_FIELDS = [
+  {
+    id: "name",
+    label: "Name:",
+    type: "text",
+    value: "",
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
+  },
+  {
+    id: "email",
+    label: "Email:",
+    type: "email",
+    value: "",
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
+  },
+];

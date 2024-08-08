@@ -3,6 +3,7 @@ import { INPUT_TYPE } from "@/types/types";
 const InputField = ({
   type = "text",
   placeholder,
+  name,
   value,
   onChange,
   disabled,
@@ -10,6 +11,7 @@ const InputField = ({
   return (
     <input
       value={value}
+      name={name}
       onChange={onChange}
       disabled={disabled}
       style={{

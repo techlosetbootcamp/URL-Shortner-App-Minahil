@@ -105,6 +105,7 @@ export type BUTTON_TYPE = {
 export type INPUT_TYPE = {
   type?: string;
   placeholder?: string;
+  name?:string;
   value?: string;
   label?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -118,3 +119,9 @@ export type FILTER_PROPS = {
 export type ON_CHANGE_PROPS={
   onChange:Dispatch<SetStateAction<boolean>>
   };
+
+export type FORM_STATE = {
+  oldPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+};
